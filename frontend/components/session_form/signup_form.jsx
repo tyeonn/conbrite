@@ -15,6 +15,8 @@ class SignupForm extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.setErrorMessage = this.setErrorMessage.bind(this);
+    this.resetErrorMessage = this.resetErrorMessage.bind(this);
   }
 
   handleSubmit(e){
@@ -28,11 +30,26 @@ class SignupForm extends React.Component {
   
 
   update(field){
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
   }
   
+  setErrorMessage(field){
+    return e => {
+      if(e.currentTarget.value == ''){
+        return e.currentTarget.setCustomValidity(`${field} cannot be blank`);
+  
+      } 
+    };
+  }
+
+  resetErrorMessage(e){
+    return e.currentTarget.setCustomValidity('');
+  }
+
   renderErrors(field){
     return(
       // {this.props.errors}
@@ -43,6 +60,7 @@ class SignupForm extends React.Component {
           </li>
         ))}
       </ul>
+      
     )
   }
   componentDidMount(){
@@ -70,18 +88,31 @@ class SignupForm extends React.Component {
             value={this.state.first_name}
             onChange={this.update('first_name')}
             className='signup-form-input'
+            pattern='[A-Za-z]{3,20}'
+            title='Enter 3 or more letters'
+            onInvalid={this.setErrorMessage('First Name')}
+            onInput={this.resetErrorMessage}
+            required
           />
           <input type="text"
             placeholder='Last Name'
             value={this.state.last_name}
             onChange={this.update('last_name')}
             className='signup-form-input'
+            pattern='[A-Za-z]{3,20}'
+            title='Enter 3 or more letters'
+            onInvalid={this.setErrorMessage('Last Name')}
+            onInput={this.resetErrorMessage}
+            required
           />
           <input type="password"
             placeholder='Password'
             value={this.state.password}
             onChange={this.update('password')}
             className='signup-form-input'
+            required 
+            minLength='6'
+
           />
           <input type="submit" className='signup-form-submit' value={this.props.formType} />
         </form>

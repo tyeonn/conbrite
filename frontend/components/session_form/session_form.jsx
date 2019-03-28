@@ -44,6 +44,9 @@ class SessionForm extends React.Component {
             value={this.state.email}
             onChange={this.update('email')} 
             className='session-form-input'
+            required
+            autoFocus
+            
           />
           <input type="submit" className='session-form-submit' value='Get Started'/>
         </form>

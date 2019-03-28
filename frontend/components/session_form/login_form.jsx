@@ -6,7 +6,7 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       email: this.props.email,
-      password: '' 
+      password: '', 
     };
     if(!this.props.email){
       this.props.history.push(`/signin`);
@@ -69,6 +69,9 @@ class LoginForm extends React.Component {
             value={this.state.password}
             onChange={this.update('password')}
             className='login-form-input'
+            required 
+            minLength='6'
+            autoFocus
           />
           <input type="submit" className='login-form-submit' value={this.props.formType} />
         </form>

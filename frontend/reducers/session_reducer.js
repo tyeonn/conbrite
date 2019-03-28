@@ -4,7 +4,6 @@ import {
   RECEIVE_EMAIL_EXISTS,
   RECEIVE_TEMP_EMAIL
 } from '../actions/session_actions';
-import merge from 'lodash';
 
 const _nullUser = Object.freeze({id: null});
 const sessionReducer = (state = _nullUser, action) => {
