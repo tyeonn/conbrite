@@ -5,11 +5,19 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render 'api/users/show'
     else
-      debugger
       render json: @user.errors.full_messages, status: 422
     end
 
   end
+
+  # def show
+  #   @user = User.find_by(email: params[:email])
+  #   if @user 
+  #     render 'api/users/show'
+  #   else
+  #     render json: ['User not found'], status: 404
+  #   end
+  # end
 
   private
   def user_params

@@ -23,4 +23,14 @@ class Api::SessionsController < ApplicationController
       render json: ['Nobody is signed in'], status: 404
     end
   end
+
+  def show
+    @user = User.find_by(email: params[:email] )
+    if @user 
+      render :show
+    else
+      render json: ['Email not found'], status: 422
+    end
+
+  end
 end
