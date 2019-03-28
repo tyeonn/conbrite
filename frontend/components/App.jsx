@@ -1,6 +1,7 @@
 import React from 'react';
 import Profile from './profile/profile_container';
 import { Route, Link, Switch } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util.js';
 import SessionFormContainer from './session_form/session_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
@@ -14,8 +15,8 @@ const App = () => (
       <Profile/>
     </header>
     <Switch>
-      <Route path='/signin/login' component={LoginFormContainer} />
-      <Route path='/signin/signup' component={SignupFormContainer} />
+      <AuthRoute exact path='/signin/login' component={LoginFormContainer} />
+      <AuthRoute path='/signin/signup' component={SignupFormContainer} />
       <Route path='/signin' component={SessionFormContainer} />
     </Switch>
 

@@ -9,6 +9,9 @@ class Api::UsersController < ApplicationController
     end
 
   end
+  # def update
+
+  # end
 
   # def show
   #   @user = User.find_by(email: params[:email])
@@ -18,7 +21,11 @@ class Api::UsersController < ApplicationController
   #     render json: ['User not found'], status: 404
   #   end
   # end
+  
+  # def destroy
 
+  # end
+  
   private
   def user_params
     params.require(:user).permit(:email, :password, :first_name, :last_name, :image_url)

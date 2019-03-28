@@ -19,7 +19,7 @@ class Profile extends React.Component{
       return(
         <div id='header-profile-signedin'>
           <h2>Hi {currentUser.first_name}!</h2>
-          <i class="fas fa-user-circle" ></i>
+          <i className="fas fa-user-circle" ></i>
 
           {/* implement dropdown here */}
 

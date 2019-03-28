@@ -10,6 +10,9 @@ class SignupForm extends React.Component {
       last_name: '',
       password: '',
     };
+    if(!this.props.temp){
+      this.props.history.push(`/signin`);
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }

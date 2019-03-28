@@ -8,6 +8,9 @@ class LoginForm extends React.Component {
       email: this.props.email,
       password: '' 
     };
+    if(!this.props.email){
+      this.props.history.push(`/signin`);
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
