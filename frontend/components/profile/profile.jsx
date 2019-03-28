@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import ProfileItem from './profile_item';
 
 
 class Profile extends React.Component{
   constructor(props){
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
   
-  
+  handleClick(e){
+    this.props.history.push('/signin');
+    window.location.reload();
+  }
   render(){
     const { currentUser, logout } = this.props;
     if(currentUser){
@@ -30,7 +34,8 @@ class Profile extends React.Component{
     }else{
       return(
         <div id='header-profile-signedout'>
-          <Link to='/signin'>Sign In</Link>
+          <Link to='/signin' onClick={() => this.handleClick()}>Sign In</Link>
+          {/* <Link to={{pathname: '/signin', state: 'flush' }}>Sign In</Link> */}
         </div>
       )
     }
@@ -39,4 +44,4 @@ class Profile extends React.Component{
 }
 
 
-export default Profile;
+export default withRouter(Profile);

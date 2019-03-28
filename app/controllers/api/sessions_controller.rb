@@ -24,6 +24,7 @@ class Api::SessionsController < ApplicationController
     end
   end
 
+  # session show is for checking email on sign in
   def show
     @user = User.find_by(email: params[:email] )
     if @user 

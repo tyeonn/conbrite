@@ -4,16 +4,17 @@ class SessionForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      email: '', 
+      email: this.props.email || this.props.temp || '', 
+      // flushed: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e){
     e.preventDefault();
-    this.props.saveTempEmail(this.state.email);
+    this.props.receiveTempEmail(this.state.email);
     this.props.checkEmailExists(this.state.email).then(
-      this.props.history.push('/signin/login'),
-      this.props.history.push('/signin/signup/')
+      () => this.props.history.push('/signin/login'),
+      () => this.props.history.push('/signin/signup/')
     );
   }
 
@@ -23,13 +24,22 @@ class SessionForm extends React.Component {
     });
   }
 
+  // componentWillReceiveProps(nextProps){
+  //   if(!this.state.flushed && nextProps.location.state === 'flush'){
+  //     this.setState({flushed: true});
+  //   }
+  // }
+  // componentDidUpdate(){
+  //   this.setState({flushed: false});
+  // }
+
   render(){
     return (
       <div className='session-form-container'>
         <form onSubmit={this.handleSubmit}>
           <h2>Let's get started</h2>
           <p>Enter your email address below</p>
-          <input type="text" 
+          <input type="email"
             placeholder='Email Address'
             value={this.state.email}
             onChange={this.update('email')} 
@@ -38,9 +48,7 @@ class SessionForm extends React.Component {
           <input type="submit" className='session-form-submit' value='Get Started'/>
         </form>
       </div>
-
     )
-
   }
 }
 

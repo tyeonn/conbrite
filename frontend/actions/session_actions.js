@@ -12,6 +12,7 @@ export const receiveCurrentUser = currentUser => ({
   currentUser,
 });
 
+//Check if email exists on sign in
 export const receiveEmailExists = email => ({
   type: RECEIVE_EMAIL_EXISTS,
   email,
@@ -27,16 +28,16 @@ export const receiveSessionErrors = errors => ({
   errors,
 });
 
+//Reset the error of email not existing on sign in
 export const resetSessionErrors = () => ({
   type: RESET_SESSION_ERRORS,
 });
 
-export const receiveTempEmail = temp => {
-  return({
+//Email to be transferred to the login/signup form
+export const receiveTempEmail = temp => ({
   type: RECEIVE_TEMP_EMAIL,
   temp,
-})
-};
+});
 
 export const signup = user => {
   return dispatch => {
@@ -64,20 +65,14 @@ export const logout = () => {
   };
 };
 
+
 export const checkEmailExists = (email) => {
   return dispatch => {
     return SessionAPIUtil.checkEmailExists(email).then(
-      email => dispatch(receiveEmailExists(email)),
+      email => dispatch(receiveEmailExists(email))
       // errors => dispatch(receiveSessionErrors(errors.responseJSON))
-      () => dispatch(resetSessionErrors())
+      // () => dispatch(resetSessionErrors())
     );
   };
 };
 
-export const saveTempEmail = email => {
-  return dispatch => {
-    return dispatch(receiveTempEmail(email));
-
-  };
-  
-};

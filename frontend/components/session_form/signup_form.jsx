@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -10,12 +11,18 @@ class SignupForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
     this.props.submitForm(this.state);
   }
+  handleClick(e){
+    e.preventDefault();
+    this.props.history.push('/signin');
+  }
+  
 
   update(field){
     return e => this.setState({
@@ -35,19 +42,26 @@ class SignupForm extends React.Component {
       </ul>
     )
   }
+  componentDidMount(){
+    this.props.resetSessionErrors();
+  }
 
   render() {
+
     return (
       <div className='signup-form-container'>
         <form onSubmit={this.handleSubmit}>
           <h2>Welcome</h2>
           <p>Create an account</p>
           {this.renderErrors()}
-          <input type="text"
-            value={this.state.email}
-            readOnly
-            className='signup-form-input'
-          />
+          <div className='signup-form-input-container'>
+            <input type="email"
+              value={this.state.email}
+              readOnly
+              className='signup-form-input'
+            />
+            <button type='button' onClick={this.handleClick}>hi</button>
+          </div>
           <input type="text"
             placeholder='First Name'
             value={this.state.first_name}
@@ -60,13 +74,13 @@ class SignupForm extends React.Component {
             onChange={this.update('last_name')}
             className='signup-form-input'
           />
-          <input type="text"
+          <input type="password"
             placeholder='Password'
             value={this.state.password}
             onChange={this.update('password')}
             className='signup-form-input'
           />
-          <input type="submit" className='signup-form-submit' value='Sign Up' />
+          <input type="submit" className='signup-form-submit' value={this.props.formType} />
         </form>
       </div>
 

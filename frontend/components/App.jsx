@@ -14,9 +14,9 @@ const App = () => (
       <Profile/>
     </header>
     <Switch>
-      <Route path='/signin/login'><LoginFormContainer/></Route>
-      <Route path='/signin/signup'><SignupFormContainer/></Route>
-      <Route path='/signin'><SessionFormContainer/></Route>
+      <Route path='/signin/login' component={LoginFormContainer} />
+      <Route path='/signin/signup' component={SignupFormContainer} />
+      <Route path='/signin' component={SessionFormContainer} />
     </Switch>
 
 

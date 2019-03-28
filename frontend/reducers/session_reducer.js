@@ -5,6 +5,7 @@ import {
   RECEIVE_TEMP_EMAIL
 } from '../actions/session_actions';
 import merge from 'lodash';
+
 const _nullUser = Object.freeze({id: null});
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
@@ -14,8 +15,8 @@ const sessionReducer = (state = _nullUser, action) => {
     case RECEIVE_EMAIL_EXISTS:
       return action.email;
     case RECEIVE_TEMP_EMAIL:
-      const newState = merge({}, state, action.temp);
       return {temp: action.temp};
+    // case sadfjs
     case LOGOUT_CURRENT_USER:
       return _nullUser;
     default: 
