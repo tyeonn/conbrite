@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+ /* body > main root > app > navbar, components, footer */
+
+ body {
+  font-family: Neue Plak, Roboto, Helvetica Neue, 
+      Helvetica, Tahoma, Arial, sans-serif; 
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+ }
+
+ 
+
+/* html, body, header, footer, h1, 
+h2, h3, h4, h5, a, ul, li, ol,
+main, strong, input, textarea, form, 
+p, span, article, label, small, aside{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}  */
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+} */
+
+button{
+  cursor: pointer;
+} 
+
+/* .app{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+} */

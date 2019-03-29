@@ -6,7 +6,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="shortcut icon" href="https://conbrite.herokuapp.com/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" 
+      crossorigin="anonymous">
     <%= javascript_include_tag 'application' %>
+    <script type='text/javascript'>
+      window.conbrite="<%= image_url("conbrite.png") %>"
+    </script>
+    <script type='text/javascript'>
+      window.c_logo="<%= image_url("c.png") %>"
+    </script>
   </head>
 
   <body>

@@ -1,0 +1,51 @@
+.session-form-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+.session-form-container > form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.session-logo{
+  height: 48px;
+  width: 48px;
+}
+
+
+
+.signup-form-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+.signup-form-container > form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signup-logo{
+  height: 48px;
+  width: 48px;
+}
+
+
+
+.login-form-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+.login-form-container > form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-logo{
+  height: 48px;
+  width: 48px;
+}
