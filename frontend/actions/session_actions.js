@@ -51,8 +51,8 @@ export const signup = user => {
 export const login = user => {
   return dispatch => {
     SessionAPIUtil.login(user).then(
-      user => dispatch(receiveCurrentUser(user)),
-      errors => dispatch(receiveSessionErrors(errors.responseJSON))
+      user => dispatch(receiveCurrentUser(user))
+      // errors => dispatch(receiveSessionErrors(errors.responseJSON))
     );
   };
 };
