@@ -37,6 +37,7 @@ class SessionForm extends React.Component {
     return (
       <div className='session-form-container'>
         <form onSubmit={this.handleSubmit}>
+          <img src={window.c_logo} className='session-logo' />
           <h2>Let's get started</h2>
           <p>Enter your email address below</p>
           <input type="email"

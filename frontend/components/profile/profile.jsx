@@ -17,8 +17,7 @@ class Profile extends React.Component{
     const { currentUser, logout } = this.props;
     if(currentUser){
       return(
-        <div id='header-profile-signedin'>
-          <h2>Hi {currentUser.first_name}!</h2>
+        <div className='header-profile signedin'>
           <i className="fas fa-user-circle" ></i>
 
           {/* implement dropdown here */}
@@ -33,7 +32,7 @@ class Profile extends React.Component{
       )
     }else{
       return(
-        <div id='header-profile-signedout'>
+        <div className='header-profile signedout'>
           <Link to='/signin' onClick={() => this.handleClick()}>Sign In</Link>
           {/* <Link to={{pathname: '/signin', state: 'flush' }}>Sign In</Link> */}
         </div>
