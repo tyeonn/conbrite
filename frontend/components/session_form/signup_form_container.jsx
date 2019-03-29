@@ -7,7 +7,7 @@ import SignupForm from './signup_form';
 const mapStateToProps = ({errors, session: { temp }}, ownProps) => {
   return({
     formType: 'Signup',
-    errors: errors.session,
+    errors: errors.sessionError,
     temp,
   });
 };
