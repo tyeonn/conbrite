@@ -25,7 +25,7 @@ export const logoutCurrentUser = () => ({
 // Takes in an array of errors
 export const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
-  errors,
+  errors: [errors]
 });
 
 //Reset the error of email not existing on sign in
@@ -51,8 +51,8 @@ export const signup = user => {
 export const login = user => {
   return dispatch => {
     SessionAPIUtil.login(user).then(
-      user => dispatch(receiveCurrentUser(user))
-      // errors => dispatch(receiveSessionErrors(errors.responseJSON))
+      user => dispatch(receiveCurrentUser(user)),
+      errors => dispatch(receiveSessionErrors(errors.responseJSON))
     );
   };
 };
