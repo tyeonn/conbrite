@@ -17,9 +17,8 @@ const sessionReducer = (state = _nullUser, action) => {
       return {temp: action.temp};
     // case sadfjs
     case LOGOUT_CURRENT_USER:
-      return _nullUser;
     default: 
-      return state;
+      return _nullUser;
   }
 };
 
