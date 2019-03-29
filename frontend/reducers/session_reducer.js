@@ -5,7 +5,8 @@ import {
   RECEIVE_TEMP_EMAIL
 } from '../actions/session_actions';
 
-const _nullUser = Object.freeze({id: null});
+const _nullUser = {id: null};
+
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch(action.type){
@@ -15,10 +16,10 @@ const sessionReducer = (state = _nullUser, action) => {
       return action.email;
     case RECEIVE_TEMP_EMAIL:
       return {temp: action.temp};
-    // case sadfjs
     case LOGOUT_CURRENT_USER:
-    default: 
       return _nullUser;
+    default: 
+      return state;
   }
 };
 
