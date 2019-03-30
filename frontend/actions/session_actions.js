@@ -25,7 +25,7 @@ export const logoutCurrentUser = () => ({
 // Takes in an array of errors
 export const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
-  errors: [errors]
+  errors,
 });
 
 //Reset the error of email not existing on sign in

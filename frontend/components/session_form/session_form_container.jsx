@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { checkEmailExists, saveTempEmail, receiveTempEmail} from '../../actions/session_actions';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SessionForm from './session_form';
 
 

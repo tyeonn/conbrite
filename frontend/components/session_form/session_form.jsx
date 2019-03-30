@@ -4,6 +4,7 @@ class SessionForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      //email is from login, temp is from signup
       email: this.props.email || this.props.temp || '', 
       // flushed: false
     };

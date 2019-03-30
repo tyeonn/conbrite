@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -50,19 +50,20 @@ class SignupForm extends React.Component {
     return e.currentTarget.setCustomValidity('');
   }
 
-  renderErrors(field){
-    return(
-      // {this.props.errors}
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
+  // renderErrors(field){
+  //   return(
+  //     // {this.props.errors}
+  //     <ul>
+  //       {this.props.errors.map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
       
-    )
-  }
+  //   )
+  // }
+  
   componentDidMount(){
     this.props.resetSessionErrors();
   }
@@ -75,7 +76,7 @@ class SignupForm extends React.Component {
           <img src={window.c_logo} className='signup-logo' />
           <h2>Welcome</h2>
           <p>Create an account</p>
-          {this.renderErrors()}
+          {/* {this.renderErrors()} */}
           <div className='signup-form-input-container'>
             <input type="email"
               value={this.state.email}

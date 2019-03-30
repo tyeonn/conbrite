@@ -5,7 +5,7 @@ import {
   RECEIVE_TEMP_EMAIL
 } from '../actions/session_actions';
 
-const _nullUser = {id: null};
+const _nullUser = Object.freeze({id: null});
 
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);

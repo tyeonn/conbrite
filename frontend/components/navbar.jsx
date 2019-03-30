@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import Profile from './profile/profile_container';
 import Search from './search';
 
@@ -9,7 +9,7 @@ class NavBar extends React.Component{
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.signinNavLinks = this.signinNavLinks.bind(this);
+    this.signedInNavLinks = this.signedInNavLinks.bind(this);
   }
 
   handleClick(e) {
@@ -17,13 +17,14 @@ class NavBar extends React.Component{
     window.location.reload();
   }
 
-  signinNavLinks(){
+  signedInNavLinks(){
     const { currentUser } = this.props;
     if (currentUser) {
       return (
-        <div id='header-profile-signedin'>
-          hi
-        </div>
+        <>
+          <li> <NavLink to='' id='createEvent'>Create Event</NavLink> </li>
+         
+        </>
       )
     }
   }
@@ -32,18 +33,17 @@ class NavBar extends React.Component{
       return (
         <div className='navbar'>
           <div className='navbar-left'>
-            <Link to='/' className='navbar-logo-link' onClick={() => this.handleClick()}>
+            <NavLink to='/' className='navbar-logo-link' onClick={() => this.handleClick()}>
               <img src={window.conbrite} className='navbar-logo' />
-            </Link>
+            </NavLink>
           </div>
           <div className='navbar-middle'>
             <Search />
           </div>
           <div className='navbar-right'>
             <ul className='navbar-right-list'>
-              {/* Add link to events later */}
-              <li> <Link to=''>Browse Events</Link> </li>
-              <li> {this.signinNavLinks()} </li>
+              <li> <NavLink to=''>Browse Events</NavLink> </li>
+              {this.signedInNavLinks()}
               <li> <Profile /> </li>
             </ul>
           </div>

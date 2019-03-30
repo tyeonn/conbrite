@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -31,18 +31,18 @@ class LoginForm extends React.Component {
     });
   }
 
-  renderErrors(field) {
-    return (
-      // {this.props.errors}
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  // renderErrors(field) {
+  //   return (
+  //     // {this.props.errors}
+  //     <ul>
+  //       {this.props.errors.map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   )
+  // }
 
   componentDidMount() {
     this.props.resetSessionErrors();
@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
           <img src={window.c_logo} className='login-logo' />
           <h2>Welcome back</h2>
           <p>Please enter your password to log in</p>
-          {this.renderErrors()}
+          {/* {this.renderErrors()} */}
           <div className='login-form-input-container'>
             <input type="email"
               value={this.state.email}
