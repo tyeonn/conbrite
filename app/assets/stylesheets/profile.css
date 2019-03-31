@@ -21,10 +21,9 @@
   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   display: flex;
   justify-content: flex-end;
-  margin-left: -6%;
   flex-direction: column;
   box-shadow: -1px 1px 10px #c9c9c9;
-
+  left: calc(100% - 250px)
 }
 .navbar-right-list-profile-dropdown li{
   height: 24px;
