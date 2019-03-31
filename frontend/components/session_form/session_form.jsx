@@ -7,6 +7,7 @@ class SessionForm extends React.Component {
       //email is from login, temp is from signup
       email: this.props.email || this.props.temp || '', 
       // flushed: false
+      active: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,9 +21,17 @@ class SessionForm extends React.Component {
   }
 
   update(field){
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    
+    return e => {
+      if(e.currentTarget.value){
+        this.setState({active: true});
+      }else{
+        this.setState({ active: false });
+      }
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
   }
 
   // componentWillReceiveProps(nextProps){
@@ -30,11 +39,15 @@ class SessionForm extends React.Component {
   //     this.setState({flushed: true});
   //   }
   // }
-  // componentDidUpdate(){
-  //   this.setState({flushed: false});
-  // }
+  componentDidMount(){
+    if (this.state.email != '') {
+      this.setState({ active: true });
+    }  
+  }
 
   render(){
+    
+    const activeClass = this.state.active ? 'active' : '';
     return (
       <div className='session-form-container'>
         <form onSubmit={this.handleSubmit}>
@@ -45,7 +58,7 @@ class SessionForm extends React.Component {
             <input type="email"
               value={this.state.email}
               onChange={this.update('email')} 
-              className='session-form-input'
+              className={`session-form-input ${activeClass}`}
               required
               
             />

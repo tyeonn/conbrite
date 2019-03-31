@@ -57,11 +57,21 @@
   outline: 2px solid #3759E4;
   padding: 16px 12px 7px 12px;
 }
+.session-form-input.active{
+  padding: 16px 12px 7px 12px;    
+}
+
 .session-form-input:focus + label {
   color: #3D5FE5;
   font-size: 12px;
   transform: translateY(5px);
 }
+.session-form-input.active + label{
+  color: #3D5FE5;
+  font-size: 12px;
+  transform: translateY(5px);
+}
+
 .session-form-submit{
   appearance: none;
   -webkit-appearance: none;
