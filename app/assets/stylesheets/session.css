@@ -6,10 +6,77 @@
 .session-form-container > form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  text-align: center;
+  flex: 0 0 320px;
+
 }
+.session-form-container > form h2{
+  font-size: 24px;
+  margin: 25px 0 0;
+  
+}
+.session-form-container > form p{
+  font-size: 14px;
+  margin: 8px 0 32px;
+  color: #8b8e9f;
+
+}
+.session-form-input{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  display: block;
+  /* margin: 8px 12px 6px 0; */
+  font-size: 16px;
+  font-weight: 300;
+  box-shadow: none;
+  border: 1px solid #DBDAE4;
+  padding: 12px;
+  height: 22px;
+}
+
+.session-form-container > form > div{
+  display: flex;
+  height: 46px;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 1px;
+}
+.session-form-container > form > div label{
+  padding-left: 12px;
+  position: absolute;
+  transition: all 0.1s ease-in;
+  transform: translateY(16px);
+  pointer-events: none;
+  color: #797c90;
+  font-weight: 300;
+}
+
+.session-form-input:focus{
+  outline: 2px solid #3759E4;
+  padding: 16px 12px 7px 12px;
+}
+.session-form-input:focus + label {
+  color: #3D5FE5;
+  font-size: 12px;
+  transform: translateY(5px);
+}
+.session-form-submit{
+  appearance: none;
+  -webkit-appearance: none;
+  margin-top: 24px;
+  height: 44px;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #1F2FA3;
+
+}
+
 .session-logo{
+  display: flex;
+  align-self: center;
   height: 48px;
   width: 48px;
 }
@@ -25,7 +92,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+
 }
 .signup-logo{
   height: 48px;

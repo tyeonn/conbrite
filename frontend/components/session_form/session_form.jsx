@@ -41,15 +41,17 @@ class SessionForm extends React.Component {
           <img src={window.c_logo} className='session-logo' />
           <h2>Let's get started</h2>
           <p>Enter your email address below</p>
-          <input type="email"
-            placeholder='Email Address'
-            value={this.state.email}
-            onChange={this.update('email')} 
-            className='session-form-input'
-            required
-            autoFocus
-            
-          />
+          <div>
+            <input type="email"
+              value={this.state.email}
+              onChange={this.update('email')} 
+              className='session-form-input'
+              required
+              
+            />
+            <label htmlFor="session-form-input">Email Address</label>
+          </div>
+
           <input type="submit" className='session-form-submit' value='Get Started'/>
         </form>
       </div>
