@@ -11,6 +11,7 @@ class Api::EventsController < ApplicationController
     
   end
 
+  # only after login 
   def create
     @event = Event.new(event_params)
     if @event.save
