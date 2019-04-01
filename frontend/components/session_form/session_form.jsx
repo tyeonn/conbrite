@@ -1,5 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import Typed from 'typed.js';
+
 class SessionForm extends React.Component {
   constructor(props){
     super(props);
@@ -10,6 +12,7 @@ class SessionForm extends React.Component {
       active: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demologin = this.demologin.bind(this);
   }
   handleSubmit(e){
     e.preventDefault();
@@ -34,6 +37,21 @@ class SessionForm extends React.Component {
     };
   }
 
+  demologin(e){
+    e.preventDefault();
+    this.setState({active: true});
+    new Typed( ".session-form-input", {
+      strings: ['demo@demo.com'],
+      typeSpeed: 70, 
+    });
+    setTimeout(() => {
+      this.props.checkEmailExists('demo@demo.com').then(
+        () => this.props.history.push('/signin/login')
+      );
+    }, 1200);
+    
+  }
+
   // componentWillReceiveProps(nextProps){
   //   if(!this.state.flushed && nextProps.location.state === 'flush'){
   //     this.setState({flushed: true});
@@ -46,6 +64,7 @@ class SessionForm extends React.Component {
   }
 
   render(){
+    
     const activeClass = this.state.active ? 'active' : '';
     return (
       <div className='session-form-container'>
@@ -65,6 +84,9 @@ class SessionForm extends React.Component {
           </div>
 
           <input type="submit" className='session-form-submit' value='Get Started'/>
+          <button className='demo-login-button' onClick={this.demologin}>
+            Demo Login
+          </button>
         </form>
       </div>
     )

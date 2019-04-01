@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Typed from 'typed.js';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class LoginForm extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.demologin = this.demologin.bind(this);
   }
 
   handleSubmit(e) {
@@ -38,6 +40,18 @@ class LoginForm extends React.Component {
     };
   }
 
+  demologin(e) {
+    e.preventDefault();
+    this.setState({ active: true });
+    new Typed("#login-form-input-pass", {
+      strings: ['demouser'],
+      typeSpeed: 70,
+    });
+    setTimeout(() => {
+      this.props.submitForm({email: 'demo@demo.com', password: 'demouser'});
+    }, 1000);
+  }
+
   renderErrors() {
     return (
       <div className={`error-message`}>
@@ -55,6 +69,8 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
+    
+    
     this.props.resetSessionErrors();
     if (this.state.password != '') {
       this.setState({ active: true });
@@ -63,6 +79,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    
     const activeClass = this.state.active ? 'active' : '';
     const error = this.props.errors.length  != 0 ? 'error' : '';
     return (
@@ -73,7 +90,7 @@ class LoginForm extends React.Component {
           <p>Please enter your password to log in</p>
           <div id='login-form-input-container'>
             <input type="email"
-              value={this.state.email}
+              value={this.props.email}
               readOnly
               className='login-form-input'
               id='login-form-input-email'
@@ -90,6 +107,7 @@ class LoginForm extends React.Component {
               // placeholder='Password'
               value={this.state.password}
               onChange={this.update('password')}
+              id={'login-form-input-pass'}
               className={`login-form-input ${error} ${activeClass}`}
               required 
               minLength='6'
@@ -99,6 +117,9 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
           <input type="submit" className='login-form-submit' value={this.props.formType} />
+          <button className='demo-login-button' onClick={this.demologin}>
+            Demo Password
+          </button>
         </form>
       </div>
 
