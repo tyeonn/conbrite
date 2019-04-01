@@ -7,6 +7,8 @@ class LoginForm extends React.Component {
     this.state = {
       email: this.props.email,
       password: '', 
+      hasError: true,
+      active: false,
     };
     if(!this.props.email){
       this.props.history.push(`/signin`);
@@ -26,54 +28,76 @@ class LoginForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e => {
+      this.setState({ [field]: e.currentTarget.value });
+      if (e.currentTarget.value) {
+        this.setState({ active: true });
+      } else {
+        this.setState({ active: false});
+      }
+    };
   }
 
-  // renderErrors(field) {
-  //   return (
-  //     // {this.props.errors}
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   )
-  // }
+  renderErrors() {
+    return (
+      <div className={`error-message`}>
+        {this.props.errors[0]}
+      </div>
+      // {this.props.errors}
+      // <ul>
+      //   {this.props.errors.map((error, i) => (
+      //     <li key={`error-${i}`} className='error-message'>
+      //       {error}
+      //     </li>
+      //   ))}
+      // </ul>
+    );
+  }
 
   componentDidMount() {
     this.props.resetSessionErrors();
+    if (this.state.password != '') {
+      this.setState({ active: true });
+    }  
+    
   }
 
   render() {
+    const activeClass = this.state.active ? 'active' : '';
+    const error = this.props.errors.length  != 0 ? 'error' : '';
     return (
       <div className='login-form-container'>
         <form onSubmit={this.handleSubmit}>
           <img src={window.c_logo} className='login-logo' />
           <h2>Welcome back</h2>
           <p>Please enter your password to log in</p>
-          {/* {this.renderErrors()} */}
-          <div className='login-form-input-container'>
+          <div id='login-form-input-container'>
             <input type="email"
               value={this.state.email}
               readOnly
               className='login-form-input'
+              id='login-form-input-email'
             />
-            <button type='button' onClick={this.handleClick}>hi</button>
+            <button type='button' 
+              className='edit-email-button' 
+              onClick={this.handleClick}
+            >
+              <i className="fas fa-pencil-alt"></i>
+            </button>
           </div>
-          
-          <input type="password"
-            placeholder='Password'
-            value={this.state.password}
-            onChange={this.update('password')}
-            className='login-form-input'
-            required 
-            minLength='6'
-            autoFocus
-          />
+          <div className='login-form-input-password'>
+            <input type="password"
+              // placeholder='Password'
+              value={this.state.password}
+              onChange={this.update('password')}
+              className={`login-form-input ${error} ${activeClass}`}
+              required 
+              minLength='6'
+              autoFocus
+            />
+            <label htmlFor="login-form-input">Password</label>
+            {this.renderErrors()}
+          </div>
           <input type="submit" className='login-form-submit' value={this.props.formType} />
         </form>
       </div>

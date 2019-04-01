@@ -14,7 +14,7 @@ class NavBar extends React.Component{
 
   handleClick(e) {
     this.props.history.push('/');
-    window.location.reload();
+    // window.location.reload();
   }
 
   signedInNavLinks(){

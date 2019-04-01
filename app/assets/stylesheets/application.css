@@ -26,9 +26,9 @@
   outline: 0;
   color: #39364F;
  }
+
 .hidden{
-  visibility: hidden;
-  opacity: 0;
+  display: none;
 }
  
 

@@ -6,11 +6,10 @@ class Profile extends React.Component{
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    // this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       hover: false,
-      hidden: 'hidden'
     };
   }
   
@@ -19,11 +18,11 @@ class Profile extends React.Component{
     window.location.reload();
   }
   
-  handleLogout(e){
-    this.props.logout();
-    this.props.history.push('/signin');
-    window.location.reload();
-  }
+  // handleLogout(e){
+  //   this.props.logout();
+  //   // this.props.history.push('/signin');
+  //   // window.location.reload();
+  // }
 
   handleMouseEnter(){
     this.setState({hover: !this.state.hover});
@@ -46,8 +45,8 @@ class Profile extends React.Component{
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             <li> <NavLink to=''>Browse Events</NavLink> </li>
             <li>  <NavLink
-              to='/'
-              onClick={this.handleLogout}
+              to='/signin'
+              onClick={() => this.props.logout}
             >
               Logout
               </NavLink>

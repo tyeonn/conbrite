@@ -24,7 +24,7 @@ class SessionForm extends React.Component {
     
     return e => {
       if(e.currentTarget.value){
-        this.setState({active: true});
+        this.setState({ active: true });
       }else{
         this.setState({ active: false });
       }
@@ -46,11 +46,10 @@ class SessionForm extends React.Component {
   }
 
   render(){
-    
     const activeClass = this.state.active ? 'active' : '';
     return (
       <div className='session-form-container'>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} autoComplete='on'>
           <img src={window.c_logo} className='session-logo' />
           <h2>Let's get started</h2>
           <p>Enter your email address below</p>

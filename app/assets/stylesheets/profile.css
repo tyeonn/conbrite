@@ -8,7 +8,6 @@
   justify-content: center;
   height: 100%;
 }
-.navbar-right-list-profile:hover
 .navbar-right-list-profile-dropdown{
   visibility: visible;
   opacity: 1;
@@ -18,7 +17,7 @@
 .navbar-right-list-profile-dropdown{
   position: absolute;
   top: 59px;
-  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+  transition: all 0.3s ease-in-out 0.3s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
