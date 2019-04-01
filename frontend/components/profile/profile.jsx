@@ -7,7 +7,7 @@ class Profile extends React.Component{
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    // this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       hover: false,
     };
@@ -18,11 +18,11 @@ class Profile extends React.Component{
     window.location.reload();
   }
   
-  handleLogout(e){
-    this.props.logout();
-    // this.props.history.push('/signin');
-    // window.location.reload();
-  }
+  // handleLogout(e){
+  //   this.props.logout();
+  //   // this.props.history.push('/signin');
+  //   // window.location.reload();
+  // }
 
   handleMouseEnter(){
     this.setState({hover: !this.state.hover});
