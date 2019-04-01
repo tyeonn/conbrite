@@ -20,6 +20,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   after_initialize :ensure_session_token
 
+  has_many :organized_events,
+    foreign_key: :organizer_id
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

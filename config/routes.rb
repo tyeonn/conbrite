@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :destroy, :update, :show]
     get '/session/', to: 'sessions#show'
     resource :session, only: [:create, :destroy]
+    resources :events, only: [:create, :destroy, :update, :show, :index]
   end
 
 end
