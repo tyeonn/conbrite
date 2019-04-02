@@ -1,7 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { signup, resetSessionErrors } from '../../actions/session_actions';
-import { NavLink } from 'react-router-dom';
 import SignupForm from './signup_form';
 
 const mapStateToProps = ({errors, session: { temp }}, ownProps) => {

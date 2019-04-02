@@ -7,6 +7,7 @@ class Profile extends React.Component{
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
     // this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       hover: false,
@@ -25,7 +26,10 @@ class Profile extends React.Component{
   // }
 
   handleMouseEnter(){
-    this.setState({hover: !this.state.hover});
+    this.setState({hover: true});
+  }
+  handleMouseLeave(){
+    this.setState({hover: false});
   }
   
   
@@ -37,11 +41,10 @@ class Profile extends React.Component{
         <div 
           className='navbar-right-list-profile signedin'
           onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
           <i className="far fa-user-circle"></i>
           <i className="fas fa-chevron-down"></i>
-          {/* ${dropdownClass} for class underneath */}
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             <li> <NavLink to=''>Browse Events</NavLink> </li>
             <li>  <NavLink

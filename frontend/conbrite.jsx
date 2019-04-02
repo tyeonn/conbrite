@@ -7,6 +7,9 @@ import Root from './components/root';
 //TESTING - REMOVE BEFORE PRODUCTION 
 import * as sessionActions from '../frontend/actions/session_actions';
 import {checkEmailExists} from './util/session_api_util';
+import * as eventActions from '../frontend/actions/event_actions';
+import * as eventApiUtil from '../frontend/util/event_api_util';
+
 //TESTING - REMOVE BEFORE PRODUCTION 
 
 
@@ -28,7 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // TESTING - REMOVE BEFORE PRODUCTION 
-  window.store = store;
+  window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.eventActions = eventActions;
+  window.eventApiUtil = eventApiUtil;
   window.signup = sessionActions.signup;
   window.checkEmailExists = sessionActions.checkEmailExists;
 

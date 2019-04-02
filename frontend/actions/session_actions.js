@@ -41,7 +41,7 @@ export const receiveTempEmail = temp => ({
 
 export const signup = user => {
   return dispatch => {
-    SessionAPIUtil.signup(user).then(
+    return SessionAPIUtil.signup(user).then(
       user => dispatch(receiveCurrentUser(user)),
       errors => dispatch(receiveSessionErrors(errors.responseJSON))
     );
@@ -50,7 +50,7 @@ export const signup = user => {
 
 export const login = user => {
   return dispatch => {
-    SessionAPIUtil.login(user).then(
+    return SessionAPIUtil.login(user).then(
       user => dispatch(receiveCurrentUser(user)),
       errors => dispatch(receiveSessionErrors(errors.responseJSON))
     );
@@ -59,7 +59,7 @@ export const login = user => {
 
 export const logout = () => {
   return dispatch => {
-    SessionAPIUtil.logout().then(
+    return SessionAPIUtil.logout().then(
       () => dispatch(logoutCurrentUser())
     );
   };

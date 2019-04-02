@@ -3,11 +3,20 @@ class Api::EventsController < ApplicationController
 
   def index
     @events = Event.all
-    render :index
+    if @events
+      render :index
+    else
+      render json: ['There are no events'], status: 404
+    end
   end
 
   def show
     @event = Event.find_by(id: params[:id])
+    if @event
+      render :show
+    else
+      render json: ['Event does not exist'], status: 404
+    end
     
   end
 
@@ -31,9 +40,13 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    render :show
+    @event = Event.find_by(id: params[:id])
+    if @event
+      @event.destroy
+      render :show
+    else
+      render json: ["Event doesn't exist"], status: 404
+    end
   end
 
   private 

@@ -1,16 +1,16 @@
 export const retrieveEvent = id => {
-  $.ajax({
+  return $.ajax({
     url: `api/events/${id}`,
   });
 };
 export const retrieveEvents = () => {
-  $.ajax({
+  return $.ajax({
     url: `api/events/`,
   });
 };
 
 export const createEvent = event => {
-  $.ajax({
+  return $.ajax({
     method: 'POST',
     url: 'api/events/',
     data: { event }
@@ -18,14 +18,14 @@ export const createEvent = event => {
 };
 
 export const deleteEvent = id => {
-  $.ajax({
+  return $.ajax({
     method: 'DELETE',
     url: `api/events/${id}`,
   });
 };
 
 export const updateEvent = event => {
-  $.ajax({
+  return $.ajax({
     method: 'PATCH',
     url: `api/events/${event.id}`,
     data: { event }
