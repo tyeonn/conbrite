@@ -4,7 +4,7 @@ import { retrieveEvents } from '../../actions/event_actions';
 
 const mapStateToProps = ({errors, entities: { events }}, ownProps) => ({
   errors: errors.eventError,
-  events,
+  events: Object.values(events),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -22,7 +22,7 @@ class NavBar extends React.Component{
     if (currentUser) {
       return (
         <>
-          <li> <NavLink to='' id='createEvent'>Create Event</NavLink> </li>
+          <li> <NavLink to='/create' id='createEvent'>Create Event</NavLink> </li>
          
         </>
       )
