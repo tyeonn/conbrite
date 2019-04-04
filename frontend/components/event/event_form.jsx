@@ -1,4 +1,7 @@
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 // import 'react-dates/initialize';
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 class EventForm extends React.Component{
@@ -7,13 +10,10 @@ class EventForm extends React.Component{
     this.state = this.props.event;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
-  // inputImg(){
-  //   const inputImage = useRef(null);
-    
-  // }
   handleSubmit(e){
     e.preventDefault();
     if(this.props.formType === 'Create Event'){
@@ -35,14 +35,33 @@ class EventForm extends React.Component{
       });
     };
   }
+  handleChangeStart(date) {
+    let fullDate = date.toDateString().split(' ');
+    let time = date.toTimeString().split(' ')[0];
+    let [dayOfWeek, month, day, year] = fullDate;
+    this.setState({
+      startDate: date,
+      start_date: `${dayOfWeek} ${year} ${month} ${day} ${time}`
+    });
+  }
+
+  handleChangeEnd(date) {
+    let fullDate = date.toDateString().split(' ');
+    let time = date.toTimeString().split(' ')[0];
+    let [dayOfWeek, month, day, year] = fullDate;
+    this.setState({
+      endDate: date,
+      end_date: `${dayOfWeek} ${year} ${month} ${day} ${time}`
+    });
+  }
 
   componentDidMount(){
     this.setState({
       image_url: 'https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg',
       category_id: 1,
-      focusedInput: null,
-      startDate: null,
-      endDate: null
+      // focusedInput: null,
+      startDate: new Date(),
+      endDate: new Date(),
     });
   }
 
@@ -52,7 +71,7 @@ class EventForm extends React.Component{
         <form className='event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-header'>
             <h1>{this.props.formType}</h1>
-            <button onSubmit={this.handleSubmit}> Publish </button>
+            {/* <button onSubmit={this.handleSubmit}> Publish </button> */}
           </div>
 
           <div className='event-form-detail-header'>
@@ -78,7 +97,7 @@ class EventForm extends React.Component{
             <label htmlFor="event-form-input">Location</label>
           </div>
           <div className='event-form-detail date'>
-            <input type="date"
+            {/* <input type="date"
               value={this.state.start_date}
               onChange={this.update('start_date')}
               className={`event-form-input-date`}
@@ -93,7 +112,21 @@ class EventForm extends React.Component{
               className={`event-form-input-date`}
               required
             />
-            <label htmlFor="event-form-input-date">Ends</label>
+            <label htmlFor="event-form-input-date">Ends</label> */}
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleChangeStart}
+              showTimeSelect
+              dateFormat="MMMM d yyyy h:mm aa"
+              timeCaption="Start"
+            />
+            <DatePicker
+              selected={this.state.endDate}
+              onChange={this.handleChangeEnd}
+              showTimeSelect
+              dateFormat="MMMM d yyyy h:mm aa"
+              timeCaption="End"
+            />
             {/* <DateRangePicker
             
               startDate={this.state.startDate}

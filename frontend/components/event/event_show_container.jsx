@@ -4,7 +4,7 @@ import { retrieveEvent, deleteEvent } from '../../actions/event_actions';
 
 const mapStateToProps = ({errors, entities: { events }}, ownProps) => ({
   errors: errors.eventError,
-  events
+  event: events[ownProps.match.params.eventId],
 });
 
 const mapDispatchToProps = dispatch => ({

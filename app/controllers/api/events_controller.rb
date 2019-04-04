@@ -22,8 +22,9 @@ class Api::EventsController < ApplicationController
 
   # only after login 
   def create
-    debugger
+    
     @event = current_user.organized_events.new(event_params)
+
     if @event.save
       render :show
     else

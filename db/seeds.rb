@@ -9,7 +9,7 @@
 User.delete_all
 Event.delete_all
 
-User.create!(
+user = User.create!(
   email: 'demo@demo.com',
   first_name: 'Demo',
   last_name: 'User',
@@ -22,12 +22,12 @@ Event.create!(
    latest in comics, anime, manga, video games, movies, etc.',
   address: '655 West 34th Street, New York, NY, 10014' ,     
   image_url: 'https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg',    
-  start_date: '2019-10-03',   
-  end_date: '2019-10-07',     
+  start_date: 'Thur 2019 Oct 03 10:00:00',   
+  end_date: 'Sat 2019Oct 05 12:00:00',     
   max_tickets: 50000,  
   location_id: 1,  
   category_id: 1,  
-  organizer_id: 1
+  organizer_id: user.id
 )
 
 Event.create!(
@@ -36,12 +36,12 @@ Event.create!(
     and video gaming.',
   address: '415 Summer St, Boston, MA, 02210',      
   image_url: 'http://hw1.pa-cdn.com/pax/shared-assets/img/meta/meta_pax_east.png',    
-  start_date: '2019-03-28',   
-  end_date: '2019-03-31',     
+  start_date: 'Thur 2019 Mar 28 10:00:00',   
+  end_date: 'Sun 2019 Mar 31 15:00:00',     
   max_tickets: 60000,  
   location_id: 1,  
   category_id: 1,  
-  organizer_id: 1 
+  organizer_id: user.id
 )
 
 Event.create!(
@@ -51,11 +51,11 @@ Event.create!(
     Heroes of the Storm, and Overwatch.',
   address: '800 West Katella Avenue, Anaheim, CA, 92802',      
   image_url: 'https://icdn4.digitaltrends.com/image/blizzcon-720x720.jpg?ver=1.jpg',    
-  start_date: '2019-11-02',   
-  end_date: '2019-11-05',     
+  start_date: 'Sat 2019 Nov 02 11:00:00',   
+  end_date: 'Tue 2019 Nov 05 18:00:00',     
   max_tickets: 40000,  
   location_id: 1,  
   category_id: 1,  
-  organizer_id: 1 
+  organizer_id: user.id
 )
 

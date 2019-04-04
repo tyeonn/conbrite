@@ -9,6 +9,7 @@ import EventShowContainer from './event/event_show_container';
 import CreateEventFormContainer from './event/create_event_form_container';
 import EditEventFormContainer from './event/edit_event_form_container';
 import NavBar from './navbar';
+import Footer from './footer';
 
 const App = () => (
   <div className='app'>
@@ -19,10 +20,12 @@ const App = () => (
       <AuthRoute exact path='/signin/signup' component={SignupFormContainer} />
       <AuthRoute exact path='/signin' component={SessionFormContainer} />
       <ProtectedRoute exact path='/create' component={CreateEventFormContainer} />
-      <ProtectedRoute exact path='event/:eventId/edit' component={EditEventFormContainer} />
-      <Route exact path='event/:eventId' component={EventShowContainer}/>
+      <ProtectedRoute exact path='/event/:eventId/edit' component={EditEventFormContainer} />
+      <Route exact path='/event/:eventId' component={EventShowContainer}/>
       <Route exact path='/' component={EventIndexContainer}/>
     </Switch>
+
+    <Footer />
 
   </div>
 );
