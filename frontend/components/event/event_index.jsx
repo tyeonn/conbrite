@@ -15,6 +15,7 @@ class EventIndex extends React.Component{
 
   componentDidMount(){
     this.props.retrieveEvents();
+    
   }
 
   render(){
@@ -24,11 +25,13 @@ class EventIndex extends React.Component{
         key={event.id}
       />
     ));
-
     return(
       <div className='event-index-container'>
         <IndexSlider />
-        { events }
+        <div className='event-index-events-grid'>
+          { events }
+
+        </div>
       </div>
     )
   }

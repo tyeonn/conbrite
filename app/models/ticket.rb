@@ -12,4 +12,10 @@
 #
 
 class Ticket < ApplicationRecord
+  validates :price, :type, :registrant_id, :event_id, presence: true
+
+  belongs_to :registrant,
+    class_name: :User
+    
+  belongs_to :event
 end

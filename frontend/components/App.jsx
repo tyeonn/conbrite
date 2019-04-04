@@ -6,7 +6,8 @@ import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import EventIndexContainer from './event/event_index_container';
 import EventShowContainer from './event/event_show_container';
-import EventFormContainer from './event/event_form_container';
+import CreateEventFormContainer from './event/create_event_form_container';
+import EditEventFormContainer from './event/edit_event_form_container';
 import NavBar from './navbar';
 
 const App = () => (
@@ -17,7 +18,8 @@ const App = () => (
       <AuthRoute exact path='/signin/login' component={LoginFormContainer} />
       <AuthRoute exact path='/signin/signup' component={SignupFormContainer} />
       <AuthRoute exact path='/signin' component={SessionFormContainer} />
-      <ProtectedRoute exact path='/create' component={EventFormContainer} />
+      <ProtectedRoute exact path='/create' component={CreateEventFormContainer} />
+      <ProtectedRoute exact path='event/:eventId/edit' component={EditEventFormContainer} />
       <Route exact path='event/:eventId' component={EventShowContainer}/>
       <Route exact path='/' component={EventIndexContainer}/>
     </Switch>

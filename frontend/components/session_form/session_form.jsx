@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demologin = this.demologin.bind(this);
   }
+  
   handleSubmit(e){
     e.preventDefault();
     this.props.receiveTempEmail(this.state.email);

@@ -1,0 +1,1 @@
+json.extract! @location, :city, :state, :country, :zip_code

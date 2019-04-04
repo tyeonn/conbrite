@@ -33,7 +33,7 @@ class EventIndexItem extends React.Component{
         className='event-index-item-container'
       >
       {/* Change cursor for img link */}
-        <img src={window.overwatch} onClick={this.handleClick}/>
+        <img src={event.image_url} onClick={this.handleClick}/>
         <div className='event-index-item-info'>
           <div className='event-index-item-circledate'> {month} {day} </div>
           <Link to={`/event/${event.id}`}> {event.title} </Link>

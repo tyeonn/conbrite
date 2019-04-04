@@ -1,4 +1,5 @@
 import React from 'react';
+import Typed from 'typed.js';
 // import Slider from 'react-slick';
 
 // const IndexSlider = () => {
@@ -53,17 +54,33 @@ class IndexSlider extends React.Component{
   }
 
   componentDidMount(){
-    this.index = setInterval( this.incrementIndex ,5000);
+    this.index = setInterval( this.incrementIndex ,7000);
+
+    
+    this.typed = new Typed(".event-index-image-text", {
+      strings: [ 'Conventions', 'Concerts', 'Conferences' ],
+      typeSpeed: 100,
+      smartBackspace: true,
+      backSpeed: 80,
+      backDelay: 5100,
+      fadeOut: true,
+      loop: true,
+    });
   }
 
   componentWillUnmount(){
     clearInterval(this.index);
+    this.typed.destroy();
   }
 
   render(){
     return(
       <div className='slideshow-container'>
         { this.images[this.state.currentIndex] } 
+        <div className='event-index-image-text-container'>
+          <span className="event-index-image-text"></span>
+
+        </div>
       </div>
 
     )

@@ -12,4 +12,8 @@
 #
 
 class Location < ApplicationRecord
+  validates :city, :state, :country, :zip_code, presence: true
+
+  has_many :events
+
 end

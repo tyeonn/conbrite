@@ -13,8 +13,7 @@
   opacity: 1;
   z-index:1;
   transition-delay: 0s, 0s, 0.3s;
-}
-.navbar-right-list-profile-dropdown{
+  background: white;
   position: absolute;
   top: 59px;
   transition: all 0.3s ease-in-out 0.3s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
@@ -29,7 +28,12 @@
   width: 210px;
   padding: 16px 20px;
 }
-.navbar-right-list-profile-dropdown li:first-child{
+.navbar-right-list-profile-dropdown li:hover{
+  background: #F8F7FA;
+}
+.navbar-right-list-profile-dropdown li:first-child,
+.navbar-right-list-profile-dropdown li:nth-child(4),
+.navbar-right-list-profile-dropdown li:nth-child(6){
     border-bottom: 1px solid #DBDAE3;
 
 }

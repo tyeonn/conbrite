@@ -47,6 +47,13 @@ class Profile extends React.Component{
           <i className="fas fa-chevron-down"></i>
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             <li> <NavLink to=''>Browse Events</NavLink> </li>
+            <li> <NavLink to=''>Tickets (0)</NavLink> </li>
+            <li> <NavLink to=''>Liked (0)</NavLink> </li>
+            <li> <NavLink to=''>Following (0)</NavLink> </li>
+            <li> <NavLink to=''>Manage Events</NavLink> </li>
+            <li> <NavLink to=''>Organizer Profile</NavLink> </li>
+            <li> <NavLink to=''>Account Settings</NavLink> </li>
+            <li> <NavLink to=''>Create Event</NavLink> </li>
             <li>  <NavLink
               to='/signin'
               onClick={logout}
