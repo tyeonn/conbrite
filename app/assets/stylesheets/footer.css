@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   color: #1E2FA2;
+  margin-top: 100px;
 }
 .footer-container p{
   font-size: 15px;

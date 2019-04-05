@@ -23,8 +23,8 @@ class EventShow extends React.Component{
     if(event){
       sDateArray = event.start_date.split(' ');
       eDateArray = event.end_date.split(' ');
-      [sDayOfWeek, sYear, sDay, sMonth] = sDateArray;
-      [eDayOfWeek, eYear, eDay, eMonth] = eDateArray;
+      [sDayOfWeek, sYear, sMonth, sDay] = sDateArray;
+      [eDayOfWeek, eYear, eMonth, eDay] = eDateArray;
       
       if (sDay < 10) sDay = sDay % 10;
       if (eDay < 10) eDay = eDay % 10;
@@ -36,18 +36,24 @@ class EventShow extends React.Component{
 
     return (event) ? (
       <div className='event-show-container'>
-        <div className='event-show-background-image'>
+        <div className='event-show-background-image'
+          // style={{backgroundImage: `url(${ event.image_url })`}}
+        >
             <img src={event.image_url}/>
         </div>
         <div className='event-show'>
           <div className='event-show-header'>
-            <img src={event.image_url} className='event-show-header-img'/>
-            <div className='event-show-header-info'>
-              <div className='event-show-header-info-date'>
-                {sMonth} {sDay}
-              </div>
-              <div className='event-show-header-info-title'>
-                {event.title}
+            <div className='event-show-header-left'>
+              <img src={event.image_url} className='event-show-header-img'/>
+            </div>
+            <div className='event-show-header-right'>
+              <div className='event-show-header-info'>
+                <div className='event-show-header-info-date'>
+                  {sMonth} {sDay}
+                </div>
+                <div className='event-show-header-info-title'>
+                  {event.title}
+                </div>
               </div>
             </div>
           </div>
@@ -55,8 +61,8 @@ class EventShow extends React.Component{
           <div className='event-show-ticket-bar'>
             {/* icons */}
             <Link to={`/event/${event.id}/edit`}>
-              <i className="fas fa-pencil-alt"></i>
-              Edit
+              <i id ='show-edit' className="fas fa-pencil-alt "></i> 
+              <i class="far fa-heart"></i>
             </Link>
             <button className='event-show-ticket-button'> Register</button>
           </div>
@@ -79,23 +85,34 @@ class EventShow extends React.Component{
               </div>
             </div>
             <div className='event-show-content-links'>
-              <p>Tags</p>
-              <Link to=''>Things to do in the area</Link>
-              <Link to=''>Convention</Link>
-              <Link to=''>Entertainment</Link>
+              <div>
+                <p>Tags</p> 
+              </div>
+              <div>
+                <Link to=''>Things to do in the area</Link>
+                <Link to=''>Convention</Link>
+                <Link to=''>Entertainment</Link>
+              </div>
             </div>
             <div className='event-show-content-share-links'>
-              <p>Share With Friends</p>
-              <Link to=''> <i className="fab fa-facebook-f"></i> </Link>
-              <Link to=''> <i className="fab fa-facebook-messenger"></i> </Link>
-              <Link to=''> <i className="fab fa-linkedin-in"></i> </Link>
-              <Link to=''> <i className="fab fa-twitter"></i> </Link>
-              <Link to=''> <i className="fas fa-envelope"></i> </Link>
+              <div>
+                <p>Share With Friends</p>
+              </div>
+              <div>
+                <Link to=''> <i className="fab fa-facebook-f"></i> </Link>
+                <Link to=''> <i className="fab fa-facebook-messenger"></i> </Link>
+                <Link to=''> <i className="fab fa-linkedin-in"></i> </Link>
+                <Link to=''> <i className="fab fa-twitter"></i> </Link>
+                <Link to=''> <i className="fas fa-envelope"></i> </Link>
+              </div>
             </div>
             <div className='event-show-content-organizer-info'>
               <p>Organizer information goes here</p>
-              <button className='organizer-follow-button'> Follow </button>
-              <button className='organizer-contact-button'> Contact </button>
+              <div>
+                <button className='organizer-follow-button'> Follow </button>
+                <button className='organizer-contact-button'> Contact </button>
+
+              </div>
             </div>
             {/* <div> MAP GOES HERE </div> */}
           </div>

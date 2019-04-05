@@ -67,12 +67,12 @@ img {
 input[type="email"],
 input[type="text"],
 input[type="submit"],
-textarea,
+textarea,*/
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-} */
+} 
 
 /* input[type="password"],
 input[type="email"],
