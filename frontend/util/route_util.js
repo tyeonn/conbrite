@@ -37,7 +37,6 @@ const Protected = ({ component: Component, path, exact, loggedIn }) => (
 )
 
 const Organizer = ({ component: Component, path, exact, isOrganizer, eventId }) => {
-  debugger
   return(
   <Route path={path} exact={exact} render={(props) => (
     isOrganizer ? (

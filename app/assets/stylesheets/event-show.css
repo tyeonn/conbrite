@@ -91,12 +91,12 @@
 }
 .event-show-content-main{
   display: flex;
-  justify-content: center;
       width: 70vw;
     align-self: center;
 }
 .event-show-content-left{
-  padding: 35px 35px 35px 0;
+  padding: 35px;
+  width: 50vw;
 }
 
 .event-show-content-right{

@@ -1,7 +1,6 @@
 .event-form-container{
-  background: blue;
-  height: 100px;
-  width: 100px;
+  display: flex;
+  flex-direction: column;
 }
 .date{
   height: 100px;
