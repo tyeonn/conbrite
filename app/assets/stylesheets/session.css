@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  height: calc(81vh - 240px);
 }
 
 .signup-form-container > form,

@@ -14,18 +14,20 @@ import Footer from './footer';
 const App = () => (
   <div className='app'>
     <NavBar/>
+    <div className='app-main'>
+      <Switch>
+        <AuthRoute exact path='/signin/login' component={LoginFormContainer} />
+        <AuthRoute exact path='/signin/signup' component={SignupFormContainer} />
+        <AuthRoute exact path='/signin' component={SessionFormContainer} />
+        <ProtectedRoute exact path='/create' component={CreateEventFormContainer} />
+        <OrganizerRoute exact path='/event/:eventId/edit' component={EditEventFormContainer} />
+        <Route exact path='/event/:eventId' component={EventShowContainer}/>
+        <Route exact path='/' component={EventIndexContainer}/>
+      </Switch>
 
-    <Switch>
-      <AuthRoute exact path='/signin/login' component={LoginFormContainer} />
-      <AuthRoute exact path='/signin/signup' component={SignupFormContainer} />
-      <AuthRoute exact path='/signin' component={SessionFormContainer} />
-      <ProtectedRoute exact path='/create' component={CreateEventFormContainer} />
-      <OrganizerRoute exact path='/event/:eventId/edit' component={EditEventFormContainer} />
-      <Route exact path='/event/:eventId' component={EventShowContainer}/>
-      <Route exact path='/' component={EventIndexContainer}/>
-    </Switch>
+      <Footer />
 
-    <Footer />
+    </div>
 
   </div>
 );
