@@ -50,10 +50,14 @@ class EventIndexItem extends React.Component{
       >
         <img src={event.image_url} onClick={this.handleClick}/>
         <div className='event-index-item-info'>
-          <div className='event-index-item-circledate'> {sMonth} {sDay} </div>
-          <Link to={`/event/${event.id}`}> {event.title} </Link>
-          <p> {sDayOfWeek}, {sMonth} {sDay} </p>
-          <p> {event.address} </p>
+          <div className='event-index-item-info-left'>
+            <div className='event-index-item-circledate'> {sMonth} {sDay} </div>
+          </div>
+          <div className='event-index-item-info-right'>
+            <Link to={`/event/${event.id}`}> {event.title} </Link>
+            <p> {sDayOfWeek}, {sMonth} {sDay} </p>
+            <p> {event.address} </p>
+          </div>
         </div>
       </div>
     )

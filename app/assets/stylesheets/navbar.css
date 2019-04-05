@@ -58,7 +58,7 @@
 .navbar-right-list {
   display: flex;
   flex-direction: row;
-  flex:1;
+  flex: 1;
   flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;

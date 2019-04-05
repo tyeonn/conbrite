@@ -28,6 +28,9 @@ class EventIndex extends React.Component{
     return(
       <div className='event-index-container'>
         <IndexSlider />
+        <div className='event-index-live-life'>
+          <h1>Live Your Best Life</h1>
+        </div>
         <div className='event-index-events-grid'>
           { events }
 

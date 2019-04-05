@@ -1,5 +1,6 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import { withRouter } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 
 // import 'react-dates/initialize';
@@ -17,10 +18,15 @@ class EventForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     if(this.props.formType === 'Create Event'){
-      this.props.createEvent(this.state);
+      return this.props.createEvent(this.state).then(
+        () => this.props.history.push(`/`)
+      );
     }else{
-      this.props.updateEvent(this.state);
+      return this.props.updateEvent(this.state).then(
+        () => this.props.history.push(`/event/${this.state.id}`)
+      );
     }
+    
   }
 
   update(field){
@@ -56,6 +62,7 @@ class EventForm extends React.Component{
   }
 
   componentDidMount(){
+
     this.setState({
       image_url: 'https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg',
       category_id: 1,
@@ -194,4 +201,4 @@ class EventForm extends React.Component{
   }
 }
 
-export default EventForm;
+export default withRouter(EventForm);

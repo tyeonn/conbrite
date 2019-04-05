@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 class EventShow extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      hidden: true,
+    };
+    // if (this.props.match.params.eventId === current_user.id)
   }
 
   componentDidMount(){
     this.props.retrieveEvent(this.props.match.params.eventId);
 
   }
-
-  
 
   render(){
     const { event } = this.props;
@@ -52,6 +54,10 @@ class EventShow extends React.Component{
 
           <div className='event-show-ticket-bar'>
             {/* icons */}
+            <Link to={`/event/${event.id}/edit`}>
+              <i className="fas fa-pencil-alt"></i>
+              Edit
+            </Link>
             <button className='event-show-ticket-button'> Register</button>
           </div>
 
