@@ -12,7 +12,10 @@ class EventShow extends React.Component{
 
   componentDidMount(){
     this.props.retrieveEvent(this.props.match.params.eventId);
-
+    window.scrollTo(0, 0);
+    
+  }
+  componentDidUpdate(){
   }
 
   render(){
@@ -62,7 +65,7 @@ class EventShow extends React.Component{
             {/* icons */}
             <Link to={`/event/${event.id}/edit`}>
               <i id ='show-edit' className="fas fa-pencil-alt "></i> 
-              <i class="far fa-heart"></i>
+              <i className="far fa-heart"></i>
             </Link>
             <button className='event-show-ticket-button'> Register</button>
           </div>

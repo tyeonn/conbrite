@@ -18,6 +18,7 @@
 }
 .event-show-background-image img{
   height: 500px;
+  width: 100vw;
 }
 .event-show-header{
   display: flex;
@@ -79,7 +80,7 @@
     background: #1F2FA3;
     color: white;
     height: 40px;
-    width: 22vw;
+    width: 15vw;
     align-self: center;
     border-radius: 7px;
     margin-right: 20px;
@@ -87,11 +88,12 @@
 .event-show-content{
   display: flex;
   flex-direction: column;
-
+width: 80vw;
+    max-width: 1080px;
 }
 .event-show-content-main{
   display: flex;
-      width: 70vw;
+      width: 88%;
     align-self: center;
 }
 .event-show-content-left{
@@ -115,10 +117,15 @@
 .event-show-content-links{
   display: flex;
   flex-direction: column;
-  width: 70vw;
+  width: 80vw;
+  max-width: 1080px;
   align-self: center;
   height: 100px;
     justify-content: space-between;
+}
+.event-show-content-share-links div,
+.event-show-content-links div{
+  padding-left: 100px;
 }
 
 .event-show-content-links div a{

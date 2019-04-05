@@ -78,107 +78,149 @@ class EventForm extends React.Component{
         <form className='event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-header'>
             <h1>{this.props.formType}</h1>
-            {/* <button onSubmit={this.handleSubmit}> Publish </button> */}
+            <button onSubmit={this.handleSubmit}> Publish </button>
+          </div>
+          <div className='event-form-header-bottom'>
           </div>
 
           <div className='event-form-detail-header'>
-            <i> 1 </i>
-            <h1>Event Details</h1>
+            <div>
+              <i> 1 </i>
+
+            </div>
+            <div>
+              <h1>Event Details</h1>
+
+            </div>
           </div>
-          <div className='event-form-detail'>
-            <input type="text"
-              value={this.state.title}
-              onChange={this.update('title')}
-              className={`event-form-input`}
-              required
-            />
+          <div className='event-form-detail-cont'>
+            <div className='event-form-detail'>
             <label htmlFor="event-form-input">Event Title</label>
-          </div>
-          <div className='event-form-detail'>
-            <input type="text"
-              value={this.state.address}
-              onChange={this.update('address')}
-              className={`event-form-input`}
-              required
-            />
+              <input type="text"
+                value={this.state.title}
+                onChange={this.update('title')}
+                className={`event-form-input`}
+                required
+              />
+            </div>
+            <div className='event-form-detail'>
             <label htmlFor="event-form-input">Location</label>
-          </div>
-          <div className='event-form-detail date'>
-            {/* <input type="date"
-              value={this.state.start_date}
-              onChange={this.update('start_date')}
-              className={`event-form-input-date`}
-              required
-            />
-            <label htmlFor="event-form-input-date">Starts</label>
-          </div>
-          <div className='event-form-detail'>
-            <input type="date"
-              value={this.state.end_date}
-              onChange={this.update('end_date')}
-              className={`event-form-input-date`}
-              required
-            />
-            <label htmlFor="event-form-input-date">Ends</label> */}
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleChangeStart}
-              showTimeSelect
-              dateFormat="MMMM d yyyy h:mm aa"
-              timeCaption="Start"
-            />
-            <DatePicker
-              selected={this.state.endDate}
-              onChange={this.handleChangeEnd}
-              showTimeSelect
-              dateFormat="MMMM d yyyy h:mm aa"
-              timeCaption="End"
-            />
-            {/* <DateRangePicker
-            
-              startDate={this.state.startDate}
-              startDateId='start_date'
-              endDate={this.state.endDate}
-              endDateId='end_date'
-              onDatesChange={ ({startDate, endDate}) => this.setState({startDate, endDate}) }
-              focusedInput={this.state.focusedInput}
-              onFocusChange={ focusedInput => this.setState({ focusedInput }) }
-            /> */}
-          </div>
-          <div className='event-form-detail'>
-            {/* <input type="file" id='input-image-file' ref={inputImage} style={{display:none}} /> */}
-            {/* <button onClick={ () => inputImage.current.click }>
-              Upload Image
-            </button> */}
-            <button> Upload Image </button>
-          </div>
-          <div className='event-form-detail'>
-            <textarea 
-              className={`event-form-textarea`}
-              value={this.state.description}
-              onChange={this.update('description')}
-              required
-            ></textarea>
+              <input type="text"
+                value={this.state.address}
+                onChange={this.update('address')}
+                className={`event-form-input`}
+                required
+              />
+            </div>
+            <div className='event-form-detail-date'>
+              {/* <input type="date"
+                value={this.state.start_date}
+                onChange={this.update('start_date')}
+                className={`event-form-input-date`}
+                required
+              />
+              <label htmlFor="event-form-input-date">Starts</label>
+            </div>
+            <div className='event-form-detail'>
+              <input type="date"
+                value={this.state.end_date}
+                onChange={this.update('end_date')}
+                className={`event-form-input-date`}
+                required
+              />
+              <label htmlFor="event-form-input-date">Ends</label> */}
+              <div>
+                <label htmlFor="start-date-picker">Starts</label>
+                <div className='start-date-picker'>
+                  <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.handleChangeStart}
+                    showTimeSelect
+                    dateFormat="MMMM d yyyy h:mm aa"
+                    timeCaption="Start"
+                  />
+
+                </div>
+
+              </div>
+              <div>
+                <label htmlFor="end-date-picker">Ends</label>
+                <div className='end-date-picker'>
+                  <DatePicker
+                    selected={this.state.endDate}
+                    onChange={this.handleChangeEnd}
+                    showTimeSelect
+                    dateFormat="MMMM d yyyy h:mm aa"
+                    timeCaption="End"
+                  />
+                </div>
+
+              </div>
+              {/* <DateRangePicker
+              
+                startDate={this.state.startDate}
+                startDateId='start_date'
+                endDate={this.state.endDate}
+                endDateId='end_date'
+                onDatesChange={ ({startDate, endDate}) => this.setState({startDate, endDate}) }
+                focusedInput={this.state.focusedInput}
+                onFocusChange={ focusedInput => this.setState({ focusedInput }) }
+              /> */}
+            </div>
+            <div className='event-form-detail'>
+              <label htmlFor="">Event Image</label>
+              {/* <input type="file" id='input-image-file' ref={inputImage} style={{display:none}} /> */}
+              {/* <button onClick={ () => inputImage.current.click }>
+                Upload Image
+              </button> */}
+              <button> Upload Image </button>
+            </div>
+            <div className='event-form-detail'>
             <label htmlFor="event-form-textarea">Event Description</label>
+              <textarea 
+                className={`event-form-textarea`}
+                value={this.state.description}
+                onChange={this.update('description')}
+                required
+              ></textarea>
+            </div>
           </div>
 
           <div className='event-form-detail-header'>
-            <i> 2 </i>
-            <h1>Create Tickets</h1>
+            <div>
+              <i> 2 </i>
+
+            </div>
+            <div>
+              <h1>Create Tickets</h1>
+
+            </div>
           </div>
           <div className='event-form-detail'>
+              <label htmlFor="event-form-input"> Max Number of Tickets</label>
             <input type="number"
+              id="num-ticks"
+              value={this.state.max_tickets}
               className='event-form-input'
               onChange={this.update('max_tickets')}
+              min="0"
+              max="1000000"
               required 
             />
           </div>
 
           <div className='event-form-detail-header'>
-            <i> 3 </i>
-            <h1>Additional Settings</h1>
+            <div>
+              <i> 3 </i>
+
+            </div>
+            <div>
+              <h1>Additional Settings</h1>
+
+            </div>
           </div>
           <div className='event-form-detail'>
+          <div className='event-form-category-select'>
             <select className='event-form-category-dropdown'>
               <option value="Gaming"> Gaming </option>
               <option value="Performing & Visual Arts"> Performing & Visual Arts </option>
@@ -187,12 +229,16 @@ class EventForm extends React.Component{
               <option value="Travel & Outdoor"> Travel & Outdoor </option>
               <option value="Science & Technology"> Science & Technology </option>
             </select>
+            <i id='category-arrow'className="fas fa-arrows-alt-v"></i>
+
+          </div>
           </div>
           <div className='event-form-footer'>
+            <h1>Nice Job! You're Almost Done.</h1>
             <input 
               type="submit" 
               className='create-event-form-submit' 
-              value='Make Your Event Live'
+              value={this.props.formType}
             />
           </div>
         </form>
