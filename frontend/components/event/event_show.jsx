@@ -47,7 +47,7 @@ class EventShow extends React.Component{
       sTime = sDateArray[4];
       eTime = eDateArray[4];
     }
-    const hidden = (this.props.event && this.props.event.organizer_id === this.props.currentUser.id);
+    const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
     return (event && organizer) ? (
       <div className='event-show-container'>
