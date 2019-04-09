@@ -2,7 +2,9 @@ class Api::TicketsController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
   def create
-
+    debugger
+    @ticket = Ticket.new(ticket_params)
+    
   end
 
   def update
@@ -14,6 +16,10 @@ class Api::TicketsController < ApplicationController
   end
 
   def show
+
+  end
+
+  def index
 
   end
 

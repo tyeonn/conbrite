@@ -9,6 +9,7 @@ import * as sessionActions from "../frontend/actions/session_actions";
 import { checkEmailExists } from "./util/session_api_util";
 import * as eventActions from "../frontend/actions/event_actions";
 import * as eventApiUtil from "../frontend/util/event_api_util";
+import * as ticketApiUtil from "../frontend/util/ticket_api_util";
 
 //TESTING - REMOVE BEFORE PRODUCTION
 
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.eventApiUtil = eventApiUtil;
   window.signup = sessionActions.signup;
   window.checkEmailExists = sessionActions.checkEmailExists;
+  window.ticketApiUtil = ticketApiUtil;
 
   // TESTING - REMOVE BEFORE PRODUCTION
 

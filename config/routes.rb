@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get '/session/', to: 'sessions#show'
     resource :session, only: [:create, :destroy]
     resources :events, only: [:create, :destroy, :update, :show, :index]
+    resources :tickets, only: [:create, :destroy, :update, :show, :index]
   end
 
 end
