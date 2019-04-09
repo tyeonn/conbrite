@@ -1,39 +1,5 @@
 import React from 'react';
 import Typed from 'typed.js';
-// import Slider from 'react-slick';
-
-// const IndexSlider = () => {
-//   const sliderSettings = {
-//     autoplay: true,
-//     autoplaySpeed: 5000,
-//     fade: true,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     infinite: true,
-
-//   };
-//   return(
-//     <div className='slideshow-container'>
-//       <Slider {...sliderSettings}>
-//         <div>
-//           <img src={window.overwatch} className='slideshow-img' />
-//         </div>
-//         <div>
-//           <img src={window.theater} className='slideshow-img' />
-//         </div>
-//         <div>
-//           <img src={window.conference} className='slideshow-img' />
-//         </div>
-//       </Slider>
-//       <div className='event-index-image-text-container'>
-//         <span className="event-index-image-text"></span>
-
-//       </div>
-//     </div>
-//   )
-// };
-
-// export default IndexSlider;
 
 class IndexSlider extends React.Component{
   constructor(props){
@@ -45,20 +11,23 @@ class IndexSlider extends React.Component{
       translateVal: 0,
     };
     this.images = [
-      <img src={window.overwatch}/>, 
-      <img src={window.theater}/>, 
-      <img src={window.conference}/>, 
+      <img src={window.overwatch} />, 
+      <img src={window.theater} />, 
+      <img src={window.conference} />, 
     ];
     this.incrementIndex = this.incrementIndex.bind(this);
   }
 
   incrementIndex(){
-
+    $('.slideshow-image').animate({ opacity: 0.1}, 0);
+    $('.slideshow-image').animate({ opacity: 1}, 1500);
+    
     this.setState(prevState =>({
       currentIndex: (prevState.currentIndex + 1) % 3,
     }));
   }
 
+  
   componentDidMount(){
     this.index = setInterval( this.incrementIndex ,7000);
 
@@ -82,7 +51,9 @@ class IndexSlider extends React.Component{
   render(){
     return(
       <div className='slideshow-container'>
+      <div className='slideshow-image'>
         { this.images[this.state.currentIndex] } 
+      </div>
         <div className='event-index-image-text-container'>
           <span className="event-index-image-text"></span>
         </div>

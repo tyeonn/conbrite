@@ -30,8 +30,13 @@
 .slideshow-container{
   display: flex;
   height: 26vw;
-  
+  background: black;
 
+}
+.slideshow-image{
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 .slideshow-container img{
   width: 100%;
