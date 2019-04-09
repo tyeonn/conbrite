@@ -17,6 +17,7 @@ const eventsReducer = ( state = {}, action ) => {
       const newState = merge({}, state);
       delete newState[action.eventId];
       return newState;
+
     default:
       return state;
   }

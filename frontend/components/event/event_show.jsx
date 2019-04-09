@@ -11,7 +11,12 @@ class EventShow extends React.Component{
   }
 
   componentDidMount(){
-    this.props.retrieveEvent(this.props.match.params.eventId);
+    this.props.retrieveEvent(this.props.match.params.eventId).then( props =>{
+      this.props.retrieveUser(props.event.organizer_id);
+    });
+    
+    
+
     window.scrollTo(0, 0);
     
   }
@@ -22,7 +27,13 @@ class EventShow extends React.Component{
     const { event } = this.props;
     let sDateArray, sDayOfWeek, sYear, sDay, sMonth, sTime;
     let eDateArray, eDayOfWeek, eYear, eDay, eMonth, eTime;
-    
+    // let first_name, last_name = '';
+    let organizer = null;
+    if (this.props.event && this.props.users[event.organizer_id] != null){
+      organizer = this.props.users[event.organizer_id];
+
+    }
+
     if(event){
       sDateArray = event.start_date.split(' ');
       eDateArray = event.end_date.split(' ');
@@ -36,12 +47,11 @@ class EventShow extends React.Component{
       sTime = sDateArray[4];
       eTime = eDateArray[4];
     }
-
-    return (event) ? (
+    const hidden = (this.props.event && this.props.event.organizer_id === this.props.currentUser.id);
+    const activeClass = hidden ? '' : 'hidden';
+    return (event && organizer) ? (
       <div className='event-show-container'>
-        <div className='event-show-background-image'
-          // style={{backgroundImage: `url(${ event.image_url })`}}
-        >
+        <div className='event-show-background-image'>
             <img src={event.image_url}/>
         </div>
         <div className='event-show'>
@@ -57,16 +67,27 @@ class EventShow extends React.Component{
                 <div className='event-show-header-info-title'>
                   {event.title}
                 </div>
+                <div className='event-show-header-info-organizer'>
+                  
+                  <p className='event-show-header-info-organizer-name'>
+                    by {organizer.first_name} {organizer.last_name}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className='event-show-ticket-bar'>
             {/* icons */}
-            <Link to={`/event/${event.id}/edit`}>
-              <i id ='show-edit' className="fas fa-pencil-alt "></i> 
-              <i className="far fa-heart"></i>
-            </Link>
+            <div className ='event-show-ticket-bar-icons'>
+              <div className={`event-show-ticket-bar-edit-icon ${activeClass}`}>
+                <Link to={`/event/${event.id}/edit`}>
+                  <i id={'show-edit'} className={`fas fa-pencil-alt `}></i> 
+                </Link>
+              </div>
+                <i className="far fa-heart"></i>
+
+            </div>
             <button className='event-show-ticket-button'> Register</button>
           </div>
 
@@ -83,6 +104,7 @@ class EventShow extends React.Component{
                   <p>{eDayOfWeek}, {eMonth} {eDay}, {eYear}, {eTime}</p>
                 </div>
                 <div className='event-show-content-right-location'>
+                  <h3>Location</h3>
                   <p>{event.address}</p>
                 </div>
               </div>
@@ -122,7 +144,9 @@ class EventShow extends React.Component{
         </div>
       </div>
 
-    ) : (<> </>)
+    ) : (
+      <> </>
+    )
   }
 }
 

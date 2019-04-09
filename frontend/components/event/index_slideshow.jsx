@@ -25,6 +25,10 @@ import Typed from 'typed.js';
 //           <img src={window.conference} className='slideshow-img' />
 //         </div>
 //       </Slider>
+//       <div className='event-index-image-text-container'>
+//         <span className="event-index-image-text"></span>
+
+//       </div>
 //     </div>
 //   )
 // };
@@ -38,6 +42,7 @@ class IndexSlider extends React.Component{
     this.state = {
       // aws images later
       currentIndex: 0,
+      translateVal: 0,
     };
     this.images = [
       <img src={window.overwatch}/>, 
@@ -48,6 +53,7 @@ class IndexSlider extends React.Component{
   }
 
   incrementIndex(){
+
     this.setState(prevState =>({
       currentIndex: (prevState.currentIndex + 1) % 3,
     }));
@@ -79,7 +85,6 @@ class IndexSlider extends React.Component{
         { this.images[this.state.currentIndex] } 
         <div className='event-index-image-text-container'>
           <span className="event-index-image-text"></span>
-
         </div>
       </div>
 

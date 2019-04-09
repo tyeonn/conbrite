@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   /* justify-content: center; */
   align-self: center;
-      height: 90vh;
+      /* height: 90vh; */
     align-content: flex-start;
 }
 .slideshow-container{

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  
   const eventId = ownProps.computedMatch.params.eventId;
   const organizerId = state.entities.events[eventId] ? 
     state.entities.events[eventId].organizer_id : '';
@@ -11,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     loggedIn: Boolean(state.session.id),
     isOrganizer: Boolean(state.session.id == organizerId),
     eventId: eventId
+    
   });
 };
 
@@ -38,13 +38,15 @@ const Protected = ({ component: Component, path, exact, loggedIn }) => (
 
 const Organizer = ({ component: Component, path, exact, isOrganizer, eventId }) => {
   return(
-  <Route path={path} exact={exact} render={(props) => (
+  <Route path={path} exact={exact} render={(props) => {
+    return (
     isOrganizer ? (
       <Component {...props} />
     ) : (
           <Redirect to={`/event/${parseInt(eventId)}`} />
       )
-  )} />
+  )}
+} />
 )
     }
 

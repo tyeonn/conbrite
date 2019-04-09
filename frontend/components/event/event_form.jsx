@@ -13,6 +13,8 @@ class EventForm extends React.Component{
     this.update = this.update.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.formatDate = this.formatDate.bind(this);
+
   }
 
   handleSubmit(e){
@@ -41,42 +43,61 @@ class EventForm extends React.Component{
       });
     };
   }
-  handleChangeStart(date) {
+
+  formatDate(date){
     let fullDate = date.toDateString().split(' ');
     let time = date.toTimeString().split(' ')[0];
     let [dayOfWeek, month, day, year] = fullDate;
+    //Format is flipped for backend: y/m/d instead of m/d/y
+    return [dayOfWeek, year, month, day,  time];
+  }
+  handleChangeStart(date) {
+    let formattedDate = this.formatDate(date);
     this.setState({
       startDate: date,
-      start_date: `${dayOfWeek} ${year} ${month} ${day} ${time}`
+      start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`
     });
   }
 
   handleChangeEnd(date) {
-    let fullDate = date.toDateString().split(' ');
-    let time = date.toTimeString().split(' ')[0];
-    let [dayOfWeek, month, day, year] = fullDate;
+    let formattedDate = this.formatDate(date);
     this.setState({
       endDate: date,
-      end_date: `${dayOfWeek} ${year} ${month} ${day} ${time}`
+      end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`
     });
   }
 
   componentDidMount(){
-
+    let formattedDate = this.formatDate(new Date());
+    //default states for dates
     this.setState({
       image_url: 'https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg',
       category_id: 1,
       // focusedInput: null,
       startDate: new Date(),
+      start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
       endDate: new Date(),
+      end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
     });
   }
+
+  // renderErrors(field){
+  //   const fieldErrors = this.props.errors.filter(error =>
+  //     error.includes(field));
+  //   return (
+  //     <div className={`error-message`}>
+  //       {fieldErrors}
+  //     </div>
+  //   );
+    
+  // }
 
   render(){
     return(
       <div className='event-form-container'>
         <form className='event-form' onSubmit={this.handleSubmit}>
           <div className='event-form-header'>
+      
             <h1>{this.props.formType}</h1>
             <button onSubmit={this.handleSubmit}> Publish </button>
           </div>
@@ -86,7 +107,6 @@ class EventForm extends React.Component{
           <div className='event-form-detail-header'>
             <div>
               <i> 1 </i>
-
             </div>
             <div>
               <h1>Event Details</h1>
@@ -139,7 +159,7 @@ class EventForm extends React.Component{
                     dateFormat="MMMM d yyyy h:mm aa"
                     timeCaption="Start"
                   />
-
+                  {/* {this.renderErrors('Start date')} */}
                 </div>
 
               </div>
@@ -153,6 +173,7 @@ class EventForm extends React.Component{
                     dateFormat="MMMM d yyyy h:mm aa"
                     timeCaption="End"
                   />
+                  {/* {this.renderErrors('End date')} */}
                 </div>
 
               </div>

@@ -13,13 +13,12 @@ const _defaultEvent = {
   max_tickets: 0,
 };
 
-const mapStateToProps = ({ errors, entities: { events } }, ownProps) => {
-  return ({
+const mapStateToProps = ({ errors, entities: { events } }, ownProps) => ({
   errors: errors.eventError,
   event: events[ownProps.match.params.eventId] || _defaultEvent,
   formType: 'Edit Event'
-})
-};
+});
+
 
 const mapDispatchToProps = dispatch => ({
   updateEvent: event => dispatch(updateEvent(event)),
