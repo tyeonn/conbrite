@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_162420) do
+ActiveRecord::Schema.define(version: 2019_04_09_152905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,15 +58,6 @@ ActiveRecord::Schema.define(version: 2019_04_04_162420) do
     t.index ["title"], name: "index_events_on_title"
   end
 
-  create_table "events_users", force: :cascade do |t|
-    t.integer "registrant_id", null: false
-    t.integer "event_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_events_users_on_event_id"
-    t.index ["registrant_id"], name: "index_events_users_on_registrant_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.string "city", null: false
     t.string "state", null: false
@@ -79,12 +70,13 @@ ActiveRecord::Schema.define(version: 2019_04_04_162420) do
   create_table "tickets", force: :cascade do |t|
     t.float "price", null: false
     t.string "type", null: false
-    t.integer "registrant_id", null: false
+    t.integer "registrant_id"
     t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_tickets_on_event_id"
-    t.index ["registrant_id"], name: "index_tickets_on_registrant_id"
+    t.integer "quantity", null: false
+    t.string "name", null: false
+    t.index ["registrant_id", "event_id"], name: "index_tickets_on_registrant_id_and_event_id"
   end
 
   create_table "users", force: :cascade do |t|

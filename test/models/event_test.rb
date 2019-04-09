@@ -7,10 +7,10 @@
 #  description  :text             not null
 #  address      :string           not null
 #  image_url    :string           not null
-#  start_date   :datetime         not null
-#  end_date     :datetime         not null
+#  start_date   :string           not null
+#  end_date     :string           not null
 #  max_tickets  :integer          not null
-#  location_id  :integer          not null
+#  location_id  :integer
 #  category_id  :integer          not null
 #  organizer_id :integer          not null
 #  created_at   :datetime         not null
