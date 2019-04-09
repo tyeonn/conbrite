@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.demologin = this.demologin.bind(this);
+    this.clearPasswordInput = this.clearPasswordInput.bind(this);
   }
 
   handleSubmit(e) {
@@ -40,8 +41,13 @@ class LoginForm extends React.Component {
     };
   }
 
+  clearPasswordInput(){
+    this.inputPassword.value= "";
+  }
+
   demologin(e) {
     e.preventDefault();
+    this.clearPasswordInput();
     this.setState({ active: true });
     new Typed("#login-form-input-pass", {
       strings: ['demouser'],
@@ -94,6 +100,7 @@ class LoginForm extends React.Component {
               readOnly
               className='login-form-input'
               id='login-form-input-email'
+              
             />
             <button type='button' 
               className='edit-email-button' 
@@ -109,6 +116,7 @@ class LoginForm extends React.Component {
               onChange={this.update('password')}
               id={'login-form-input-pass'}
               className={`login-form-input ${error} ${activeClass}`}
+              ref={inp => this.inputPassword = inp}
               required 
               minLength='6'
               autoFocus

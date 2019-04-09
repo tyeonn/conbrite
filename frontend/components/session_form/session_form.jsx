@@ -13,6 +13,8 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demologin = this.demologin.bind(this);
+    this.clearEmailInput = this.clearEmailInput.bind(this);
+
   }
   
   handleSubmit(e){
@@ -38,8 +40,13 @@ class SessionForm extends React.Component {
     };
   }
 
+  clearEmailInput() {
+    this.inputEmail.value = "";
+  }
+
   demologin(e){
     e.preventDefault();
+    this.clearEmailInput();
     this.setState({active: true});
     new Typed( ".session-form-input", {
       strings: ['demo@demo.com'],
@@ -78,6 +85,7 @@ class SessionForm extends React.Component {
               value={this.state.email}
               onChange={this.update('email')} 
               className={`session-form-input ${activeClass}`}
+              ref={inp => this.inputEmail = inp}
               required
               
             />
