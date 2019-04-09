@@ -26,6 +26,10 @@ class User < ApplicationRecord
   
   has_many :tickets,
     foreign_key: :registrant_id
+  
+  has_many :registered_events,
+    through: :tickets,
+    source: :event
 
   attr_reader :password
 

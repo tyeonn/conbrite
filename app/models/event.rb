@@ -26,6 +26,8 @@ class Event < ApplicationRecord
   
   has_many :tickets
 
+  has_many :registrants,
+    through: :tickets,
 
   # belongs_to :location
   # belongs_to :category

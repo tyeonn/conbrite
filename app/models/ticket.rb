@@ -20,4 +20,6 @@ class Ticket < ApplicationRecord
     class_name: :User
     
   belongs_to :event
+
+ 
 end
