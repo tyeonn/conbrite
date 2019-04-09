@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
-import { login, resetSessionErrors } from '../../actions/session_actions';
-import LoginForm from './login_form';
+import { connect } from "react-redux";
+import { login, resetSessionErrors } from "../../actions/session_actions";
+import LoginForm from "./login_form";
 
-const mapStateToProps = ({errors, session: { email }}, ownProps) => ({
-  formType: 'Login',
+const mapStateToProps = ({ errors, session: { email } }, ownProps) => ({
+  formType: "Login",
   errors: errors.sessionError,
-  email,
+  email
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,4 +13,7 @@ const mapDispatchToProps = dispatch => ({
   resetSessionErrors: () => dispatch(resetSessionErrors())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);

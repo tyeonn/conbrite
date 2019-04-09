@@ -1,101 +1,97 @@
-.event-index-container{
+.event-index-container {
   display: flex;
   flex-direction: column;
-
 }
 
-.event-index-live-life{
+.event-index-live-life {
   width: 80vw;
   max-width: 1300px;
   display: flex;
   align-self: center;
 }
-.event-index-live-life h1{
+.event-index-live-life h1 {
   font-size: 52px;
   margin: 0;
   padding-left: 8px;
   margin-top: 30px;
   margin-bottom: 20px;
 }
-.event-index-events-grid{
-  max-width:1300px;
+.event-index-events-grid {
+  max-width: 1300px;
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
   align-self: center;
-      /* height: 90vh; */
-    align-content: flex-start;
+  align-content: flex-start;
 }
-.slideshow-container{
+.slideshow-container {
   display: flex;
   height: 26vw;
   background: black;
-
 }
-.slideshow-image{
+.slideshow-image {
   display: flex;
   height: 100%;
   width: 100%;
 }
-.slideshow-container img{
+.slideshow-container img {
   width: 100%;
   object-fit: cover;
-
 }
 
-
-.event-index-item-container{
+.event-index-item-container {
   padding: 12px 8px;
   flex: 0 1 238px;
   min-width: 31%;
+  margin-bottom: 50px;
 }
 
-.event-index-item-container img{
+.event-index-item-container img {
   cursor: pointer;
+  height: 11.5vw;
 }
 
-.event-index-item-container:hover{
+.event-index-item-container:hover {
   box-shadow: 0 0 10px #c9c9c9;
 }
 
-
-.event-index-image-text-container{
+.event-index-image-text-container {
   position: absolute;
   color: white;
   top: calc(60px + 6vw);
   font-size: 10vw;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: black 0px 1px 1px;
 }
-.event-index-item-info{
+.event-index-item-info {
   display: flex;
 }
-.event-index-item-circledate{
+.event-index-item-circledate {
   padding-top: 30px;
   padding-left: 20px;
   width: 22px;
 }
-.event-index-item-circledate::first-line{
-  color: #F15E43;
+.event-index-item-circledate::first-line {
+  color: #f15e43;
 }
-.event-index-item-info-left{
+.event-index-item-info-left {
   display: flex;
   justify-content: center;
-
 }
-.event-index-item-info-right{
+.event-index-item-info-right {
   display: flex;
   padding-left: 20px;
   flex-direction: column;
   padding-top: 30px;
 }
-.event-index-item-info-right a{
+.event-index-item-info-right a {
   font-size: 20px;
   color: black;
   appearance: none;
   -webkit-appearance: none;
 }
-.event-index-item-info-right p{
+.event-index-item-info-right p {
   margin: 0;
   font-size: 12px;
   margin-bottom: 4px;

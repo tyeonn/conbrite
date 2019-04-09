@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 
 
-class Profile extends React.Component{
-  constructor(props){
+class Profile extends React.Component {
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
@@ -14,7 +14,7 @@ class Profile extends React.Component{
     };
   }
   
-  handleClick(e){
+  handleClick(e) {
     this.props.history.push('/signin');
     window.location.reload();
   }
@@ -33,7 +33,7 @@ class Profile extends React.Component{
   }
   
   
-  render(){
+  render() {
     const { currentUser, logout } = this.props;
     const dropdownClass = this.state.hover ? '' : 'hidden';
     if(currentUser){

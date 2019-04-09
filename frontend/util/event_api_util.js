@@ -1,32 +1,32 @@
 export const retrieveEvent = id => {
   return $.ajax({
-    url: `api/events/${id}`,
+    url: `api/events/${id}`
   });
 };
 export const retrieveEvents = () => {
   return $.ajax({
-    url: `api/events/`,
+    url: `api/events/`
   });
 };
 
 export const createEvent = event => {
   return $.ajax({
-    method: 'POST',
-    url: 'api/events/',
+    method: "POST",
+    url: "api/events/",
     data: { event }
   });
 };
 
 export const deleteEvent = id => {
   return $.ajax({
-    method: 'DELETE',
-    url: `api/events/${id}`,
+    method: "DELETE",
+    url: `api/events/${id}`
   });
 };
 
 export const updateEvent = event => {
   return $.ajax({
-    method: 'PATCH',
+    method: "PATCH",
     url: `api/events/${event.id}`,
     data: { event }
   });

@@ -1,14 +1,14 @@
-import * as EventApiUtil from '../util/event_api_util';
+import * as EventApiUtil from "../util/event_api_util";
 
-export const RECEIVE_EVENT = 'RECEIVE_EVENT';
-export const RECEIVE_EVENTS = 'RECEIVE_EVENTS';
-export const REMOVE_EVENT = 'REMOVE_EVENT';
-export const RECEIVE_EVENT_ERRORS = 'RECEIVE_EVENT_ERRORS';
-export const RESET_EVENT_ERRORS = 'RESET_EVENT_ERRORS';
+export const RECEIVE_EVENT = "RECEIVE_EVENT";
+export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
+export const REMOVE_EVENT = "REMOVE_EVENT";
+export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
+export const RESET_EVENT_ERRORS = "RESET_EVENT_ERRORS";
 
 export const receiveEvent = event => ({
   type: RECEIVE_EVENT,
-  event,
+  event
 });
 
 export const receiveEvents = events => ({
@@ -18,16 +18,16 @@ export const receiveEvents = events => ({
 
 export const removeEvent = event => ({
   type: REMOVE_EVENT,
-  eventId: event.id,
+  eventId: event.id
 });
 
 export const receiveEventErrors = errors => ({
   type: RECEIVE_EVENT_ERRORS,
-  errors,
+  errors
 });
 
 export const resetEventErrors = () => ({
-  type: RESET_EVENT_ERRORS,
+  type: RESET_EVENT_ERRORS
 });
 
 export const retrieveEvent = id => {
@@ -37,7 +37,7 @@ export const retrieveEvent = id => {
       errors => dispatch(receiveEventErrors(errors.responseJSON))
     );
   };
-};  
+};
 
 //add filter later maybe
 export const retrieveEvents = () => {

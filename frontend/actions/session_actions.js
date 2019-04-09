@@ -1,42 +1,42 @@
-import * as SessionAPIUtil from '../util/session_api_util';
+import * as SessionAPIUtil from "../util/session_api_util";
 
-export const RECEIVE_EMAIL_EXISTS = 'RECEIVE_EMAIL_EXISTS';
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-export const RESET_SESSION_ERRORS = 'RESET_SESSION_ERRORS';
-export const RECEIVE_TEMP_EMAIL = 'RECEIVE_TEMP_EMAIL';
+export const RECEIVE_EMAIL_EXISTS = "RECEIVE_EMAIL_EXISTS";
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
+export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const RESET_SESSION_ERRORS = "RESET_SESSION_ERRORS";
+export const RECEIVE_TEMP_EMAIL = "RECEIVE_TEMP_EMAIL";
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser,
+  currentUser
 });
 
 //Check if email exists on sign in
 export const receiveEmailExists = email => ({
   type: RECEIVE_EMAIL_EXISTS,
-  email,
+  email
 });
 
 export const logoutCurrentUser = () => ({
-  type: LOGOUT_CURRENT_USER,
+  type: LOGOUT_CURRENT_USER
 });
 
 // Takes in an array of errors
 export const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
-  errors,
+  errors
 });
 
 //Reset the error of email not existing on sign in
 export const resetSessionErrors = () => ({
-  type: RESET_SESSION_ERRORS,
+  type: RESET_SESSION_ERRORS
 });
 
 //Email to be transferred to the login/signup form
 export const receiveTempEmail = temp => ({
   type: RECEIVE_TEMP_EMAIL,
-  temp,
+  temp
 });
 
 export const signup = user => {
@@ -59,14 +59,11 @@ export const login = user => {
 
 export const logout = () => {
   return dispatch => {
-    return SessionAPIUtil.logout().then(
-      () => dispatch(logoutCurrentUser())
-    );
+    return SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()));
   };
 };
 
-
-export const checkEmailExists = (email) => {
+export const checkEmailExists = email => {
   return dispatch => {
     return SessionAPIUtil.checkEmailExists(email).then(
       email => dispatch(receiveEmailExists(email))
@@ -75,4 +72,3 @@ export const checkEmailExists = (email) => {
     );
   };
 };
-

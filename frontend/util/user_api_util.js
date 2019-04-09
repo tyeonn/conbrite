@@ -3,4 +3,3 @@ export const retrieveUser = id => {
     url: `/api/users/${id}`
   });
 };
-

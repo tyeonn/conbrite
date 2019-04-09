@@ -1,42 +1,33 @@
-import React from 'react';
-import IndexSlider from './index_slideshow';
-import EventIndexItem from './event_index_item';
+import React from "react";
+import IndexSlider from "./index_slideshow";
+import EventIndexItem from "./event_index_item";
 
-class EventIndex extends React.Component{
-  constructor(props){
+class EventIndex extends React.Component {
+  constructor(props) {
     super(props);
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(){
+  handleClick() {}
 
-  }
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.retrieveEvents();
-    
   }
 
-  render(){
-    const events = this.props.events.map( event => (
-      <EventIndexItem
-        event={event}
-        key={event.id}
-      />
+  render() {
+    const events = this.props.events.map(event => (
+      <EventIndexItem event={event} key={event.id} />
     ));
-    return(
-      <div className='event-index-container'>
+    return (
+      <div className="event-index-container">
         <IndexSlider />
-        <div className='event-index-live-life'>
+        <div className="event-index-live-life">
           <h1>Live Your Best Life</h1>
         </div>
-        <div className='event-index-events-grid'>
-          { events }
-
-        </div>
+        <div className="event-index-events-grid">{events}</div>
       </div>
-    )
+    );
   }
 }
 
