@@ -9,7 +9,7 @@ const ticketsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_TICKET:
-      return merge({}, state, action.ticket);
+      return merge({}, state, {[action.ticket.id]: action.ticket});
     case RECEIVE_TICKETS:
       return merge({}, state, action.tickets);
     case REMOVE_TICKET:

@@ -1,27 +1,29 @@
-export const retrieveTicket = id =>
-  $.ajax({
+export const retrieveTicket = id => {
+  return $.ajax({
     url: `api/tickets/${id}`
   });
-export const retrieveTickets = () =>
-  $.ajax({
+};
+export const retrieveTickets = () => {
+  return $.ajax({
     url: `api/tickets/`
   });
+};
 export const createTicket = ticket => {
-  $.ajax({
+  return $.ajax({
     method: "POST",
-    url: "api/tickets",
+    url: "api/tickets/",
     data: { ticket }
   });
 };
 export const updateTicket = ticket => {
-  $.ajax({
+  return $.ajax({
     method: "PATCH",
     url: `api/tickets/${ticket.id}`,
     data: { ticket }
   });
 };
 export const deleteTicket = id => {
-  $.ajax({
+  return $.ajax({
     method: "DELETE",
     url: `api/tickets/${id}`
   });

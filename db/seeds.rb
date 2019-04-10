@@ -8,6 +8,7 @@
 
 User.delete_all
 Event.delete_all
+Ticket.delete_all
 
 user = User.create!(
   email: 'demo@demo.com',

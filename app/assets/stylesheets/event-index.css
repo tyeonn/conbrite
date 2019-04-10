@@ -49,6 +49,7 @@
 .event-index-item-container img {
   cursor: pointer;
   height: 11.5vw;
+  min-height: 14vh;
 }
 
 .event-index-item-container:hover {
