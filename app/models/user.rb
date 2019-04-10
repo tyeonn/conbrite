@@ -23,13 +23,18 @@ class User < ApplicationRecord
   has_many :organized_events,
     class_name: :Event,
     foreign_key: :organizer_id
+
+  has_many :registrations
+  has_many :registered_tickets,
+    through: :registrations,
+    source: :event_ticket
   
-  has_many :tickets,
-    foreign_key: :registrant_id
+  # has_many :tickets,
+  #   foreign_key: :registrant_id
   
-  has_many :registered_events,
-    through: :tickets,
-    source: :event
+  # has_many :registered_events,
+  #   through: :tickets,
+  #   source: :event
 
   attr_reader :password
 

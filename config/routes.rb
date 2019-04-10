@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :events, only: [:create, :destroy, :update, :show, :index]
     resources :tickets, only: [:create, :destroy, :update, :show, :index]
+    patch '/tickets/sell', to: 'tickets#sell_ticket'
   end
 
 end

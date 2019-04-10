@@ -24,7 +24,7 @@ user_two = User.create!(
   password: 'demouser'
 )
 
-Event.create!(
+event = Event.create!(
   title: 'New York Comic Con',
   description: 'Largest comic convention on the east coast. Hosting the 
    latest in comics, anime, manga, video games, movies, and television. ',
@@ -37,6 +37,24 @@ Event.create!(
   category_id: 1,  
   organizer_id: user.id
 )
+
+Ticket.create!(
+  name: 'VIP',
+  price: 89.95,
+  ticket_type: 'Paid',
+  quantity: 50,
+  event_id: event.id
+)
+
+Ticket.create!(
+  name: 'General',
+  price: 25,
+  ticket_type: 'Paid',
+  quantity: 50,
+  event_id: event.id
+)
+
+
 
 Event.create!(
   title: 'Pax East',
