@@ -133,7 +133,7 @@
   appearance: none;
   -webkit-appearance: none;
   margin-top: 24px;
-  height: 44px;
+  min-height: 44px;
   color: white;
   font-size: 16px;
   border-radius: 5px;
