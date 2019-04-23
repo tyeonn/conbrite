@@ -28,3 +28,17 @@ export const deleteTicket = id => {
     url: `api/tickets/${id}`
   });
 };
+export const sellTicket = ticket => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/tickets/${ticket.id}/sell`,
+    data: {ticket},
+  });
+};
+export const refundTicket = ticket => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/tickets/${ticket.id}/refund`,
+    data: { ticket },
+  });
+};

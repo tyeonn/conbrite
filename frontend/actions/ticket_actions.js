@@ -65,3 +65,20 @@ export const updateTicket = ticket => {
   };
 };
 
+export const sellTicket = ticket => {
+  return dispatch => {
+    TicketApiUtil.sellTicket(ticket).then(
+      ticket => dispatch(receiveTicket(ticket)),
+      errors => dispatch(receiveTicketErrors(errors.responseJSON))
+    );
+  };
+};
+export const refundTicket = ticket => {
+  return dispatch => {
+    TicketApiUtil.refundTicket(ticket).then(
+      ticket => dispatch(receiveTicket(ticket)),
+      errors => dispatch(receiveTicketErrors(errors.responseJSON))
+    );
+  };
+};
+

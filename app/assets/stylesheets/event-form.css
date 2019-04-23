@@ -157,7 +157,7 @@
   -webkit-appearance: none;
   padding-left: 16px;
   height: 4vh;
-  width: 15vw;
+  min-width: 250px;
   margin: 5px;
   color: #1f2fa3;
   font-size: 16px;

@@ -177,16 +177,7 @@ class EventForm extends React.Component{
                 </div>
 
               </div>
-              {/* <DateRangePicker
-              
-                startDate={this.state.startDate}
-                startDateId='start_date'
-                endDate={this.state.endDate}
-                endDateId='end_date'
-                onDatesChange={ ({startDate, endDate}) => this.setState({startDate, endDate}) }
-                focusedInput={this.state.focusedInput}
-                onFocusChange={ focusedInput => this.setState({ focusedInput }) }
-              /> */}
+             
             </div>
             <div className='event-form-detail'>
               <label htmlFor="">Event Image</label>

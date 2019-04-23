@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -15,23 +17,25 @@
 
 class User < ApplicationRecord
   validates :first_name, :last_name, :email, :password_digest,
-    :session_token, presence: true
-  validates :password, length: {minimum: 6, allow_nil: true}
+            :session_token, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true }
   validates :email, uniqueness: true
   after_initialize :ensure_session_token
 
   has_many :organized_events,
-    class_name: :Event,
-    foreign_key: :organizer_id
+           class_name: :Event,
+           foreign_key: :organizer_id
 
-  has_many :registrations
+  has_many :registrations,
+           foreign_key: :registrant_id
+
   has_many :registered_tickets,
-    through: :registrations,
-    source: :event_ticket
-  
+           through: :registrations,
+           source: :event_ticket
+
   # has_many :tickets,
   #   foreign_key: :registrant_id
-  
+
   # has_many :registered_events,
   #   through: :tickets,
   #   source: :event
@@ -40,7 +44,8 @@ class User < ApplicationRecord
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
-    return nil unless user && user.is_password?(password)
+    return nil unless user&.is_password?(password)
+
     user
   end
 
@@ -49,12 +54,12 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    self.update!(session_token: User.generate_session_token)
-    self.session_token
+    update!(session_token: User.generate_session_token)
+    session_token
   end
 
   def is_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
   end
 
   def password=(password)

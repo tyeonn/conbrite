@@ -1,5 +1,7 @@
-class Api::TicketsController < ApplicationController 
-  before_action :ensure_logged_in, only: [:create, :update, :destroy]
+# frozen_string_literal: true
+
+class Api::TicketsController < ApplicationController
+  before_action :ensure_logged_in, only: %i[create update destroy]
   before_action :check_quantity, only: [:sell_ticket]
 
   def create
@@ -18,7 +20,6 @@ class Api::TicketsController < ApplicationController
     else
       render json: @ticket.errors.full_messages, status: 422
     end
-
   end
 
   def destroy
@@ -29,17 +30,15 @@ class Api::TicketsController < ApplicationController
     else
       render json: ["Ticket doesn't exist"], status: 404
     end
-
   end
 
   def show
     @ticket = Ticket.find_by(id: params[:id])
-    if @ticket 
+    if @ticket
       render :show
     else
       render json: ["Ticket doesn't exist"], status: 404
     end
-
   end
 
   def index
@@ -47,16 +46,16 @@ class Api::TicketsController < ApplicationController
     if @tickets
       render :index
     else
-      render json: ["There are no tickets"], status: 404
+      render json: ['There are no tickets'], status: 404
     end
   end
 
-  # Errors might be from update!, subtraction, check quant t/f, << curr, 
+  # Errors might be from update!, subtraction, check quant t/f, << curr,
   def sell_ticket
     @ticket = Ticket.find_by(id: params[:id])
     if @ticket
-      @ticket.update!(quantity: @ticket.quantity - params[:quantity])
-      params[:quantity].each{ |num| @ticket.registered_users << current_user}
+      @ticket.update!(quantity: @ticket.quantity - params['ticket'][:quantity].to_i)
+      params['ticket'][:quantity].to_i.times { @ticket.registered_users << current_user }
       render :show
     else
       render json: @ticket.errors.full_messages, status: 422
@@ -66,8 +65,8 @@ class Api::TicketsController < ApplicationController
   def refund_ticket
     @ticket = Ticket.find_by(id: params[:id])
     if @ticket
-      @ticket.update!(quantity: @ticket.quantity + params[:quantity])
-      params[:quantity].each{ |num| @ticket.registered_users.delete(current_user)}
+      @ticket.update!(quantity: @ticket.quantity + params['ticket'][:quantity].to_i)
+      params['ticket'][:quantity].to_i.times { @ticket.registered_users.delete(current_user) }
       # @ticket.registered_users.delete(current_user)
       render :show
     else
@@ -76,16 +75,16 @@ class Api::TicketsController < ApplicationController
   end
 
   private
+
   def ticket_params
     params.require(:ticket).permit(
       :name, :price, :ticket_type, :quantity, :event_id
     )
   end
 
-  # might have error 
+  # might have error
   def check_quantity
     ticket = Ticket.find(params[:id])
-    ticket.quantity > params[:quantity] ? true : false
+    ticket.quantity > params['ticket'][:quantity].to_i
   end
 end
-
