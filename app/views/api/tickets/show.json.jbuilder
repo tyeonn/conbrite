@@ -1,3 +1,5 @@
-json.partial! 'api/tickets/ticket', ticket: @ticket
+# frozen_string_literal: true
 
-# start here 
+json.partial! 'api/tickets/ticket', ticket: @ticket
+# json.registered_users @ticket.registered_users[current_user.id]
+# start here

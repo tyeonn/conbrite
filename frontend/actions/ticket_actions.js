@@ -1,5 +1,5 @@
 import * as TicketApiUtil from '../util/ticket_api_util';
-
+import * as UserActions from '../actions/user_actions';
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const REMOVE_TICKET = "REMOVE_TICKET";
@@ -66,19 +66,26 @@ export const updateTicket = ticket => {
 };
 
 export const sellTicket = ticket => {
-  return dispatch => {
+  return (dispatch, getState) => {
     TicketApiUtil.sellTicket(ticket).then(
       ticket => dispatch(receiveTicket(ticket)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
-    );
+    ).then(() => {
+      // debugger
+      dispatch(UserActions.retrieveUser(getState().session.id));
+    });
   };
 };
+
 export const refundTicket = ticket => {
   return dispatch => {
     TicketApiUtil.refundTicket(ticket).then(
       ticket => dispatch(receiveTicket(ticket)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
-    );
+    ).then(() => {
+      // debugger
+      dispatch(UserActions.retrieveUser(getState().session.id));
+    });
   };
 };
 

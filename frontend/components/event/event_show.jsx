@@ -88,7 +88,7 @@ class EventShow extends React.Component{
                 <i className="far fa-heart"></i>
 
             </div>
-            <button className='event-show-ticket-button'> Register</button>
+            <button className='event-show-ticket-button' onClick="">Register</button>
           </div>
 
           <div className='event-show-content'>

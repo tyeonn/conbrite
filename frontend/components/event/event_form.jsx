@@ -14,9 +14,18 @@ class EventForm extends React.Component{
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.formatDate = this.formatDate.bind(this);
-
+    this.addTicket = this.addTicket.bind(this);
+    this.displayTickets = this.displayTickets.bind(this);
   }
 
+  addTicket(){
+    this.setState({
+      ticket_num: ticket_num + 1,
+    });
+  }
+  displayTickets() {
+
+  }
   handleSubmit(e){
     e.preventDefault();
     if(this.props.formType === 'Create Event'){
@@ -78,6 +87,7 @@ class EventForm extends React.Component{
       start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
       endDate: new Date(),
       end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
+      ticket_num: 0
     });
   }
 
@@ -201,15 +211,35 @@ class EventForm extends React.Component{
           <div className='event-form-detail-header'>
             <div>
               <i> 2 </i>
-
             </div>
             <div>
               <h1>Create Tickets</h1>
-
             </div>
           </div>
           <div className='event-form-detail'>
-              <label htmlFor="event-form-input"> Max Number of Tickets</label>
+            <div className='event-form-ticket-container'>
+              <div className='event-form-ticket-header'>
+                <span>Ticket Name</span>
+                <span>Quantity</span>
+                <span>Price</span>
+                <span>Actions</span>
+              </div>
+              <div className='event-form-tickets-index'>
+                {this.displayTickets()}
+              </div>
+              <div className='event-form-ticket-type'>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket}>
+                  Free Ticket
+                </button>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket}>
+                  Paid Ticket
+                </button>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket}>
+                  Donation
+                </button>
+              </div>
+            </div>
+            <label htmlFor="event-form-input"> Max Number of Tickets</label>
             <input type="number"
               id="num-ticks"
               value={this.state.max_tickets}
