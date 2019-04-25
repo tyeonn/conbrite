@@ -6,15 +6,10 @@ const Footer = () => {
     <div className="footer-container">
       <div className="footer-info">
         <div className="footer-links">
-          <Link to=""> About </Link>
-          <Link to=""> Blog </Link>
-          <Link to=""> Help </Link>
-          <Link to=""> Careers </Link>
-          <Link to=""> Press </Link>
-          <Link to=""> Developers </Link>
-          <Link to=""> Terms </Link>
-          <Link to=""> Privacy </Link>
-          <Link to=""> Cookies </Link>
+          <a href="https://github.com/tyeonn"> <i className="fab fa-github"></i> </a>
+          <a href="https://www.linkedin.com/in/timjwu/"> <i className="fab fa-linkedin"></i> </a>
+          <a href="https://angel.co/timothyjwu1"> <i className="fab fa-angellist"></i> </a>
+          
         </div>
         <div className="footer-countries">
           <i className="fas fa-globe-americas" />

@@ -32,7 +32,8 @@
   flex-wrap: wrap;
 }
 .footer-links a {
-  padding-right: 20px;
+  padding: 20px;
+  font-size: 40px;
   color: #1e2fa2;
 }
 .footer-links a:hover {
