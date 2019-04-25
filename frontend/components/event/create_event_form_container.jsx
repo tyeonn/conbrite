@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import EventForm from "./event_form";
 import { createEvent } from "../../actions/event_actions";
+import { createTicket } from "../../actions/ticket_actions";
 
 const mapStateToProps = ({ errors }, ownProps) => ({
   errors: errors.eventError,
@@ -12,13 +13,14 @@ const mapStateToProps = ({ errors }, ownProps) => ({
     image_url: "",
     start_date: "",
     end_date: "",
-    max_tickets: 0
+    max_tickets: 0,
   },
   formType: "Create Event"
 });
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(createEvent(event))
+  createEvent: event => dispatch(createEvent(event)),
+  createTicket: ticket => dispatch(createTicket(ticket)),
 });
 
 export default connect(

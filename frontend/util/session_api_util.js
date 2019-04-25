@@ -18,12 +18,6 @@ export const logout = () =>
     url: "/api/session"
   });
 
-// export const fetchUser = (email) => {
-//   $.ajax({
-//     url: `/api/users/${id}`
-//   });
-// };
-
 export const checkEmailExists = email => {
   return $.ajax({
     url: `/api/session/`,
