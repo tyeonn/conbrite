@@ -11,12 +11,12 @@ class EventForm extends React.Component{
     this.state = this.props.event;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.updateTicket = this.updateTicket.bind(this);
+    // this.updateTicket = this.updateTicket.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.formatDate = this.formatDate.bind(this);
-    this.addTicket = this.addTicket.bind(this);
-    this.displayTickets = this.displayTickets.bind(this);
+    // this.addTicket = this.addTicket.bind(this);
+    // this.displayTickets = this.displayTickets.bind(this);
   }
 
   addTicket(field){
@@ -52,54 +52,54 @@ class EventForm extends React.Component{
 
     };
   }
-  displayTickets(i) {
-      let tickType = (this.state.ticket_type.ticketType[i] === 0) ?
-        <input 
-        type="text" 
-        value="Free"
-        readOnly
-        /> : 
-        this.state.ticket_type.ticketType[i] === 2 ? 
-          <input 
-          type="text" 
-          value="Donation"
-          readOnly
-          /> : 
-          <input 
-          type="number" 
-          placeholder="100"
-          step="0.01"
-          min="0"
-          onChange={this.updateTicket('price', i)}
-          />;
-      // ticketRows.push(
-      return(  
-        <div key={i}>
-          <input 
-            type="text"
-            placeholder="Early Bird, General, VIP..."
-            onChange={this.updateTicket('name', i)}
-          />
-          <input 
-            type="number" 
-            placeholder="100"
-            min="0"
-            onChange={this.updateTicket('quantity', i)}
-          />
+  // displayTickets(i) {
+  //     let tickType = (this.state.ticket_type.ticketType[i] === 0) ?
+  //       <input 
+  //       type="text" 
+  //       value="Free"
+  //       readOnly
+  //       /> : 
+  //       this.state.ticket_type.ticketType[i] === 2 ? 
+  //         <input 
+  //         type="text" 
+  //         value="Donation"
+  //         readOnly
+  //         /> : 
+  //         <input 
+  //         type="number" 
+  //         placeholder="100"
+  //         step="0.01"
+  //         min="0"
+  //         onChange={this.updateTicket('price', i)}
+  //         />;
+  //     // ticketRows.push(
+  //     return(  
+  //       <div key={i}>
+  //         <input 
+  //           type="text"
+  //           placeholder="Early Bird, General, VIP..."
+  //           onChange={this.updateTicket('name', i)}
+  //         />
+  //         <input 
+  //           type="number" 
+  //           placeholder="100"
+  //           min="0"
+  //           onChange={this.updateTicket('quantity', i)}
+  //         />
           
-          {tickType}
-        </div>
-      )
-  }
+  //         {tickType}
+  //       </div>
+  //     )
+  // }
   handleSubmit(e){
     e.preventDefault();
     let eventId;
     // CREATE EVENT THEN SET ID THEN CREATE TICKET
     if(this.props.formType === 'Create Event'){
-      return this.props.createEvent(this.state).then(payload => {
+      return this.props.createEvent(this.state).then(
         () => this.props.history.push(`/`)
         // eventId  
-      });
+      );
     }else{
       return this.props.updateEvent(this.state).then(
         () => this.props.history.push(`/event/${this.state.id}`)
@@ -114,15 +114,15 @@ class EventForm extends React.Component{
       });
     };
   }
-  updateTicket(field, idx) {
-    return e => {
-      console.log(field);
-      console.log(idx);
-      // this.setState({
-      //   tickets[idx][field]: e.currentTarget.value
-      // });
-    };
-  }
+  // updateTicket(field, idx) {
+  //   return e => {
+  //     console.log(field);
+  //     console.log(idx);
+  //     // this.setState({
+  //     //   tickets[idx][field]: e.currentTarget.value
+  //     // });
+  //   };
+  // }
 
   formatDate(date){
     let fullDate = date.toDateString().split(' ');
@@ -164,17 +164,6 @@ class EventForm extends React.Component{
       
     });
   }
-
-  // renderErrors(field){
-  //   const fieldErrors = this.props.errors.filter(error =>
-  //     error.includes(field));
-  //   return (
-  //     <div className={`error-message`}>
-  //       {fieldErrors}
-  //     </div>
-  //   );
-    
-  // }
 
   render(){
     let tickets = [];
@@ -281,7 +270,7 @@ class EventForm extends React.Component{
           </div>
           <div className='event-form-detail'>
             <div className='event-form-ticket-container'>
-              <div className='event-form-ticket-header'>
+              {/* <div className='event-form-ticket-header'>
                 <span>Ticket Name</span>
                 <span>Quantity</span>
                 <span>Price</span>
@@ -300,7 +289,7 @@ class EventForm extends React.Component{
                 <button className='event-form-ticket-type-button' onClick={this.addTicket('donation')}>
                   Donation
                 </button>
-              </div>
+              </div> */}
             </div>
             <label htmlFor="event-form-input"> Max Number of Tickets</label>
             <input type="number"
@@ -317,11 +306,9 @@ class EventForm extends React.Component{
           <div className='event-form-detail-header'>
             <div>
               <i> 3 </i>
-
             </div>
             <div>
               <h1>Additional Settings</h1>
-
             </div>
           </div>
           <div className='event-form-detail'>
@@ -335,7 +322,6 @@ class EventForm extends React.Component{
               <option value="Science & Technology"> Science & Technology </option>
             </select>
             <i id='category-arrow'className="fas fa-arrows-alt-v"></i>
-
           </div>
           </div>
           <div className='event-form-footer'>

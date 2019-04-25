@@ -85,6 +85,7 @@
 .fa-heart {
   color: grey;
   font-size: 24px;
+  cursor: pointer;
 }
 .red {
   color: red;
