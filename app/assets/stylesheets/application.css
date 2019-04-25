@@ -15,8 +15,11 @@
  */
 
 /* body > main root > app > navbar, components, footer */
-
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   font-family: Neue Plak, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial,
     sans-serif;
   margin: 0;
@@ -26,7 +29,9 @@ body {
   outline: 0;
   color: #39364f;
 }
-
+#root {
+  height: 100%;
+}
 .hidden {
   display: none;
 }
