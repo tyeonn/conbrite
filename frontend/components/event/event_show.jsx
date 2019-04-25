@@ -6,8 +6,15 @@ class EventShow extends React.Component{
     super(props);
     this.state = {
       hidden: true,
+      red: false,
     };
+    this.heartClick = this.heartClick.bind(this);
     // if (this.props.match.params.eventId === current_user.id)
+  }
+
+  heartClick(e) {
+      e.preventDefault();
+      this.setState({red: !this.state.red});
   }
 
   componentDidMount(){
@@ -19,8 +26,6 @@ class EventShow extends React.Component{
 
     window.scrollTo(0, 0);
     
-  }
-  componentDidUpdate(){
   }
 
   render(){
@@ -49,6 +54,7 @@ class EventShow extends React.Component{
     }
     const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
+    let heartClass = this.state.red ? 'red' : '';
     return (event && organizer) ? (
       <div className='event-show-container'>
         <div className='event-show-background-image'>
@@ -85,10 +91,10 @@ class EventShow extends React.Component{
                   <i id={'show-edit'} className={`fas fa-pencil-alt `}></i> 
                 </Link>
               </div>
-                <i className="far fa-heart"></i>
+                <i className={`far fa-heart ${heartClass}`} onClick={this.heartClick}></i>
 
             </div>
-            <button className='event-show-ticket-button' onClick="">Register</button>
+            <button className='event-show-ticket-button' >Register</button>
           </div>
 
           <div className='event-show-content'>
@@ -132,7 +138,8 @@ class EventShow extends React.Component{
               </div>
             </div>
             <div className='event-show-content-organizer-info'>
-              <p>Organizer information goes here</p>
+              <p>{organizer.first_name} {organizer.last_name}</p>
+              <p>Organizer of {event.title}</p>
               <div>
                 <button className='organizer-follow-button'> Follow </button>
                 <button className='organizer-contact-button'> Contact </button>

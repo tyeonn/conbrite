@@ -12,15 +12,15 @@ Ticket.delete_all
 
 user = User.create!(
   email: 'demo@demo.com',
-  first_name: 'Demo',
-  last_name: 'User',
+  first_name: 'Timothy',
+  last_name: 'Wu',
   password: 'demouser'
 )
 
 user_two = User.create!(
   email: 'demo2@demo.com',
-  first_name: 'Demo2',
-  last_name: 'User',
+  first_name: 'Yeasle',
+  last_name: 'Lee',
   password: 'demouser'
 )
 
