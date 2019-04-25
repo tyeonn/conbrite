@@ -72,7 +72,6 @@ class EventForm extends React.Component{
           min="0"
           onChange={this.updateTicket('price', i)}
           />;
-      debugger
       // ticketRows.push(
       return(  
         <div key={i}>
@@ -98,7 +97,6 @@ class EventForm extends React.Component{
     // CREATE EVENT THEN SET ID THEN CREATE TICKET
     if(this.props.formType === 'Create Event'){
       return this.props.createEvent(this.state).then(payload => {
-        debugger
         () => this.props.history.push(`/`)
         // eventId  
       });
@@ -111,7 +109,6 @@ class EventForm extends React.Component{
   }
   update(field){
     return e => {
-      debugger
       this.setState({
         [field]: e.currentTarget.value
       });
@@ -121,7 +118,6 @@ class EventForm extends React.Component{
     return e => {
       console.log(field);
       console.log(idx);
-      debugger
       // this.setState({
       //   tickets[idx][field]: e.currentTarget.value
       // });
