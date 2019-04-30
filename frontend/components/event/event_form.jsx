@@ -3,20 +3,19 @@ import DatePicker from 'react-datepicker';
 import { withRouter } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { merge } from 'lodash';
-// import 'react-dates/initialize';
-// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+
 class EventForm extends React.Component{
   constructor(props){
     super(props);
     this.state = this.props.event;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    // this.updateTicket = this.updateTicket.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.formatDate = this.formatDate.bind(this);
-    // this.addTicket = this.addTicket.bind(this);
-    // this.displayTickets = this.displayTickets.bind(this);
+    this.updateTicket = this.updateTicket.bind(this);
+    this.addTicket = this.addTicket.bind(this);
+    this.displayTickets = this.displayTickets.bind(this);
   }
 
   addTicket(field){
@@ -49,48 +48,45 @@ class EventForm extends React.Component{
         ticket_type:  merge({}, this.state.ticket_type, { ticketType }),
         tickets: merge([], this.state.tickets, {[this.state.ticket_num]: tick})
       });
-
     };
+
   }
-  // displayTickets(i) {
-  //     let tickType = (this.state.ticket_type.ticketType[i] === 0) ?
-  //       <input 
-  //       type="text" 
-  //       value="Free"
-  //       readOnly
-  //       /> : 
-  //       this.state.ticket_type.ticketType[i] === 2 ? 
-  //         <input 
-  //         type="text" 
-  //         value="Donation"
-  //         readOnly
-  //         /> : 
-  //         <input 
-  //         type="number" 
-  //         placeholder="100"
-  //         step="0.01"
-  //         min="0"
-  //         onChange={this.updateTicket('price', i)}
-  //         />;
-  //     // ticketRows.push(
-  //     return(  
-  //       <div key={i}>
-  //         <input 
-  //           type="text"
-  //           placeholder="Early Bird, General, VIP..."
-  //           onChange={this.updateTicket('name', i)}
-  //         />
-  //         <input 
-  //           type="number" 
-  //           placeholder="100"
-  //           min="0"
-  //           onChange={this.updateTicket('quantity', i)}
-  //         />
-          
-  //         {tickType}
-  //       </div>
-  //     )
-  // }
+  displayTickets(i) {
+      let tickType;
+      switch(this.state.ticket_type.ticketType[i]) {
+        case 0:
+          tickType = <input type="text" value="Free" readOnly/>;
+          break;
+        case 2:
+          tickType = <input type="text" value="Donation" readOnly />;
+          break;
+        default:
+          tickType = <input 
+            type="number" 
+            placeholder="100"
+            step="0.01"
+            min="0"
+            onChange={this.updateTicket('price', i)}
+          />;
+      }
+      
+      return(  
+        <div key={i}>
+          <input 
+            type="text"
+            placeholder="Early Bird, General, VIP..."
+            onChange={this.updateTicket('name', i)}
+          />
+          <input 
+            type="number" 
+            placeholder="100"
+            min="0"
+            onChange={this.updateTicket('quantity', i)}
+          />
+          {tickType}
+        </div>
+      )
+  }
   handleSubmit(e){
     e.preventDefault();
     let eventId;
@@ -114,15 +110,22 @@ class EventForm extends React.Component{
       });
     };
   }
-  // updateTicket(field, idx) {
-  //   return e => {
-  //     console.log(field);
-  //     console.log(idx);
-  //     // this.setState({
-  //     //   tickets[idx][field]: e.currentTarget.value
-  //     // });
-  //   };
-  // }
+  updateTicket(field, idx) {
+    return e => {
+      debugger
+      console.log(field);
+      console.log(idx);
+      let newState = merge([], this.state.tickets);
+      if(field === "price" || field === "quantity"){
+        newState[idx][field] = parseInt(e.currentTarget.value);
+      } else {
+        newState[idx][field] = e.currentTarget.value;
+      }
+      this.setState({
+        tickets: newState
+      });
+    };
+  }
 
   formatDate(date){
     let fullDate = date.toDateString().split(' ');
@@ -170,6 +173,7 @@ class EventForm extends React.Component{
     for(let i = 0; i < this.state.ticket_num; i++) {
       tickets[i] = this.displayTickets(i); 
     }
+    debugger
     return(
       <div className='event-form-container'>
         <form className='event-form' onSubmit={this.handleSubmit}>
@@ -270,7 +274,7 @@ class EventForm extends React.Component{
           </div>
           <div className='event-form-detail'>
             <div className='event-form-ticket-container'>
-              {/* <div className='event-form-ticket-header'>
+              <div className='event-form-ticket-header'>
                 <span>Ticket Name</span>
                 <span>Quantity</span>
                 <span>Price</span>
@@ -289,7 +293,7 @@ class EventForm extends React.Component{
                 <button className='event-form-ticket-type-button' onClick={this.addTicket('donation')}>
                   Donation
                 </button>
-              </div> */}
+              </div>
             </div>
             <label htmlFor="event-form-input"> Max Number of Tickets</label>
             <input type="number"
