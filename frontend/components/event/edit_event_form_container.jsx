@@ -13,7 +13,7 @@ const _defaultEvent = {
   max_tickets: 0
 };
 
-const mapStateToProps = ({ errors, entities: { events } }, ownProps) => ({
+const mapStateToProps = ({ errors, entities: { events, tickets } }, ownProps) => ({
   errors: errors.eventError,
   event: events[ownProps.match.params.eventId] || _defaultEvent,
   formType: "Edit Event"

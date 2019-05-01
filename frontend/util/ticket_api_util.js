@@ -3,9 +3,10 @@ export const retrieveTicket = id => {
     url: `api/tickets/${id}`
   });
 };
-export const retrieveTickets = () => {
+export const retrieveTickets = eventId => {
   return $.ajax({
-    url: `api/tickets/`
+    url: `api/tickets/`,
+    data: { eventId }
   });
 };
 export const createTicket = ticket => {

@@ -42,7 +42,8 @@ class Api::TicketsController < ApplicationController
   end
 
   def index
-    @tickets = Ticket.all.includes(:event, :registrant)
+    # @tickets = Ticket.all.includes(:event, :registrant)
+    @tickets = Ticket.where('event_id = ?', params[:eventId].to_i)
     if @tickets
       render :index
     else

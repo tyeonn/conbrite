@@ -30,9 +30,9 @@ export const retrieveTicket = id => {
     );
   };
 };
-export const retrieveTickets = () => {
+export const retrieveTickets = (eventId) => {
   return dispatch => {
-    TicketApiUtil.retrieveTickets().then(
+    TicketApiUtil.retrieveTickets(eventId).then(
       tickets => dispatch(receiveTickets(tickets)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
     );
