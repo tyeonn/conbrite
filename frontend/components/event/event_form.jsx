@@ -41,7 +41,7 @@ class EventForm extends React.Component{
         quantity: 0,
         ticket_type: field,
         price: 0,
-        
+        event_id: null
       };
       this.setState({
         ticket_num: this.state.ticket_num + 1,
@@ -92,17 +92,24 @@ class EventForm extends React.Component{
     let eventId;
     // CREATE EVENT THEN SET ID THEN CREATE TICKET
     if(this.props.formType === 'Create Event'){
-      return this.props.createEvent(this.state).then(
-        () => this.props.history.push(`/`)
-        // eventId  
-      );
+      this.props.receiveTickets(this.state.tickets);
+      this.props.createEvent(this.state).then(( payload ) => {
+        Object.values(this.props.tickets).forEach(ticket => {
+          ticket["event_id"] = payload.event.id;
+          this.props.createTicket(ticket);
+        });
+        console.log(this.props.tickets);
+      });
+
+      
     }else{
       return this.props.updateEvent(this.state).then(
         () => this.props.history.push(`/event/${this.state.id}`)
-      );
+        );
+      }
+      
     }
-    
-  }
+      // () => this.props.history.push(`/`)
   update(field){
     return e => {
       this.setState({
