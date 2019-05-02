@@ -1,10 +1,11 @@
 import React from 'react';
 import {merge} from'lodash';
+import Swal from'sweetalert2';
 
 class TicketForm extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = this.props.tickets;
     this.handleQuantity = this.handleQuantity.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,7 +45,19 @@ class TicketForm extends React.Component {
       //   [tickId]: tick
       // });
     });
+    
     this.props.modalClose();
+    setTimeout(() => {
+      Swal.fire({
+        type: 'success',
+        title: 'Enjoy the event!',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+    },600);
+   
+
     debugger
 
   }

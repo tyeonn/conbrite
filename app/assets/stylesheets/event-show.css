@@ -101,9 +101,6 @@
   border-radius: 7px;
   margin-right: 20px;
 }
-.event-show-ticket-button:focus {
-  outline: 0;
-}
 .ticket-modal-container {
   display: none;
 }
@@ -120,6 +117,10 @@
   border-radius: 10px;
   box-shadow: 0 0 5px 1px;
 }
+.close-modal-btn,
+.ticket-info-quantity,
+#ticket-form-btn,
+.event-show-ticket-button:focus,
 .ReactModal__Content:focus {
   outline: 0;
 }

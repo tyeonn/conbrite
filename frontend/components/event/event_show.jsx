@@ -129,7 +129,12 @@ class EventShow extends React.Component{
               >
                 <div className="ticket-modal-header">
                   <h2>Select Ticket</h2>
-                  <button onClick={this.ticketModalClick}><i className="fas fa-times"></i></button>
+                  <button 
+                    className="close-modal-btn"
+                    onClick={this.ticketModalClick}
+                  >
+                    <i className="fas fa-times"></i>
+                  </button>
                 </div>
                 <div className="ticket-modal-form-container">
                   <TicketForm modalClose={this.ticketModalClick}/>
