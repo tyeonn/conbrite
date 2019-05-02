@@ -5,11 +5,12 @@ import { retrieveUser } from "../../actions/user_actions";
 import { retrieveTickets } from "../../actions/ticket_actions";
 
 const mapStateToProps = (
-  { errors, entities: { events, users }, session }, ownProps) => ({
+  { errors, entities: { events, users, tickets }, session }, ownProps) => ({
   errors: errors.eventError,
   event: events[ownProps.match.params.eventId],
   currentUser: users[session.id],
-  users
+  users,
+  tickets
 });
 
 const mapDispatchToProps = dispatch => ({

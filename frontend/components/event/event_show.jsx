@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+import TicketForm from '../ticket/ticket_form_container';
 
 class EventShow extends React.Component{
   constructor(props){
@@ -7,14 +9,20 @@ class EventShow extends React.Component{
     this.state = {
       hidden: true,
       red: false,
+      modalOpen: false,
     };
     this.heartClick = this.heartClick.bind(this);
+    this.ticketModalClick = this.ticketModalClick.bind(this);
     // if (this.props.match.params.eventId === current_user.id)
   }
 
   heartClick(e) {
       e.preventDefault();
       this.setState({red: !this.state.red});
+  }
+
+  ticketModalClick(e) {
+    this.setState({modalOpen: !this.state.modalOpen});
   }
 
   componentDidMount(){
@@ -52,6 +60,18 @@ class EventShow extends React.Component{
       sTime = sDateArray[4];
       eTime = eDateArray[4];
     }
+    // let tickets = [];
+    // Object.values(this.props.tickets).forEach( ticket => {
+    //   let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
+    //   tickets.push(
+    //     <Ticket ticket={ticket} />
+    //     // <div className={`ticket-info ${ticket.id}`}>
+    //     //   <h2>{ticket.name}</h2>
+    //     //   <p>{price}</p>
+
+    //     // </div>
+    //   )
+    // })
     const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
     let heartClass = this.state.red ? 'red' : '';
@@ -94,7 +114,29 @@ class EventShow extends React.Component{
                 <i className={`far fa-heart ${heartClass}`} onClick={this.heartClick}></i>
 
             </div>
-            <button className='event-show-ticket-button' >Register</button>
+            <button className='event-show-ticket-button' onClick={this.ticketModalClick}>Register</button>
+            <div className="ticket-modal-container">
+              <Modal
+                isOpen={this.state.modalOpen}
+                onRequestClose={this.ticketModalClick}
+                contentLabel="Ticket Modal"
+                overlayClassName="ReactModal__Overlay"
+                className="ReactModal__Content"
+                // bodyOpenClassName="ReactModal__Body--open"
+                shouldCloseOnOverlayClick={true}
+                closeTimeoutMS={200}
+                // style={Modal.defaultStyles}
+              >
+                <div className="ticket-modal-header">
+                  <h2>Select Ticket</h2>
+                  <button onClick={this.ticketModalClick}><i className="fas fa-times"></i></button>
+                </div>
+                <div className="ticket-modal-form-container">
+                  <TicketForm/>
+                </div>
+              </Modal>
+
+            </div>
           </div>
 
           <div className='event-show-content'>

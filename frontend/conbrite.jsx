@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "../frontend/store/store";
 import Root from "./components/root";
+import Modal from 'react-modal';
 
 //TESTING - REMOVE BEFORE PRODUCTION
 import * as sessionActions from "../frontend/actions/session_actions";
@@ -13,9 +14,9 @@ import * as ticketApiUtil from "../frontend/util/ticket_api_util";
 import * as ticketActions from '../frontend/actions/ticket_actions';
 
 //TESTING - REMOVE BEFORE PRODUCTION
-
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
+  Modal.setAppElement(root);
   let store;
   if (window.currentUser) {
     const preloadedState = {
