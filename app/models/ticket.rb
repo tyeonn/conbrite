@@ -15,7 +15,7 @@
 class Ticket < ApplicationRecord
   validates :name, :price, :ticket_type, :quantity, :event_id, presence: true
   belongs_to :event
-  has_many :registrations,
+  has_many :registrations, dependent: :destroy,
     foreign_key: :event_ticket_id
     
   has_many :registered_users,

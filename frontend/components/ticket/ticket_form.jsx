@@ -31,13 +31,15 @@ class TicketForm extends React.Component {
     this.state.soldTicket.forEach(ticket => {
       let tickId = parseInt(ticket[0]);
       let quant = parseInt(ticket[1]);
-      let tick = this.state[tickId];
+      // let tick = this.state[tickId];
+      // tick.quantity = quant;
+      let tick = this.props.tickets[tickId];
       tick.quantity = quant;
-      this.setState({
-        [tickId]: tick
-      });
+      this.props.sellTicket(tick);
+      // this.setState({
+      //   [tickId]: tick
+      // });
     });
-    
     debugger
 
   }
@@ -46,22 +48,28 @@ class TicketForm extends React.Component {
     let tickets = [];
     Object.values(this.props.tickets).forEach( ticket => {
       let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
+      let qtyOption;
+      if(ticket.quantity <= 0){
+        qtyOption = <p className="ticket-info-quantity-sold-out">Sold Out</p>
+      } else {
+        qtyOption = <select 
+        className="ticket-info-quantity"
+        onChange={this.handleQuantity}
+        key={ticket.id}
+      >
+        <option value={`${ticket.id} 0`}>0</option>
+        <option value={`${ticket.id} 1`}>1</option>
+        <option value={`${ticket.id} 2`}>2</option>
+        <option value={`${ticket.id} 3`}>3</option>
+        <option value={`${ticket.id} 4`}>4</option>
+        <option value={`${ticket.id} 5`}>5</option>
+      </select>
+      }
       tickets.push(
         <div key={ticket.id} className={`ticket-info ${ticket.id}`}>
           <h2>{ticket.name}</h2>
           <p>{price}</p>
-          <select 
-            className="ticket-info-quantity"
-            onChange={this.handleQuantity}
-            key={ticket.id}
-          >
-            <option value={`${ticket.id} 0`}>0</option>
-            <option value={`${ticket.id} 1`}>1</option>
-            <option value={`${ticket.id} 2`}>2</option>
-            <option value={`${ticket.id} 3`}>3</option>
-            <option value={`${ticket.id} 4`}>4</option>
-            <option value={`${ticket.id} 5`}>5</option>
-          </select>
+          {qtyOption}
         </div>
       )
     })

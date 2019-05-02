@@ -86,7 +86,12 @@ class Api::TicketsController < ApplicationController
   # might have error
   def check_quantity
     ticket = Ticket.find(params[:id])
+
     # ticket.quantity > params['ticket'][:quantity].to_i
-    ticket.quantity - params['ticket'][:quantity].to_i >= 0
+    if ticket.quantity - params['ticket'][:quantity].to_i >= 0
+      return true
+    else
+      render json: ['Sold Out'], status: 422
+    end
   end
 end

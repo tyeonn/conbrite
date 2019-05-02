@@ -22,14 +22,14 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   after_initialize :ensure_session_token
 
-  has_many :organized_events,
+  has_many :organized_events, dependent: :destroy,
            class_name: :Event,
            foreign_key: :organizer_id
 
-  has_many :registrations,
+  has_many :registrations, dependent: :destroy,
            foreign_key: :registrant_id
 
-  has_many :registered_tickets,
+  has_many :registered_tickets, dependent: :destroy,
            through: :registrations,
            source: :event_ticket
 
