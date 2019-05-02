@@ -124,7 +124,7 @@ class EventShow extends React.Component{
                 className="ReactModal__Content"
                 // bodyOpenClassName="ReactModal__Body--open"
                 shouldCloseOnOverlayClick={true}
-                closeTimeoutMS={200}
+                closeTimeoutMS={400}
                 // style={Modal.defaultStyles}
               >
                 <div className="ticket-modal-header">
@@ -132,7 +132,7 @@ class EventShow extends React.Component{
                   <button onClick={this.ticketModalClick}><i className="fas fa-times"></i></button>
                 </div>
                 <div className="ticket-modal-form-container">
-                  <TicketForm/>
+                  <TicketForm modalClose={this.ticketModalClick}/>
                 </div>
               </Modal>
 

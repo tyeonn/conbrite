@@ -4,6 +4,7 @@ import {merge} from'lodash';
 class TicketForm extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = this.props.tickets;
     this.handleQuantity = this.handleQuantity.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -11,10 +12,12 @@ class TicketForm extends React.Component {
 
   componentDidMount() {
     this.setState({
-      soldTicket: []
+      soldTicket: [],
+      quantChange: false
     });
   }
   handleQuantity(e) {
+    document.getElementById("ticket-form-btn").removeAttribute("disabled");
     let qty = e.currentTarget.value.split(' ');
     let newState = this.state.soldTicket;
     let idx = null;
@@ -23,7 +26,8 @@ class TicketForm extends React.Component {
     });
     newState.push(qty);
     this.setState({
-      soldTicket: newState
+      soldTicket: newState,
+      quantChange: true
     });
   }
 
@@ -40,6 +44,7 @@ class TicketForm extends React.Component {
       //   [tickId]: tick
       // });
     });
+    this.props.modalClose();
     debugger
 
   }
@@ -72,11 +77,11 @@ class TicketForm extends React.Component {
           {qtyOption}
         </div>
       )
-    })
+    });
     return(
       <form onSubmit={this.handleSubmit}>
         {tickets}
-        <input type="submit" value="Checkout"/>
+        <input  id="ticket-form-btn" type="submit" value="Checkout" disabled/>
       </form>
     )
     
