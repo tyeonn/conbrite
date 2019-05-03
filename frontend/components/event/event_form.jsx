@@ -17,6 +17,7 @@ class EventForm extends React.Component{
     this.addTicket = this.addTicket.bind(this);
     this.displayTickets = this.displayTickets.bind(this);
     this.fillTickets = this.fillTickets.bind(this);
+    this.removeTicket = this.removeTicket.bind(this);
   }
 
   addTicket(field) {
@@ -50,6 +51,30 @@ class EventForm extends React.Component{
         ticket_type:  merge({}, this.state.ticket_type, { ticketType }),
         tickets: merge([], this.state.tickets, {[this.state.ticket_num]: tick})
       });
+    };
+
+  }
+
+  removeTicket(id, idx) {
+    return e => {
+      e.preventDefault();
+      e.stopPropagation();
+      let newTicketNum = this.state.ticket_num - 1;
+      let newTicketType = this.state.ticket_type;
+      delete newTicketType.ticketType[idx];
+      let newTickets = this.state.tickets;
+      newTickets.splice(idx,1);
+      debugger
+      // newTicketType = newTicketType.filter( tick => {
+      //   debugger
+      //   return !tick.includes(idx);
+      // });
+      this.setState({
+        ticket_num: this.state.ticket_num - 1,
+        ticket_type: newTicketType,
+        tickets: newTickets
+      });
+      this.props.deleteTicket(id);
     };
 
   }
@@ -91,6 +116,11 @@ class EventForm extends React.Component{
             value={`${tick.quantity}`}
           />
           {tickType}
+          <button 
+            className="delete-ticket-btn"
+            onClick={this.removeTicket(tick.id, i)}>
+            <i className="fas fa-times"></i>
+          </button>
         </div>
       )
   }
@@ -111,7 +141,10 @@ class EventForm extends React.Component{
       
     }else{
       this.props.receiveTickets(this.state.tickets);
-      
+      this.state.tickets.forEach(ticket => {
+        debugger
+        this.props.deleteTicket(ticket.id);
+      });
       this.props.updateEvent(this.state).then(( payload ) => {
         Object.values(this.props.tickets).forEach(ticket => {
           ticket["event_id"] = payload.event.id;

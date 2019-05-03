@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import EventForm from "./event_form";
 import { createEvent } from "../../actions/event_actions";
-import { receiveTickets, createTicket } from "../../actions/ticket_actions";
+import { receiveTickets, createTicket, deleteTicket } from "../../actions/ticket_actions";
 
 const mapStateToProps = ({ errors, entities: { tickets } }, ownProps) => ({
   errors: errors.eventError,
@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
   receiveTickets: tickets => dispatch(receiveTickets(tickets)),
   createEvent: event => dispatch(createEvent(event)),
   createTicket: ticket => dispatch(createTicket(ticket)),
+  deleteTicket: id => dispatch(deleteTicket(id)),
 });
 
 export default connect(
