@@ -16,10 +16,11 @@ class EventForm extends React.Component{
     this.updateTicket = this.updateTicket.bind(this);
     this.addTicket = this.addTicket.bind(this);
     this.displayTickets = this.displayTickets.bind(this);
+    this.fillTickets = this.fillTickets.bind(this);
   }
 
-  addTicket(field){
-
+  addTicket(field) {
+    debugger
     return e => {
       e.preventDefault();
       e.stopPropagation();
@@ -37,12 +38,13 @@ class EventForm extends React.Component{
         default: ticketType = 0;
       }
       let tick = {
-        name: "",
-        quantity: 0,
-        ticket_type: field,
-        price: 0,
-        event_id: null
-      };
+          name: "",
+          quantity: 0,
+          ticket_type: field,
+          price: 0,
+          event_id: null
+        };
+        debugger
       this.setState({
         ticket_num: this.state.ticket_num + 1,
         ticket_type:  merge({}, this.state.ticket_type, { ticketType }),
@@ -53,6 +55,8 @@ class EventForm extends React.Component{
   }
   displayTickets(i) {
       let tickType;
+      let tick = this.state.tickets[i];
+      debugger
       switch(this.state.ticket_type.ticketType[i]) {
         case 0:
           tickType = <input type="text" value="Free" readOnly/>;
@@ -66,6 +70,7 @@ class EventForm extends React.Component{
             placeholder="100"
             step="0.01"
             min="0"
+            value={`${tick.price}`}
             onChange={this.updateTicket('price', i)}
           />;
       }
@@ -76,12 +81,14 @@ class EventForm extends React.Component{
             type="text"
             placeholder="Early Bird, General, VIP..."
             onChange={this.updateTicket('name', i)}
+            value={`${tick.name}`}
           />
           <input 
             type="number" 
             placeholder="100"
             min="0"
             onChange={this.updateTicket('quantity', i)}
+            value={`${tick.quantity}`}
           />
           {tickType}
         </div>
@@ -103,12 +110,19 @@ class EventForm extends React.Component{
 
       
     }else{
-      return this.props.updateEvent(this.state).then(
+      this.props.receiveTickets(this.state.tickets);
+      
+      this.props.updateEvent(this.state).then(( payload ) => {
+        Object.values(this.props.tickets).forEach(ticket => {
+          ticket["event_id"] = payload.event.id;
+          this.props.createTicket(ticket);
+        });
+      }).then(
         () => this.props.history.push(`/event/${this.state.id}`)
-        );
-      }
+      );
       
     }
+  }
       // () => this.props.history.push(`/`)
   update(field){
     return e => {
@@ -124,7 +138,7 @@ class EventForm extends React.Component{
       console.log(idx);
       let newState = merge([], this.state.tickets);
       if(field === "price" || field === "quantity"){
-        newState[idx][field] = parseInt(e.currentTarget.value);
+        newState[idx][field] = e.currentTarget.value ? parseInt(e.currentTarget.value) : "";
       } else {
         newState[idx][field] = e.currentTarget.value;
       }
@@ -157,9 +171,50 @@ class EventForm extends React.Component{
     });
   }
 
+  fillTickets(tickets) {
+    debugger
+    let editTickets = {
+      ticket_num: 0,
+      ticket_type: {},
+      tickets: []
+    };
+    if(tickets){
+      debugger
+      tickets.forEach(tick => {
+        debugger
+        let ticketType = {};
+        switch(tick.ticket_type) {
+          case 'free':
+            ticketType[editTickets.ticket_num] = 0;
+            break;
+          case 'paid':
+            ticketType[editTickets.ticket_num] = 1;
+            break;
+          case 'donation':
+            ticketType[editTickets.ticket_num] = 2;
+            break;
+          default: ticketType = 0;
+        }
+        editTickets.tickets .push(tick)
+        editTickets.ticket_type = merge({}, editTickets.ticket_type, {ticketType});
+        editTickets.ticket_num += 1
+        // debugger
+        // this.addTicket(tick.ticket_type, tick);
+        // debugger
+      });
+    }
+        this.setState({
+          ticket_num: editTickets.ticket_num,
+          ticket_type: editTickets.ticket_type,
+          tickets: editTickets.tickets
+        });
+  }
   componentDidMount(){
     let formattedDate = this.formatDate(new Date());
     //default states for dates
+    let tickets = this.props.tickets ? Object.values(this.props.tickets) : null;
+    debugger
+    
     this.setState({
       image_url: 'https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg',
       category_id: 1,
@@ -171,11 +226,42 @@ class EventForm extends React.Component{
       ticket_num: 0,
       ticket_type: {},
       tickets: []
-      
-    });
+    }, () => this.fillTickets(tickets)
+    //   () => {
+
+      // if(tickets){
+      //   debugger
+      //   tickets.forEach(tick => {
+      //     debugger
+      //     let ticketType = {};
+      //     switch(tick.ticket_type) {
+      //       case 'free':
+      //         ticketType[this.state.ticket_num] = 0;
+      //         break;
+      //       case 'paid':
+      //         ticketType[this.state.ticket_num] = 1;
+      //         break;
+      //       case 'donation':
+      //         ticketType[this.state.ticket_num] = 2;
+      //         break;
+      //       default: ticketType = 0;
+      //     }
+      //     this.setState({
+      //       ticket_num: this.state.ticket_num + 1,
+      //       ticket_type:  merge({}, this.state.ticket_type, { ticketType }),
+      //       tickets: merge([], this.state.tickets, {[this.state.ticket_num]: tick})
+      //     });
+      //     // debugger
+      //     // return that.addTicket(tick.ticket_type, tick);
+      //     // debugger
+      //   });
+      // }
+    // }
+    );
   }
 
   render(){
+
     let tickets = [];
     for(let i = 0; i < this.state.ticket_num; i++) {
       tickets[i] = this.displayTickets(i); 

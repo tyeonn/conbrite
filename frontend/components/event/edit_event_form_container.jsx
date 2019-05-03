@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import EventForm from "./event_form";
 import { retrieveEvent, updateEvent } from "../../actions/event_actions";
+import { receiveTickets, createTicket, deleteTicket } from "../../actions/ticket_actions";
 
 const _defaultEvent = {
   title: "",
@@ -16,11 +17,15 @@ const _defaultEvent = {
 const mapStateToProps = ({ errors, entities: { events, tickets } }, ownProps) => ({
   errors: errors.eventError,
   event: events[ownProps.match.params.eventId] || _defaultEvent,
+  tickets,
   formType: "Edit Event"
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateEvent: event => dispatch(updateEvent(event))
+  receiveTickets: tickets => dispatch(receiveTickets(tickets)),
+  updateEvent: event => dispatch(updateEvent(event)),
+  createTicket: ticket => dispatch(createTicket(ticket)),
+  deleteTicket: id => dispatch(deleteTicket(id)),
 });
 
 class EditEventForm extends React.Component {
@@ -41,6 +46,10 @@ class EditEventForm extends React.Component {
         formType={this.props.formType}
         updateEvent={this.props.updateEvent}
         retrieveEvent={retrieveEvent}
+        tickets={this.props.tickets}
+        receiveTickets={this.props.receiveTickets}
+        createTicket={this.props.createTicket}
+        deleteTicket={this.props.deleteTicket}
       />
     );
   }
