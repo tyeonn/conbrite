@@ -33,32 +33,37 @@ class TicketForm extends React.Component {
   }
 
   handleSubmit(e) {
-    this.state.soldTicket.forEach(ticket => {
-      let tickId = parseInt(ticket[0]);
-      let quant = parseInt(ticket[1]);
-      // let tick = this.state[tickId];
-      // tick.quantity = quant;
-      let tick = this.props.tickets[tickId];
-      tick.quantity = quant;
-      this.props.sellTicket(tick);
-      // this.setState({
-      //   [tickId]: tick
-      // });
-    });
-    
-    this.props.modalClose();
-    setTimeout(() => {
-      Swal.fire({
-        type: 'success',
-        title: 'Enjoy the event!',
-        timer: 1500,
-        showConfirmButton: false,
+    // return e => {
+      e.preventDefault();
+      // e.stopPropogation();
+      this.state.soldTicket.forEach(ticket => {
+        let tickId = parseInt(ticket[0]);
+        let quant = parseInt(ticket[1]);
+        // let tick = this.state[tickId];
+        // tick.quantity = quant;
+        let tick = this.props.tickets[tickId];
+        tick.quantity = quant;
+        this.props.sellTicket(tick);
+        // this.setState({
+        //   [tickId]: tick
+        // });
       });
+      
+      this.props.modalClose();
+      setTimeout(() => {
+        Swal.fire({
+          type: 'success',
+          title: 'Enjoy the event!',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+  
+      },600);
+     
+  
+      debugger
 
-    },600);
-   
-
-    debugger
+    // }
 
   }
   render() {
@@ -67,9 +72,22 @@ class TicketForm extends React.Component {
     Object.values(this.props.tickets).forEach( ticket => {
       let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
       let qtyOption;
+      console.log(ticket.quantity);
       if(ticket.quantity <= 0){
         qtyOption = <p className="ticket-info-quantity-sold-out">Sold Out</p>
-      } else {
+      } else if(ticket.quantity < 5 && ticket.quantity > 0){
+        let options = [];
+        for(let i = 0; i <= ticket.quantity; i++ ){
+          options.push(<option key={i} value={`${ticket.id} ${i}`}>{i}</option>);
+        }
+        qtyOption = <select 
+        className="ticket-info-quantity"
+        onChange={this.handleQuantity}
+        key={ticket.id}
+        >
+          {options}
+        </select>
+      }else {
         qtyOption = <select 
         className="ticket-info-quantity"
         onChange={this.handleQuantity}

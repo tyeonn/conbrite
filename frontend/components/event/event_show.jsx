@@ -29,8 +29,7 @@ class EventShow extends React.Component{
     this.props.retrieveEvent(this.props.match.params.eventId).then( props => {
       this.props.retrieveUser(props.event.organizer_id);
     }).then( this.props.retrieveTickets(this.props.match.params.eventId));
-    
-    
+    debugger
 
     window.scrollTo(0, 0);
     
@@ -46,7 +45,6 @@ class EventShow extends React.Component{
       organizer = this.props.users[event.organizer_id];
 
     }
-
     if(event){
       sDateArray = event.start_date.split(' ');
       eDateArray = event.end_date.split(' ');

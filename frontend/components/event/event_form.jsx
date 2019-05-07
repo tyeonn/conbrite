@@ -74,13 +74,28 @@ class EventForm extends React.Component{
         ticket_type: newTicketType,
         tickets: newTickets
       });
-      this.props.deleteTicket(id);
+      // if(this.props.formType === "Edit Event" && this.props.tickets[id]) {
+      //   this.props.deleteTicket(id);
+      // }
     };
 
   }
   displayTickets(i) {
       let tickType;
       let tick = this.state.tickets[i];
+      let removeBtn = null;
+      let readOnly = false;
+      if(this.props.formType === 'Edit Event') {
+        readOnly = this.props.tickets[tick.id] ? true : false;
+      }
+      if(this.props.formType === 'Create Event' || !this.props.tickets[tick.id]) {
+        removeBtn = <button 
+          className="delete-ticket-btn"
+          onClick={this.removeTicket(tick.id, i)}>
+          <i className="fas fa-times"></i>
+        </button>
+      }
+
       debugger
       switch(this.state.ticket_type.ticketType[i]) {
         case 0:
@@ -90,7 +105,9 @@ class EventForm extends React.Component{
           tickType = <input type="text" value="Donation" readOnly />;
           break;
         default:
-          tickType = <input 
+          tickType = <input
+            // className={this.props.formType}
+            readOnly={readOnly}
             type="number" 
             placeholder="100"
             step="0.01"
@@ -103,12 +120,16 @@ class EventForm extends React.Component{
       return(  
         <div key={i}>
           <input 
+            // className={this.props.formType}
+            readOnly={readOnly}
             type="text"
             placeholder="Early Bird, General, VIP..."
             onChange={this.updateTicket('name', i)}
             value={`${tick.name}`}
           />
           <input 
+            // className={this.props.formType}
+            readOnly={readOnly}
             type="number" 
             placeholder="100"
             min="0"
@@ -116,11 +137,7 @@ class EventForm extends React.Component{
             value={`${tick.quantity}`}
           />
           {tickType}
-          <button 
-            className="delete-ticket-btn"
-            onClick={this.removeTicket(tick.id, i)}>
-            <i className="fas fa-times"></i>
-          </button>
+          {removeBtn}
         </div>
       )
   }
@@ -131,24 +148,29 @@ class EventForm extends React.Component{
     if(this.props.formType === 'Create Event'){
       this.props.receiveTickets(this.state.tickets);
       this.props.createEvent(this.state).then(( payload ) => {
+        eventId = payload.event.id;
         Object.values(this.props.tickets).forEach(ticket => {
           ticket["event_id"] = payload.event.id;
           this.props.createTicket(ticket);
         });
-        console.log(this.props.tickets);
-      });
+      }).then(
+        () => this.props.history.push(`/event/${eventId}`)
+      );;
 
       
     }else{
-      this.props.receiveTickets(this.state.tickets);
-      this.state.tickets.forEach(ticket => {
-        debugger
-        this.props.deleteTicket(ticket.id);
-      });
+      // this.props.receiveTickets(this.state.tickets);
+      // this.state.tickets.forEach(ticket => {
+      //   debugger
+      //   this.props.deleteTicket(ticket.id);
+      // });
+      debugger
       this.props.updateEvent(this.state).then(( payload ) => {
-        Object.values(this.props.tickets).forEach(ticket => {
-          ticket["event_id"] = payload.event.id;
-          this.props.createTicket(ticket);
+        Object.values(this.state.tickets).forEach(ticket => {
+          if(!ticket.id){
+            ticket["event_id"] = payload.event.id;
+            this.props.createTicket(ticket);
+          }
         });
       }).then(
         () => this.props.history.push(`/event/${this.state.id}`)
@@ -206,41 +228,43 @@ class EventForm extends React.Component{
 
   fillTickets(tickets) {
     debugger
-    let editTickets = {
-      ticket_num: 0,
-      ticket_type: {},
-      tickets: []
-    };
-    if(tickets){
-      debugger
-      tickets.forEach(tick => {
+    if(this.props.formType === 'Edit Event'){
+      let editTickets = {
+        ticket_num: 0,
+        ticket_type: {},
+        tickets: []
+      };
+      if(tickets){
         debugger
-        let ticketType = {};
-        switch(tick.ticket_type) {
-          case 'free':
-            ticketType[editTickets.ticket_num] = 0;
-            break;
-          case 'paid':
-            ticketType[editTickets.ticket_num] = 1;
-            break;
-          case 'donation':
-            ticketType[editTickets.ticket_num] = 2;
-            break;
-          default: ticketType = 0;
-        }
-        editTickets.tickets .push(tick)
-        editTickets.ticket_type = merge({}, editTickets.ticket_type, {ticketType});
-        editTickets.ticket_num += 1
-        // debugger
-        // this.addTicket(tick.ticket_type, tick);
-        // debugger
-      });
-    }
-        this.setState({
-          ticket_num: editTickets.ticket_num,
-          ticket_type: editTickets.ticket_type,
-          tickets: editTickets.tickets
+        tickets.forEach(tick => {
+          debugger
+          let ticketType = {};
+          switch(tick.ticket_type) {
+            case 'free':
+              ticketType[editTickets.ticket_num] = 0;
+              break;
+            case 'paid':
+              ticketType[editTickets.ticket_num] = 1;
+              break;
+            case 'donation':
+              ticketType[editTickets.ticket_num] = 2;
+              break;
+            default: ticketType = 0;
+          }
+          editTickets.tickets .push(tick)
+          editTickets.ticket_type = merge({}, editTickets.ticket_type, {ticketType});
+          editTickets.ticket_num += 1
+          // debugger
+          // this.addTicket(tick.ticket_type, tick);
+          // debugger
         });
+      }
+          this.setState({
+            ticket_num: editTickets.ticket_num,
+            ticket_type: editTickets.ticket_type,
+            tickets: editTickets.tickets
+          });
+    }
   }
   componentDidMount(){
     let formattedDate = this.formatDate(new Date());
