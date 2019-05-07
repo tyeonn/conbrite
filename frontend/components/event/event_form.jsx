@@ -27,13 +27,13 @@ class EventForm extends React.Component{
       e.stopPropagation();
       let ticketType = {};
       switch(field) {
-        case 'free':
+        case 'Free':
           ticketType[this.state.ticket_num] = 0;
           break;
-        case 'paid':
+        case 'Paid':
           ticketType[this.state.ticket_num] = 1;
           break;
-        case 'donation':
+        case 'Donation':
           ticketType[this.state.ticket_num] = 2;
           break;
         default: ticketType = 0;
@@ -240,13 +240,13 @@ class EventForm extends React.Component{
           debugger
           let ticketType = {};
           switch(tick.ticket_type) {
-            case 'free':
+            case 'Free':
               ticketType[editTickets.ticket_num] = 0;
               break;
-            case 'paid':
+            case 'Paid':
               ticketType[editTickets.ticket_num] = 1;
               break;
-            case 'donation':
+            case 'Donation':
               ticketType[editTickets.ticket_num] = 2;
               break;
             default: ticketType = 0;
@@ -292,13 +292,13 @@ class EventForm extends React.Component{
       //     debugger
       //     let ticketType = {};
       //     switch(tick.ticket_type) {
-      //       case 'free':
+      //       case 'Free':
       //         ticketType[this.state.ticket_num] = 0;
       //         break;
-      //       case 'paid':
+      //       case 'Paid':
       //         ticketType[this.state.ticket_num] = 1;
       //         break;
-      //       case 'donation':
+      //       case 'Donation':
       //         ticketType[this.state.ticket_num] = 2;
       //         break;
       //       default: ticketType = 0;
@@ -434,13 +434,13 @@ class EventForm extends React.Component{
                 {tickets}
               </div>
               <div className='event-form-ticket-type'>
-                <button className='event-form-ticket-type-button' onClick={this.addTicket('free')}>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket('Free')}>
                   Free Ticket
                 </button>
-                <button className='event-form-ticket-type-button' onClick={this.addTicket('paid')}>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket('Paid')}>
                   Paid Ticket
                 </button>
-                <button className='event-form-ticket-type-button' onClick={this.addTicket('donation')}>
+                <button className='event-form-ticket-type-button' onClick={this.addTicket('Donation')}>
                   Donation
                 </button>
               </div>

@@ -70,7 +70,23 @@ class TicketForm extends React.Component {
     debugger
     let tickets = [];
     Object.values(this.props.tickets).forEach( ticket => {
-      let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
+      let price;
+      switch(ticket.ticket_type){
+        case 'Free':
+          price = 'Free';
+          break;
+        case 'Donation':
+          price = <input
+            type="number" 
+            placeholder="Donate"
+            step="0.01"
+            min="0"
+          />;
+          break;
+        default:
+          price = ticket.price;
+      }
+      // let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
       let qtyOption;
       console.log(ticket.quantity);
       if(ticket.quantity <= 0){
