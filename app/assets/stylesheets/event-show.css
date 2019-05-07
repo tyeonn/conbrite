@@ -49,8 +49,7 @@
   font-size: 20px;
   display: flex;
   /* align-self: center; */
-  padding-top: 30px;
-  padding-left: 40px;
+  padding: 30px 40px 0 40px;
 }
 
 .event-show-header-info-organizer {
@@ -181,8 +180,10 @@
 .event-show-content-left h1 {
   font: 18px;
 }
+
 .event-show-content-left p,
 .event-show-content-right p {
+  white-space: pre-wrap;
   font: 16px;
   color: #6f7287;
 }
