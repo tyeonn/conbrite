@@ -28,7 +28,10 @@ class EventShow extends React.Component{
   componentDidMount(){
     this.props.retrieveEvent(this.props.match.params.eventId).then( props => {
       this.props.retrieveUser(props.event.organizer_id);
-    }).then( this.props.retrieveTickets(this.props.match.params.eventId));
+    }).then( () => {
+      debugger
+      this.props.retrieveTickets(this.props.match.params.eventId);
+    });
     debugger
 
     window.scrollTo(0, 0);
