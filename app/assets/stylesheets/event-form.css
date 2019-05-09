@@ -52,6 +52,11 @@
   background: white;
   align-self: center;
 }
+
+.event-form-disabled {
+  background: #EEEDF2;
+  color: #a9a8b3;
+}
 .event-form textarea:focus,
 .event-form input:focus {
   outline: 2px solid #3759e4;
@@ -197,8 +202,26 @@
 }
 
 .event-form-tickets-index input:nth-child(3),
+#event-form-ticket-price,
 .event-form-ticket-header span:nth-child(3) {
   display: flex;
+  flex: 2;
+}
+
+#event-form-ticket-price {
+  flex: 2.3;
+}
+#event-form-ticket-price span {
+  display: flex;
+  align-self: center;
+  margin-top: 4px;
+  font-size: 20px;
+  position: absolute;
+  transform: translateX(10px);
+  color: #1f2fa3;
+}
+#event-form-ticket-price input {
+  padding-left: 25px;
   flex: 2;
 }
 
@@ -210,7 +233,9 @@
 .event-form-tickets-index button {
   margin: 7px 20px 0 20px;
 }
-
+#event-form-ticket-price span {
+  display: flex;
+}
 
 .event-form-ticket-type {
   display: flex;

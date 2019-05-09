@@ -83,11 +83,14 @@ class EventForm extends React.Component{
   displayTickets(i) {
       let tickType;
       let tick = this.state.tickets[i];
+      let tickPrice = tick.price == 0 ? '' : tick.price;
+      let tickQuant = tick.quantity == 0 ? '' : tick.quantity;
       let removeBtn = null;
       let readOnly = false;
       if(this.props.formType === 'Edit Event') {
         readOnly = this.props.tickets[tick.id] ? true : false;
       }
+      let disabledBtn = readOnly ? 'event-form-disabled' : '';
       if(this.props.formType === 'Create Event' || !this.props.tickets[tick.id]) {
         removeBtn = <button 
           className="delete-ticket-btn"
@@ -95,32 +98,39 @@ class EventForm extends React.Component{
           <i className="fas fa-times"></i>
         </button>
       }
-
       debugger
       switch(this.state.ticket_type.ticketType[i]) {
         case 0:
-          tickType = <input type="text" value="Free" readOnly/>;
+          tickType = <div id='event-form-ticket-price' >
+            <input type="text" value="Free" readOnly className='event-form-disabled'/>
+          </div>
           break;
         case 2:
-          tickType = <input type="text" value="Donation" readOnly />;
+          tickType = <div id='event-form-ticket-price' >
+            <input type="text" value="Donation" readOnly className='event-form-disabled'/>
+          </div>
           break;
         default:
-          tickType = <input
-            // className='event-form-tickets-price'
-            readOnly={readOnly}
-            type="number" 
-            placeholder="100"
-            step="0.01"
-            min="0"
-            value={`${tick.price}`}
-            onChange={this.updateTicket('price', i)}
-          />;
+          tickType = <div id='event-form-ticket-price'>
+            <span>$</span>
+            <input
+              className={disabledBtn}
+              readOnly={readOnly}
+              type="number" 
+              placeholder="100"
+              step="0.01"
+              min="0"
+              value={`${tickPrice}`}
+              onChange={this.updateTicket('price', i)}
+            />
+            
+          </div>
       }
       
       return(  
         <div key={i} className='event-form-tickets-index'>
           <input 
-            // className='event-form-tickets-name'
+            className={disabledBtn}
             readOnly={readOnly}
             type="text"
             placeholder="Early Bird, General, VIP..."
@@ -128,14 +138,15 @@ class EventForm extends React.Component{
             value={`${tick.name}`}
           />
           <input 
-            // className='event-form-tickets-quantity'
+            className={disabledBtn}
             readOnly={readOnly}
             type="number" 
             placeholder="100"
             min="0"
             onChange={this.updateTicket('quantity', i)}
-            value={`${tick.quantity}`}
+            value={`${tickQuant}`}
           />
+
           {tickType}
           {removeBtn}
         </div>

@@ -83,6 +83,11 @@ button {
 /* input[type="password"],
 input[type="email"],
 input[type="text"], */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  
+}
 
 input[type="text"] {
   font-family: Neue Plak, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
