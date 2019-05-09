@@ -106,7 +106,7 @@ class EventForm extends React.Component{
           break;
         default:
           tickType = <input
-            // className={this.props.formType}
+            // className='event-form-tickets-price'
             readOnly={readOnly}
             type="number" 
             placeholder="100"
@@ -118,9 +118,9 @@ class EventForm extends React.Component{
       }
       
       return(  
-        <div key={i}>
+        <div key={i} className='event-form-tickets-index'>
           <input 
-            // className={this.props.formType}
+            // className='event-form-tickets-name'
             readOnly={readOnly}
             type="text"
             placeholder="Early Bird, General, VIP..."
@@ -128,7 +128,7 @@ class EventForm extends React.Component{
             value={`${tick.name}`}
           />
           <input 
-            // className={this.props.formType}
+            // className='event-form-tickets-quantity'
             readOnly={readOnly}
             type="number" 
             placeholder="100"
@@ -430,22 +430,22 @@ class EventForm extends React.Component{
                 <span>Price</span>
                 <span>Actions</span>
               </div>
-              <div className='event-form-tickets-index'>
+              <div >
                 {tickets}
               </div>
               <div className='event-form-ticket-type'>
                 <button className='event-form-ticket-type-button' onClick={this.addTicket('Free')}>
-                  Free Ticket
+                  Free
                 </button>
                 <button className='event-form-ticket-type-button' onClick={this.addTicket('Paid')}>
-                  Paid Ticket
+                  Paid
                 </button>
                 <button className='event-form-ticket-type-button' onClick={this.addTicket('Donation')}>
                   Donation
                 </button>
               </div>
             </div>
-            <label htmlFor="event-form-input"> Max Number of Tickets</label>
+            {/* <label htmlFor="event-form-input"> Max Number of Tickets</label>
             <input type="number"
               id="num-ticks"
               value={this.state.max_tickets}
@@ -454,7 +454,7 @@ class EventForm extends React.Component{
               min="0"
               max="1000000"
               required 
-            />
+            /> */}
           </div>
 
           <div className='event-form-detail-header'>
