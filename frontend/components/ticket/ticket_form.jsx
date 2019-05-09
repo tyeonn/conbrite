@@ -14,21 +14,30 @@ class TicketForm extends React.Component {
   componentDidMount() {
     this.setState({
       soldTicket: [],
-      quantChange: false
+      quantChange: false,
+      totalTickets: 0,
     });
+
   }
   handleQuantity(e) {
-    document.getElementById("ticket-form-btn").removeAttribute("disabled");
+    document.getElementsByClassName("ticket-form-btn")[0].removeAttribute("disabled");
     let qty = e.currentTarget.value.split(' ');
     let newState = this.state.soldTicket;
     let idx = null;
+    let total = 0;
     newState = newState.filter( tick => {
       return !tick.includes(qty[0]);
     });
     newState.push(qty);
+    newState.forEach(ticket => {
+      total += parseInt(ticket[1]);
+    });
+    debugger
     this.setState({
+
       soldTicket: newState,
-      quantChange: true
+      quantChange: true,
+      totalTickets: total
     });
   }
 
@@ -69,6 +78,11 @@ class TicketForm extends React.Component {
   render() {
     debugger
     let tickets = [];
+    let active;
+    if(this.state.soldTicket){
+      active = this.state.totalTickets != 0 ? 'active-ticket-btn' : '';
+    }
+
     Object.values(this.props.tickets).forEach( ticket => {
       let price;
       switch(ticket.ticket_type){
@@ -76,22 +90,27 @@ class TicketForm extends React.Component {
           price = 'Free';
           break;
         case 'Donation':
-          price = <input
-            type="number" 
-            placeholder="Donate"
-            step="0.01"
-            min="0"
-          />;
+          price = <div id='ticket-form-donate-price'>
+            <span>$</span>
+            <input
+              type="number" 
+              placeholder="Donate"
+              step="0.01"
+              min="0"
+
+            />
+          </div>
+
           break;
         default:
-          price = ticket.price;
+          price =`$ ${ticket.price}`;
       }
       // let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
       let qtyOption;
       console.log(ticket.quantity);
       if(ticket.quantity <= 0){
         qtyOption = <p className="ticket-info-quantity-sold-out">Sold Out</p>
-      } else if(ticket.quantity < 5 && ticket.quantity > 0){
+      } else if(ticket.quantity < 5 && ticket.quantity > 0) {
         let options = [];
         for(let i = 0; i <= ticket.quantity; i++ ){
           options.push(<option key={i} value={`${ticket.id} ${i}`}>{i}</option>);
@@ -103,32 +122,41 @@ class TicketForm extends React.Component {
         >
           {options}
         </select>
-      }else {
+      } else {
         qtyOption = <select 
-        className="ticket-info-quantity"
-        onChange={this.handleQuantity}
-        key={ticket.id}
-      >
-        <option value={`${ticket.id} 0`}>0</option>
-        <option value={`${ticket.id} 1`}>1</option>
-        <option value={`${ticket.id} 2`}>2</option>
-        <option value={`${ticket.id} 3`}>3</option>
-        <option value={`${ticket.id} 4`}>4</option>
-        <option value={`${ticket.id} 5`}>5</option>
-      </select>
+          className="ticket-info-quantity"
+          onChange={this.handleQuantity}
+          key={ticket.id}
+        >
+          <option value={`${ticket.id} 0`}>0</option>
+          <option value={`${ticket.id} 1`}>1</option>
+          <option value={`${ticket.id} 2`}>2</option>
+          <option value={`${ticket.id} 3`}>3</option>
+          <option value={`${ticket.id} 4`}>4</option>
+          <option value={`${ticket.id} 5`}>5</option>
+        </select>
       }
       tickets.push(
         <div key={ticket.id} className={`ticket-info ${ticket.id}`}>
-          <h2>{ticket.name}</h2>
-          <p>{price}</p>
+          <div>
+            <h2>{ticket.name}</h2>
+            <div>{price}</div>
+          </div>
           {qtyOption}
         </div>
       )
     });
     return(
       <form onSubmit={this.handleSubmit}>
-        {tickets}
-        <input  id="ticket-form-btn" type="submit" value="Checkout" disabled/>
+        <div>
+          {tickets}
+        </div>
+        <footer>
+          <p>QTY: {this.state.totalTickets}</p>
+          <input id={active} className={`ticket-form-btn`} type="submit" value="Checkout" disabled/>
+
+        </footer>
+          
       </form>
     )
     
