@@ -31,12 +31,18 @@ class Profile extends React.Component {
   handleMouseLeave(){
     this.setState({hover: false});
   }
+
+  componentDidMount() {
+    this.props.retrieveUser(this.props.currentUser.id);
+  }
   
   
   render() {
     const { currentUser, logout } = this.props;
     const dropdownClass = this.state.hover ? '' : 'hidden';
-    if(currentUser){
+    let tickets = this.props.tickets ? this.props.tickets.length : 0;
+    
+    if(currentUser) {
       return(
         <div 
           className='navbar-right-list-profile signedin'
@@ -46,14 +52,14 @@ class Profile extends React.Component {
           <i className="far fa-user-circle"></i>
           <i className="fas fa-chevron-down"></i>
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
-            <li> <NavLink to=''>Browse Events</NavLink> </li>
-            <li> <NavLink to=''>Tickets (0)</NavLink> </li>
+            {/* <li> <NavLink to=''>Browse Events</NavLink> </li> */}
+            <li> <NavLink to='/tickets'>Tickets ({tickets})</NavLink> </li>
             <li> <NavLink to=''>Liked (0)</NavLink> </li>
-            <li> <NavLink to=''>Following (0)</NavLink> </li>
-            <li> <NavLink to=''>Manage Events</NavLink> </li>
-            <li> <NavLink to=''>Organizer Profile</NavLink> </li>
-            <li> <NavLink to=''>Account Settings</NavLink> </li>
-            <li> <NavLink to=''>Create Event</NavLink> </li>
+            {/* <li> <NavLink to=''>Following (0)</NavLink> </li> */}
+            {/* <li> <NavLink to=''>Manage Events</NavLink> </li> */}
+            {/* <li> <NavLink to=''>Organizer Profile</NavLink> </li> */}
+            {/* <li> <NavLink to=''>Account Settings</NavLink> </li> */}
+            {/* <li> <NavLink to=''>Create Event</NavLink> </li> */}
             <li>  <NavLink
               to='/signin'
               onClick={logout}

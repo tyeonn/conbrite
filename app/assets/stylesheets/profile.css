@@ -28,12 +28,13 @@
   height: 24px;
   width: 210px;
   padding: 16px 20px;
+  cursor: pointer;
 }
 .navbar-right-list-profile-dropdown li:hover {
   background: #f8f7fa;
 }
-.navbar-right-list-profile-dropdown li:first-child,
-.navbar-right-list-profile-dropdown li:nth-child(4),
-.navbar-right-list-profile-dropdown li:nth-child(6) {
+/* .navbar-right-list-profile-dropdown li:first-child, */
+/* .navbar-right-list-profile-dropdown li:nth-child(4), */
+.navbar-right-list-profile-dropdown li:nth-child(3) {
   border-bottom: 1px solid #dbdae3;
 }
