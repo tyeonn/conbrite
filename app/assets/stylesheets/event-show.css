@@ -146,9 +146,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow:scroll;
+  overflow-y:scroll;
   height: 100%;
 }
+
 .ticket-modal-form-container form > footer {
   display: flex;
   justify-content: space-between;
@@ -160,6 +161,7 @@
   padding: 5px;
   border: 1px solid #dbdae3;
   margin-bottom: 15px;
+  margin-right: 5px;
   min-height: 20%;
   border-left: 5px solid #3759e4;
   justify-content: space-between;
@@ -208,6 +210,10 @@
   outline: 0;
   margin-right: 10px;
   border: 1px solid #1f2fa3;
+}
+
+.ticket-info-quantity-sold-out {
+  margin-right: 20px;
 }
 
 .ticket-form-btn {
