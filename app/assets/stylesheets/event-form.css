@@ -230,10 +230,19 @@
 /* .event-form-tickets-index input:nth-child(4), */
 .event-form-ticket-header span:nth-child(4) {
   display: flex;
-  flex: 1;
+  flex: 0.7;
 }
 .event-form-tickets-index button {
   margin: 7px 20px 0 20px;
+}
+#delete-ticket-btn-disabled {
+  background: #EEEDF2;
+  border: 1px solid #dbdae3;
+  color: #a9a8b3;
+}
+#dollar-disabled {
+  color: #a9a8b3 !important;
+
 }
 #event-form-ticket-price span {
   display: flex;
