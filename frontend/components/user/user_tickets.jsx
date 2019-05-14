@@ -4,7 +4,8 @@ class UserTickets extends React.Component {
   constructor(props) {
     super(props); 
     this.displayTicket = this.displayTicket.bind(this);
-
+    this.sortByDate = this.sortByDate.bind(this);
+    this.compareDate = this.compareDate.bind(this);
   }
 
   displayTicket(ticket, i) {
@@ -48,6 +49,23 @@ class UserTickets extends React.Component {
     )
   }
 
+  compareDate(a, b) {
+    a = new Date(a.event.start_date);
+    b = new Date(b.event.start_date);
+    if(a < b) {
+      return -1;
+    }else if (a > b) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
+  sortByDate(tickets) {
+    debugger
+    return tickets.sort( this.compareDate );
+  }
+
   componentDidMount() {
     this.props.retrieveUser(this.props.user.id);
   }
@@ -56,6 +74,8 @@ class UserTickets extends React.Component {
     let { user, tickets } = this.props;
     let ticketIndex = [];
     if(tickets) {
+      tickets = this.sortByDate(tickets);
+      debugger
       for(let i = 0; i < tickets.length; i++){
         ticketIndex.push(this.displayTicket(tickets[i], i));
       }

@@ -268,7 +268,7 @@
 }
 
 .ReactModal__Body--open {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .ReactModal__Overlay {
   opacity: 0;
