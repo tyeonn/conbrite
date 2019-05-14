@@ -1,0 +1,31 @@
+.user-tickets-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-tickets-header {
+  display: flex;
+  align-items: center;
+  height: 25vh;
+  padding: 50px 30px;
+}
+.user-tickets-header-profile-pic {
+  padding: 40px;
+  border-radius: 90px;
+  box-shadow: 0 0 5px grey;
+}
+.fa-user {
+  font-size: 50px;
+  color: grey;
+}
+
+.user-tickets-header-info {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.user-tickets-index {
+  display: flex;
+  flex-direction: column;
+}

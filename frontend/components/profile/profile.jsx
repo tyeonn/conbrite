@@ -33,7 +33,9 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.props.retrieveUser(this.props.currentUser.id);
+    if(this.props.currentUser) {
+      this.props.retrieveUser(this.props.currentUser.id);
+    }
   }
   
   
@@ -43,6 +45,7 @@ class Profile extends React.Component {
     let tickets = this.props.tickets ? this.props.tickets.length : 0;
     
     if(currentUser) {
+      debugger
       return(
         <div 
           className='navbar-right-list-profile signedin'
@@ -53,7 +56,7 @@ class Profile extends React.Component {
           <i className="fas fa-chevron-down"></i>
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             {/* <li> <NavLink to=''>Browse Events</NavLink> </li> */}
-            <li> <NavLink to='/tickets'>Tickets ({tickets})</NavLink> </li>
+            <li> <NavLink to={`/${currentUser.id}/tickets`}>Tickets ({tickets})</NavLink> </li>
             <li> <NavLink to=''>Liked (0)</NavLink> </li>
             {/* <li> <NavLink to=''>Following (0)</NavLink> </li> */}
             {/* <li> <NavLink to=''>Manage Events</NavLink> </li> */}

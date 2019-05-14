@@ -4,9 +4,10 @@ import { logout } from "../../actions/session_actions";
 import { retrieveUser } from '../../actions/user_actions';
 
 const mapStateToProps = ({ session, entities: { users }, ownProps }) => {
+  debugger
   return {
     currentUser: users[session.id],
-    tickets: users[session.id].registered_tickets
+    tickets: session.id != null ? users[session.id].registered_tickets : null
   };
 };
 

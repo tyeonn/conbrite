@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
   # end
 
   def show
-    @user = User.includes(:registered_tickets).find_by(id: params[:id])
+    @user = User.includes(registered_tickets: :event).find_by(id: params[:id])
     if @user 
       render 'api/users/show'
     else
