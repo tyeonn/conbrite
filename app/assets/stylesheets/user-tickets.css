@@ -28,4 +28,10 @@
 .user-tickets-index {
   display: flex;
   flex-direction: column;
+  align-self: center;
+  width: 60vw;
+}
+
+.user-tickets-info {
+  display: flex;
 }
