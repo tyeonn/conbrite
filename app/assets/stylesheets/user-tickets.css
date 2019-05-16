@@ -89,7 +89,7 @@
 }
 
 .user-tickets-info-title {
-  padding-top: 10px;
+  padding: 10px 0;
   font-size: 20px;
   cursor: pointer;
 }
@@ -103,8 +103,11 @@
 .user-tickets-info-ticket p{
   margin: 0;
 }
-.user-tickets-info-ticket p:first-child {
-  padding: 10px 0;
+.user-tickets-info a {
+  font-size: 20px;
+  color: black;
+  appearance: none;
+  -webkit-appearance: none;
 }
 .user-tickets-info-ticket > span {
   display: flex;

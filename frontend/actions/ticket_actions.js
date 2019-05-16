@@ -80,12 +80,9 @@ export const sellTicket = ticket => {
 export const refundTicket = ticket => {
   return dispatch => {
     TicketApiUtil.refundTicket(ticket).then(
-      ticket => dispatch(receiveTicket(ticket)),
+      () => dispatch(UserActions.retrieveUserTickets(getState().session.id)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
-    ).then(() => {
-      // debugger
-      dispatch(UserActions.retrieveUser(getState().session.id));
-    });
+    );
   };
 };
 

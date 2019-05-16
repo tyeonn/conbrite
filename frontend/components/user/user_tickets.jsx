@@ -1,11 +1,39 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class UserTickets extends React.Component {
   constructor(props) {
     super(props); 
+    this.state = {
+      tickets: this.props.tickets
+    };
     this.displayTicket = this.displayTicket.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
     this.compareDate = this.compareDate.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.refundTicket = this.refundTicket.bind(this);
+  }
+
+  handleClick(id){
+    return e => {
+      e.preventDefault();
+      this.props.history.push(`/event/${id}`);
+
+    };
+  }
+  
+  refundTicket(ticket) {
+
+    return e => {
+      e.preventDefault();
+      let tick = ticket;
+      tick.quantity = 1;
+      this.props.refundTicket(tick);
+      this.setState({
+        tickets: this.props.tickets,
+      });
+
+    };
   }
 
   displayTicket(ticket, i) {
@@ -31,11 +59,11 @@ class UserTickets extends React.Component {
           <p>{sDay}</p> 
         </div>
         <div className='user-tickets-info-img'>
-          <img src={event.image_url} />
+          <img src={event.image_url} onClick={this.handleClick(event.id)}/>
         </div>
         <div className='user-tickets-info'>
           <div className='user-tickets-info-title'>
-            {event.title}
+          <Link to={`/event/${event.id}`}> {event.title} </Link>
           </div>
           <div className='user-tickets-info-ticket'>
             <p>{event.address}</p>
@@ -43,7 +71,7 @@ class UserTickets extends React.Component {
               <p>{ticket.name} Ticket</p>
               {/* <p>{ticket.price}</p> */}
               {/* <p>{ticket.ticket_type}</p> */}
-              <button>
+              <button onClick={this.refundTicket(ticket)}>
                 Refund
               </button>
 

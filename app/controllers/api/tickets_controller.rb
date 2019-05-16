@@ -67,7 +67,8 @@ class Api::TicketsController < ApplicationController
     @ticket = Ticket.find_by(id: params[:id])
     if @ticket
       @ticket.update!(quantity: @ticket.quantity + params['ticket'][:quantity].to_i)
-      params['ticket'][:quantity].to_i.times { @ticket.registered_users.delete(current_user) }
+      # params['ticket'][:quantity].to_i.times { @ticket.registered_users.delete(current_user) }
+        @ticket.registrations.first.delete
       # @ticket.registered_users.delete(current_user)
       render :show
     else

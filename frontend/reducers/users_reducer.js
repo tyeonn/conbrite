@@ -2,7 +2,7 @@ import {
   RECEIVE_CURRENT_USER,
   LOGOUT_CURRENT_USER
 } from "../actions/session_actions";
-import { RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_USER, RECEIVE_USER_TICKETS } from "../actions/user_actions";
 import { RECEIVE_TICKET } from "../actions/ticket_actions";
 import { merge } from "lodash";
 
@@ -16,6 +16,9 @@ const usersReducer = (state = {}, action) => {
       return _nullUser;
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user });
+    case RECEIVE_USER_TICKETS:
+      return Object.assign({}, state, { [action.user.id]: action.user });
+      // return {[action.user.id]: action.user};
     
     default:
       return state;
