@@ -25,24 +25,29 @@ class UserTickets extends React.Component {
     sTime = sDateArray[4];
     eTime = eDateArray[4];
     return(
-      <div key={i} className='user-tickets-info'>
+      <div key={i} className='user-tickets-info-container'>
         <div className='user-tickets-info-date'>
-          {sMonth} {sDay}
+          <p>{sMonth}</p>
+          <p>{sDay}</p> 
         </div>
-        <div>
-          <img src={event.image_url} className='event-show-header-img'/>
+        <div className='user-tickets-info-img'>
+          <img src={event.image_url} />
         </div>
-        <div>
-          <div className='event-show-header-info-title'>
+        <div className='user-tickets-info'>
+          <div className='user-tickets-info-title'>
             {event.title}
           </div>
-          <div>
-            <p>{ticket.name}</p>
-            <p>{ticket.price}</p>
-            <p>{ticket.ticket_type}</p>
-            <button>
-              Refund
-            </button>
+          <div className='user-tickets-info-ticket'>
+            <p>{event.address}</p>
+            <span>
+              <p>{ticket.name} Ticket</p>
+              {/* <p>{ticket.price}</p> */}
+              {/* <p>{ticket.ticket_type}</p> */}
+              <button>
+                Refund
+              </button>
+
+            </span>
           </div>
         </div>
       </div>
@@ -60,7 +65,7 @@ class UserTickets extends React.Component {
       return 0;
     }
   }
-  
+
   sortByDate(tickets) {
     debugger
     return tickets.sort( this.compareDate );
