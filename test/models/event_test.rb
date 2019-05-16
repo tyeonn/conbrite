@@ -9,7 +9,6 @@
 #  image_url    :string           not null
 #  start_date   :string           not null
 #  end_date     :string           not null
-#  max_tickets  :integer          not null
 #  location_id  :integer
 #  category_id  :integer          not null
 #  organizer_id :integer          not null

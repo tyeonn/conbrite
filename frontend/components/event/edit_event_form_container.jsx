@@ -11,7 +11,6 @@ const _defaultEvent = {
   image_url: "",
   start_date: "",
   end_date: "",
-  max_tickets: 0
 };
 
 const mapStateToProps = ({ errors, entities: { events, tickets } }, ownProps) => ({

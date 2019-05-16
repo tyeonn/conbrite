@@ -506,16 +506,6 @@ class EventForm extends React.Component {
                 </button>
               </div>
             </div>
-            {/* <label htmlFor="event-form-input"> Max Number of Tickets</label>
-            <input type="number"
-              id="num-ticks"
-              value={this.state.max_tickets}
-              className='event-form-input'
-              onChange={this.update('max_tickets')}
-              min="0"
-              max="1000000"
-              required 
-            /> */}
           </div>
 
           <div className="event-form-detail-header">

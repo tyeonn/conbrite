@@ -13,7 +13,7 @@ const mapStateToProps = ({ errors, entities: { tickets } }, ownProps) => ({
     image_url: "",
     start_date: "",
     end_date: "",
-    max_tickets: 0,
+    
   },
   tickets,
   formType: "Create Event"
