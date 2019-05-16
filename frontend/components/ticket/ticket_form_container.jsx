@@ -2,7 +2,8 @@ import { connect } from "react-redux";
 import TicketForm from "./ticket_form";
 import { sellTicket } from "../../actions/ticket_actions";
 
-const mapStateToProps = ({ entities: { tickets } }, ownProps) => ({
+const mapStateToProps = ({ session, entities: { tickets, users } }, ownProps) => ({
+  currentUser: users[session.id],
   tickets: tickets,
   modalClose: ownProps.modalClose
 });

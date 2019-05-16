@@ -1,6 +1,7 @@
 import React from 'react';
 import {merge} from'lodash';
 import Swal from'sweetalert2';
+import {withRouter} from 'react-router-dom';
 
 class TicketForm extends React.Component {
   constructor(props) {
@@ -43,31 +44,37 @@ class TicketForm extends React.Component {
   handleSubmit(e) {
     // return e => {
       e.preventDefault();
+
       // e.stopPropogation();
-      this.state.soldTicket.forEach(ticket => {
-        let tickId = parseInt(ticket[0]);
-        let quant = parseInt(ticket[1]);
-        // let tick = this.state[tickId];
-        // tick.quantity = quant;
-        let tick = this.props.tickets[tickId];
-        tick.quantity = quant;
-        this.props.sellTicket(tick);
-        // this.setState({
-        //   [tickId]: tick
-        // });
-      });
-      
-      this.props.modalClose();
-      setTimeout(() => {
-        Swal.fire({
-          type: 'success',
-          title: 'Enjoy the event!',
-          timer: 1500,
-          showConfirmButton: false,
+      if(this.props.currentUser){
+        this.state.soldTicket.forEach(ticket => {
+          let tickId = parseInt(ticket[0]);
+          let quant = parseInt(ticket[1]);
+          // let tick = this.state[tickId];
+          // tick.quantity = quant;
+          let tick = this.props.tickets[tickId];
+          tick.quantity = quant;
+          this.props.sellTicket(tick);
+          // this.setState({
+          //   [tickId]: tick
+          // });
         });
-  
-      },600);
-     
+        
+        this.props.modalClose();
+        setTimeout(() => {
+          Swal.fire({
+            type: 'success',
+            title: 'Enjoy the event!',
+            timer: 1500,
+            showConfirmButton: false,
+          });
+    
+        },600);
+       
+      } else {
+        this.props.history.push('/signin');
+        window.location.reload();
+      }
   
 
     // }
@@ -159,4 +166,4 @@ class TicketForm extends React.Component {
   }
 }
 
-export default TicketForm;
+export default withRouter(TicketForm);

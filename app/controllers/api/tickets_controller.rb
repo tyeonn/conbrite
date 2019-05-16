@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::TicketsController < ApplicationController
-  before_action :ensure_logged_in, only: %i[create update destroy]
+  before_action :ensure_logged_in, only: %i[create update destroy sell_ticket refund_ticket]
   before_action :check_quantity, only: [:sell_ticket]
 
   def create
