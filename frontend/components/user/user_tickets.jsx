@@ -37,7 +37,6 @@ class UserTickets extends React.Component {
   }
 
   displayTicket(ticket, i) {
-    debugger
     let event = ticket.event;
     let sDateArray, sDayOfWeek, sYear, sDay, sMonth, sTime;
     let eDateArray, eDayOfWeek, eYear, eDay, eMonth, eTime;
@@ -95,7 +94,6 @@ class UserTickets extends React.Component {
   }
 
   sortByDate(tickets) {
-    debugger
     return tickets.sort( this.compareDate );
   }
 
@@ -108,14 +106,12 @@ class UserTickets extends React.Component {
     let ticketIndex = [];
     if(tickets) {
       tickets = this.sortByDate(tickets);
-      debugger
       for(let i = 0; i < tickets.length; i++){
         ticketIndex.push(this.displayTicket(tickets[i], i));
       }
 
     }
     
-    debugger
 
     return user && tickets ? (
       <div className='user-tickets-container'>

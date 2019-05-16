@@ -6,7 +6,6 @@ import {
 import { merge } from 'lodash';
 
 const ticketsReducer = (state = {}, action) => {
-  // debugger
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_TICKET:

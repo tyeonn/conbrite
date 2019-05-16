@@ -45,7 +45,6 @@ class Profile extends React.Component {
     let tickets = this.props.tickets ? this.props.tickets.length : 0;
     
     if(currentUser) {
-      debugger
       return(
         <div 
           className='navbar-right-list-profile signedin'

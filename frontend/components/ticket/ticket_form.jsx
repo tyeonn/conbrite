@@ -32,7 +32,6 @@ class TicketForm extends React.Component {
     newState.forEach(ticket => {
       total += parseInt(ticket[1]);
     });
-    debugger
     this.setState({
 
       soldTicket: newState,
@@ -70,13 +69,11 @@ class TicketForm extends React.Component {
       },600);
      
   
-      debugger
 
     // }
 
   }
   render() {
-    debugger
     let tickets = [];
     let active;
     if(this.state.soldTicket){
@@ -107,7 +104,6 @@ class TicketForm extends React.Component {
       }
       // let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
       let qtyOption;
-      console.log(ticket.quantity);
       if(ticket.quantity <= 0){
         qtyOption = <p className="ticket-info-quantity-sold-out">Sold Out</p>
       } else if(ticket.quantity < 5 && ticket.quantity > 0) {

@@ -233,8 +233,6 @@ class EventForm extends React.Component {
   updateTicket(field, idx) {
     return e => {
       debugger;
-      console.log(field);
-      console.log(idx);
       let newState = merge([], this.state.tickets);
       if (field === "price" || field === "quantity") {
         newState[idx][field] = e.currentTarget.value

@@ -71,7 +71,6 @@ export const sellTicket = ticket => {
       ticket => dispatch(receiveTicket(ticket)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
     ).then(() => {
-      // debugger
       dispatch(UserActions.retrieveUser(getState().session.id));
     });
   };
