@@ -336,11 +336,13 @@
 .event-show-content-links div {
   padding-left: 100px;
 }
-
+.event-show-content-links:nth-child(2) {
+  display: flex;
+}
 .event-show-content-links div a {
   color: black;
   margin-right: 7px;
-  padding: 6px;
+  padding: 10px;
   border: 1px solid #dbdae3;
   border-radius: 20px;
   font-size: 13px;
@@ -363,7 +365,8 @@
   flex-direction: column;
   width: 70vw;
   align-self: center;
-  height: 100px;
+  /* height: 100px; */
+  margin-top: 20px;
   justify-content: center;
 }
 .event-show-content-organizer-info p {

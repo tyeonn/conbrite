@@ -47,6 +47,7 @@ class EventShow extends React.Component{
 
     }
     if(event){
+      debugger
       sDateArray = event.start_date.split(' ');
       eDateArray = event.end_date.split(' ');
       [sDayOfWeek, sYear, sMonth, sDay] = sDateArray;
@@ -163,12 +164,12 @@ class EventShow extends React.Component{
             </div>
             <div className='event-show-content-links'>
               <div>
-                <p>Tags</p> 
+                <p>Category</p> 
               </div>
               <div>
-                <Link to=''>Things to do in the area</Link>
-                <Link to=''>Convention</Link>
-                <Link to=''>Entertainment</Link>
+                <Link to=''>{event.category}</Link>
+                {/* <Link to=''>Convention</Link>
+                <Link to=''>Entertainment</Link> */}
               </div>
             </div>
             <div className='event-show-content-share-links'>

@@ -11,7 +11,7 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
+    @event = Event.includes(:category).find_by(id: params[:id])
     if @event
       render :show
     else

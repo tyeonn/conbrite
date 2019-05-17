@@ -11,6 +11,30 @@
 User.delete_all
 Event.delete_all
 Ticket.delete_all
+Category.delete_all
+
+cat = Category.create!(
+  name: 'Gaming'
+)
+cat1 =Category.create!(
+  name: 'Performing & Visual Arts'
+)
+cat2 =Category.create!(
+  name: 'Business & Professional'
+)
+cat3 =Category.create!(
+  name: 'Music'
+)
+cat4 =Category.create!(
+  name: 'Travel & Outdoor'
+)
+cat5 =Category.create!(
+  name: 'Science & Technology'
+)
+cat6 =Category.create!(
+  name: 'Sports'
+)
+
 
 user = User.create!(
   email: 'demo@demo.com',
@@ -34,7 +58,7 @@ event = Event.create!(
   start_date: 'Thur 2019 Oct 03 10:00:00',
   end_date: 'Sat 2019 Oct 05 12:00:00',
   location_id: 1,
-  category_id: 1,
+  category_id: cat.id,
   organizer_id: user.id
 )
 
@@ -62,7 +86,7 @@ event2 = Event.create!(
   start_date: 'Thur 2019 Mar 28 10:00:00',
   end_date: 'Sun 2019 Mar 31 15:00:00',
   location_id: 1,
-  category_id: 1,
+  category_id: cat.id,
   organizer_id: user.id
 )
 
@@ -90,7 +114,7 @@ event3 = Event.create!(
   start_date: 'Sat 2019 Nov 02 11:00:00',
   end_date: 'Tue 2019 Nov 05 18:00:00',
   location_id: 1,
-  category_id: 1,
+  category_id: cat.id,
   organizer_id: user_two.id
 )
 
@@ -119,7 +143,7 @@ event4 = Event.create!(
   start_date: 'Mon 2019 Jun 17 10:00:00',
   end_date: 'Thur 2019 Jun 20 18:00:00',
   location_id: 1,
-  category_id: 1,
+  category_id: cat5.id,
   organizer_id: user_two.id
 )
 
@@ -151,7 +175,7 @@ event5 = Event.create!(
   start_date: 'Thur 2019 Apr 25 19:00:00',
   end_date: 'Thur 2019 Apr 25 21:00:00',
   location_id: 1,
-  category_id: 1,
+  category_id: cat3.id,
   organizer_id: user_two.id
 )
 

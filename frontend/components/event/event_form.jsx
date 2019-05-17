@@ -18,6 +18,7 @@ class EventForm extends React.Component {
     this.displayTickets = this.displayTickets.bind(this);
     this.fillTickets = this.fillTickets.bind(this);
     this.removeTicket = this.removeTicket.bind(this);
+    this.handleCategory = this.handleCategory.bind(this);
   }
 
   addTicket(field) {
@@ -245,6 +246,12 @@ class EventForm extends React.Component {
         tickets: newState
       });
     };
+  }
+
+  handleCategory(e) {
+    e.preventDefault();
+    debugger
+    this.setState({category_id: parseInt(e.currentTarget.value)});
   }
 
   formatDate(date) {
@@ -516,22 +523,14 @@ class EventForm extends React.Component {
           </div>
           <div className="event-form-detail">
             <div className="event-form-category-select">
-              <select className="event-form-category-dropdown">
-                <option value="Gaming"> Gaming </option>
-                <option value="Performing & Visual Arts">
-                  {" "}
-                  Performing & Visual Arts{" "}
-                </option>
-                <option value="Business & Professional">
-                  {" "}
-                  Business & Professional{" "}
-                </option>
-                <option value="Music"> Music </option>
-                <option value="Travel & Outdoor"> Travel & Outdoor </option>
-                <option value="Science & Technology">
-                  {" "}
-                  Science & Technology{" "}
-                </option>
+              <select className="event-form-category-dropdown" onChange={this.handleCategory}>
+                <option value="1"> Gaming </option>
+                <option value="2"> Performing & Visual Arts </option>
+                <option value="3"> Business & Professional </option>
+                <option value="4"> Music </option>
+                <option value="5"> Travel & Outdoor </option>
+                <option value="6"> Science & Technology </option>
+                <option value="7"> Sports </option>
               </select>
               <i id="category-arrow" className="fas fa-arrows-alt-v" />
             </div>
