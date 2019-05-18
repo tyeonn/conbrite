@@ -6,7 +6,8 @@ import { retrieveUser } from '../../actions/user_actions';
 const mapStateToProps = ({ session, entities: { users }, ownProps }) => {
   return {
     currentUser: users[session.id],
-    tickets: session.id != null ? users[session.id].registered_tickets : null
+    tickets: session.id != null ? users[session.id].registered_tickets : null,
+    bookmarks: session.id != null ? users[session.id].bookmarks : null
   };
 };
 

@@ -43,6 +43,7 @@ class Profile extends React.Component {
     const { currentUser, logout } = this.props;
     const dropdownClass = this.state.hover ? '' : 'hidden';
     let tickets = this.props.tickets ? this.props.tickets.length : 0;
+    let bookmarks = this.props.bookmarks ? this.props.bookmarks.length : 0;
     
     if(currentUser) {
       return(
@@ -56,7 +57,7 @@ class Profile extends React.Component {
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             {/* <li> <NavLink to=''>Browse Events</NavLink> </li> */}
             <li> <NavLink to={`/${currentUser.id}/tickets`}>Tickets ({tickets})</NavLink> </li>
-            <li> <NavLink to=''>Liked (0)</NavLink> </li>
+            <li> <NavLink to=''>Liked ({bookmarks})</NavLink> </li>
             {/* <li> <NavLink to=''>Following (0)</NavLink> </li> */}
             {/* <li> <NavLink to=''>Manage Events</NavLink> </li> */}
             {/* <li> <NavLink to=''>Organizer Profile</NavLink> </li> */}
