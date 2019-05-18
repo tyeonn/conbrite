@@ -33,6 +33,12 @@ class User < ApplicationRecord
            through: :registrations,
            source: :event_ticket
 
+  has_many :bookmarks
+  
+  has_many :bookmarked_events,
+  through: :bookmarks,
+  source: :event
+
   # has_many :tickets,
   #   foreign_key: :registrant_id
 

@@ -18,7 +18,9 @@ class EventShow extends React.Component{
 
   heartClick(e) {
       e.preventDefault();
+      
       this.setState({red: !this.state.red});
+
   }
 
   ticketModalClick(e) {
