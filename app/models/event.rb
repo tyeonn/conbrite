@@ -31,7 +31,10 @@ class Event < ApplicationRecord
   belongs_to :category
 
   has_many :bookmarks
-  
+
+  has_many :followers,
+    through: :bookmarks,
+    source: :user
 
   # belongs_to :location
   # belongs_to :category

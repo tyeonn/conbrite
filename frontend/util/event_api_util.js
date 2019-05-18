@@ -31,3 +31,4 @@ export const updateEvent = event => {
     data: { event }
   });
 };
+
