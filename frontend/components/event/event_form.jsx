@@ -332,18 +332,15 @@ class EventForm extends React.Component {
 
     this.setState(
       {
-        image_url:
-          "https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg",
-        category_id: 1,
-        // focusedInput: null,
+        // image_url:
+        //   "https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg",
+        // category_id: 1,
         startDate: new Date(),
-        start_date: `${formattedDate[0]} ${formattedDate[1]} ${
-          formattedDate[2]
-        } ${formattedDate[3]} ${formattedDate[4]}`,
+        start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} 
+          ${formattedDate[3]} ${formattedDate[4]}`,
         endDate: new Date(),
-        end_date: `${formattedDate[0]} ${formattedDate[1]} ${
-          formattedDate[2]
-        } ${formattedDate[3]} ${formattedDate[4]}`,
+        end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} 
+          ${formattedDate[3]} ${formattedDate[4]}`,
         ticket_num: 0,
         ticket_type: {},
         tickets: []
@@ -523,7 +520,7 @@ class EventForm extends React.Component {
           </div>
           <div className="event-form-detail">
             <div className="event-form-category-select">
-              <select className="event-form-category-dropdown" onChange={this.handleCategory}>
+              <select className="event-form-category-dropdown" value={this.state.category_id} onChange={this.handleCategory}>
                 <option value="1"> Gaming </option>
                 <option value="2"> Performing & Visual Arts </option>
                 <option value="3"> Business & Professional </option>
