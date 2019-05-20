@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import EventShow from "./event_show";
 import { retrieveEvent, deleteEvent } from "../../actions/event_actions";
-import { retrieveUser } from "../../actions/user_actions";
+import { retrieveUser, addBookmark, removeBookmark } from "../../actions/user_actions";
 import { retrieveTickets } from "../../actions/ticket_actions";
 
 const mapStateToProps = (
@@ -17,7 +17,10 @@ const mapDispatchToProps = dispatch => ({
   retrieveTickets: eventId => dispatch(retrieveTickets(eventId)),
   retrieveEvent: id => dispatch(retrieveEvent(id)),
   deleteEvent: id => dispatch(deleteEvent(id)),
-  retrieveUser: id => dispatch(retrieveUser(id))
+  retrieveUser: id => dispatch(retrieveUser(id)),
+  addBookmark: (event, id) => dispatch(addBookmark(event, id)),
+  removeBookmark: (event, id) => dispatch(removeBookmark(event, id)),
+
 });
 
 export default connect(
