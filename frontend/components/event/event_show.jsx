@@ -71,7 +71,6 @@ class EventShow extends React.Component{
       if (eMonth < 10) eMonth = eMonth % 10;
       sTime = sDateArray[4];
       eTime = eDateArray[4];
-      debugger
     }
     // let tickets = [];
     // Object.values(this.props.tickets).forEach( ticket => {

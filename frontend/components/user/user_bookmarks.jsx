@@ -17,7 +17,6 @@ class UserBookmarks extends React.Component {
   }
 
   compareDate(a, b) {
-    debugger
     a = new Date(a.start_date);
     b = new Date(b.start_date);
     if(a < b) {
@@ -45,7 +44,6 @@ class UserBookmarks extends React.Component {
     return e => {
       e.preventDefault();
       console.log(this.props.user);
-      debugger
       this.props.removeBookmark(event, this.props.user.id);
 
     };
@@ -98,10 +96,8 @@ class UserBookmarks extends React.Component {
   render() {
     let { user, bookmarks, tickets } = this.props;
     let bookmarkIndex = [];
-    debugger
     if(bookmarks) {
       bookmarks = this.sortByDate(bookmarks);
-      debugger
       for(let i = 0; i < bookmarks.length; i++){
         bookmarkIndex.push(this.displayEvent(bookmarks[i], i));
       }

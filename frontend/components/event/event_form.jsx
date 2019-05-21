@@ -68,18 +68,11 @@ class EventForm extends React.Component {
       let newTickets = this.state.tickets;
       newTickets.splice(idx, 1);
       debugger;
-      // newTicketType = newTicketType.filter( tick => {
-      //   debugger
-      //   return !tick.includes(idx);
-      // });
       this.setState({
         ticket_num: this.state.ticket_num - 1,
         ticket_type: newTicketType,
         tickets: newTickets
       });
-      // if(this.props.formType === "Edit Event" && this.props.tickets[id]) {
-      //   this.props.deleteTicket(id);
-      // }
     };
   }
   displayTickets(i) {
@@ -205,11 +198,6 @@ class EventForm extends React.Component {
         })
         .then(() => this.props.history.push(`/event/${eventId}`));
     } else {
-      // this.props.receiveTickets(this.state.tickets);
-      // this.state.tickets.forEach(ticket => {
-      //   debugger
-      //   this.props.deleteTicket(ticket.id);
-      // });
       debugger;
       this.props
         .updateEvent(this.state)
@@ -310,9 +298,6 @@ class EventForm extends React.Component {
             ticketType
           });
           editTickets.ticket_num += 1;
-          // debugger
-          // this.addTicket(tick.ticket_type, tick);
-          // debugger
         });
       }
       this.setState({
@@ -342,36 +327,6 @@ class EventForm extends React.Component {
         tickets: []
       },
       () => this.fillTickets(tickets)
-      //   () => {
-
-      // if(tickets){
-      //   debugger
-      //   tickets.forEach(tick => {
-      //     debugger
-      //     let ticketType = {};
-      //     switch(tick.ticket_type) {
-      //       case 'Free':
-      //         ticketType[this.state.ticket_num] = 0;
-      //         break;
-      //       case 'Paid':
-      //         ticketType[this.state.ticket_num] = 1;
-      //         break;
-      //       case 'Donation':
-      //         ticketType[this.state.ticket_num] = 2;
-      //         break;
-      //       default: ticketType = 0;
-      //     }
-      //     this.setState({
-      //       ticket_num: this.state.ticket_num + 1,
-      //       ticket_type:  merge({}, this.state.ticket_type, { ticketType }),
-      //       tickets: merge([], this.state.tickets, {[this.state.ticket_num]: tick})
-      //     });
-      //     // debugger
-      //     // return that.addTicket(tick.ticket_type, tick);
-      //     // debugger
-      //   });
-      // }
-      // }
     );
   }
 
