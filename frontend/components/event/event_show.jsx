@@ -18,12 +18,15 @@ class EventShow extends React.Component{
 
   heartClick(e) {
       e.preventDefault();
-      if(this.state.red) {
-        this.props.removeBookmark(this.props.event, this.props.currentUser.id);
-      } else {
-        this.props.addBookmark(this.props.event, this.props.currentUser.id);
+      if(this.props.currentUser) {
+        if(this.state.red) {
+          this.props.removeBookmark(this.props.event, this.props.currentUser.id);
+        } else {
+          this.props.addBookmark(this.props.event, this.props.currentUser.id);
+        }
+        this.setState({red: !this.state.red});
+
       }
-      this.setState({red: !this.state.red});
 
   }
 
@@ -38,12 +41,13 @@ class EventShow extends React.Component{
       return this.props.retrieveTickets(this.props.match.params.eventId);
     }).then( () => {
         let {event, users} = this.props;
-        console.log(users);
-        users[this.props.currentUser.id].bookmarks.forEach( bookmark => {
-          if(bookmark.id === event.id) {
-            return this.setState({red: true});
-          }
-        });
+        if(this.props.currentUser) {
+          users[this.props.currentUser.id].bookmarks.forEach( bookmark => {
+            if(bookmark.id === event.id) {
+              return this.setState({red: true});
+            }
+          });
+        }
     });
     window.scrollTo(0, 0);
     

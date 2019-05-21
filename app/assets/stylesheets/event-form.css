@@ -275,10 +275,12 @@
   outline: 0;
   border: 1px solid #1f2fa3;
   margin-top: 10px;
+  cursor: pointer;
 }
 #category-arrow {
   transform: translateX(-76px);
   color: #1f2fa3;
+  pointer-events: none;
 }
 .event-form-footer {
   height: 20vh;

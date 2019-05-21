@@ -22,7 +22,6 @@ class EventForm extends React.Component {
   }
 
   addTicket(field) {
-    debugger;
     return e => {
       e.preventDefault();
       e.stopPropagation();
@@ -47,7 +46,6 @@ class EventForm extends React.Component {
         price: 0,
         event_id: null
       };
-      debugger;
       this.setState({
         ticket_num: this.state.ticket_num + 1,
         ticket_type: merge({}, this.state.ticket_type, { ticketType }),
@@ -67,7 +65,6 @@ class EventForm extends React.Component {
       delete newTicketType.ticketType[idx];
       let newTickets = this.state.tickets;
       newTickets.splice(idx, 1);
-      debugger;
       this.setState({
         ticket_num: this.state.ticket_num - 1,
         ticket_type: newTicketType,
@@ -111,7 +108,6 @@ class EventForm extends React.Component {
         </button>
       );
     }
-    debugger;
     switch (this.state.ticket_type.ticketType[i]) {
       case 0:
         tickType = (
@@ -183,10 +179,10 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let eventId;
+
     // CREATE EVENT THEN SET ID THEN CREATE TICKET
     if (this.props.formType === "Create Event") {
       this.props.receiveTickets(this.state.tickets);
-      debugger
       this.props
         .createEvent(this.state)
         .then(payload => {
@@ -198,7 +194,6 @@ class EventForm extends React.Component {
         })
         .then(() => this.props.history.push(`/event/${eventId}`));
     } else {
-      debugger;
       this.props
         .updateEvent(this.state)
         .then(payload => {
@@ -222,7 +217,6 @@ class EventForm extends React.Component {
   }
   updateTicket(field, idx) {
     return e => {
-      debugger;
       let newState = merge([], this.state.tickets);
       if (field === "price" || field === "quantity") {
         newState[idx][field] = e.currentTarget.value
@@ -239,14 +233,12 @@ class EventForm extends React.Component {
 
   handleCategory(e) {
     e.preventDefault();
-    debugger
     this.setState({category_id: parseInt(e.currentTarget.value)});
   }
 
   formatDate(date) {
     let fullDate = date.toDateString().split(" ");
     let time = date.toTimeString().split(" ")[0].slice(0,5);
-    debugger
     let [dayOfWeek, month, day, year] = fullDate;
     //Format is flipped for backend: y/m/d instead of m/d/y
     return [dayOfWeek, year, month, day, time];
@@ -260,6 +252,7 @@ class EventForm extends React.Component {
   }
 
   handleChangeEnd(date) {
+
     let formattedDate = this.formatDate(date);
     this.setState({
       endDate: date,
@@ -268,7 +261,6 @@ class EventForm extends React.Component {
   }
 
   fillTickets(tickets) {
-    debugger;
     if (this.props.formType === "Edit Event") {
       let editTickets = {
         ticket_num: 0,
@@ -276,9 +268,7 @@ class EventForm extends React.Component {
         tickets: []
       };
       if (tickets) {
-        debugger;
         tickets.forEach(tick => {
-          debugger;
           let ticketType = {};
           switch (tick.ticket_type) {
             case "Free":
@@ -311,7 +301,6 @@ class EventForm extends React.Component {
     let formattedDate = this.formatDate(new Date());
     //default states for dates
     let tickets = this.props.tickets ? Object.values(this.props.tickets) : null;
-    debugger;
 
     this.setState(
       {
@@ -335,7 +324,6 @@ class EventForm extends React.Component {
     for (let i = 0; i < this.state.ticket_num; i++) {
       tickets[i] = this.displayTickets(i);
     }
-    debugger;
     return (
       <div className="event-form-container">
         <form className="event-form" onSubmit={this.handleSubmit}>
@@ -384,6 +372,8 @@ class EventForm extends React.Component {
                     showTimeSelect
                     dateFormat="MMMM d, yyyy h:mm aa"
                     timeCaption="Start"
+                    minDate={this.state.startDate}
+                    showDisabledMonthNavigation
                   />
                   {/* {this.renderErrors('Start date')} */}
                 </div>
@@ -397,6 +387,8 @@ class EventForm extends React.Component {
                     showTimeSelect
                     dateFormat="MMMM d, yyyy h:mm aa"
                     timeCaption="End"
+                    minDate={this.state.startDate}
+                    showDisabledMonthNavigation
                   />
                   {/* {this.renderErrors('End date')} */}
                 </div>

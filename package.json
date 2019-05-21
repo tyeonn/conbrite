@@ -9,7 +9,7 @@
     "css-loader": "^2.1.1",
     "lodash": "^4.17.11",
     "react": "^16.8.5",
-    "react-datepicker": "^2.3.0",
+    "react-datepicker": "^2.5.0",
     "react-dates": "^20.1.0",
     "react-dom": "^16.8.5",
     "react-modal": "^3.8.1",
