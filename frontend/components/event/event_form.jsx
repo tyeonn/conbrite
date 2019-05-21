@@ -193,6 +193,7 @@ class EventForm extends React.Component {
     // CREATE EVENT THEN SET ID THEN CREATE TICKET
     if (this.props.formType === "Create Event") {
       this.props.receiveTickets(this.state.tickets);
+      debugger
       this.props
         .createEvent(this.state)
         .then(payload => {
@@ -256,7 +257,8 @@ class EventForm extends React.Component {
 
   formatDate(date) {
     let fullDate = date.toDateString().split(" ");
-    let time = date.toTimeString().split(" ")[0];
+    let time = date.toTimeString().split(" ")[0].slice(0,5);
+    debugger
     let [dayOfWeek, month, day, year] = fullDate;
     //Format is flipped for backend: y/m/d instead of m/d/y
     return [dayOfWeek, year, month, day, time];
@@ -332,11 +334,9 @@ class EventForm extends React.Component {
         //   "https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg",
         // category_id: 1,
         startDate: new Date(),
-        start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} 
-          ${formattedDate[3]} ${formattedDate[4]}`,
+        start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
         endDate: new Date(),
-        end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} 
-          ${formattedDate[3]} ${formattedDate[4]}`,
+        end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`,
         ticket_num: 0,
         ticket_type: {},
         tickets: []
@@ -427,7 +427,7 @@ class EventForm extends React.Component {
                     selected={this.state.startDate}
                     onChange={this.handleChangeStart}
                     showTimeSelect
-                    dateFormat="MMMM d yyyy h:mm aa"
+                    dateFormat="MMMM d, yyyy h:mm aa"
                     timeCaption="Start"
                   />
                   {/* {this.renderErrors('Start date')} */}
@@ -440,7 +440,7 @@ class EventForm extends React.Component {
                     selected={this.state.endDate}
                     onChange={this.handleChangeEnd}
                     showTimeSelect
-                    dateFormat="MMMM d yyyy h:mm aa"
+                    dateFormat="MMMM d, yyyy h:mm aa"
                     timeCaption="End"
                   />
                   {/* {this.renderErrors('End date')} */}

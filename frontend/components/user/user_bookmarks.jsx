@@ -96,7 +96,7 @@ class UserBookmarks extends React.Component {
   }
 
   render() {
-    let { user, bookmarks } = this.props;
+    let { user, bookmarks, tickets } = this.props;
     let bookmarkIndex = [];
     debugger
     if(bookmarks) {
@@ -113,6 +113,10 @@ class UserBookmarks extends React.Component {
           <div className='user-bookmarks-header-profile-pic'><i className="far fa-user"></i></div>
           <div className='user-bookmarks-header-info'>
             <h2>{user.first_name} {user.last_name}</h2>
+            <div className='user-bookmarks-header-links'>
+              <Link to={`/${user.id}/tickets`}>Tickets ({tickets.length})</Link>
+              <Link to={`/${user.id}/favorites`}>Likes ({bookmarks.length})</Link>
+            </div>
             {/* <p>{tickets.length} tickets</p> */}
 
           </div>

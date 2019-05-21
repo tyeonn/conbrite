@@ -6,7 +6,8 @@ import UserTickets from './user_tickets';
 
 const mapStateToProps = ({ session, entities: { users }}, ownProps) => ({
   user: users[session.id],
-  tickets: users[session.id].registered_tickets
+  tickets: users[session.id].registered_tickets,
+  bookmarks: users[session.id].bookmarks
 });
 
 const mapDispatchToProps = dispatch => ({

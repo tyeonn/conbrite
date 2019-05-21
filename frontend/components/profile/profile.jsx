@@ -57,7 +57,7 @@ class Profile extends React.Component {
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
             {/* <li> <NavLink to=''>Browse Events</NavLink> </li> */}
             <li> <NavLink to={`/${currentUser.id}/tickets`}>Tickets ({tickets})</NavLink> </li>
-            <li> <NavLink to={`/${currentUser.id}/favorites`}>Liked ({bookmarks})</NavLink> </li>
+            <li> <NavLink to={`/${currentUser.id}/favorites`}>Likes ({bookmarks})</NavLink> </li>
             {/* <li> <NavLink to=''>Following (0)</NavLink> </li> */}
             {/* <li> <NavLink to=''>Manage Events</NavLink> </li> */}
             {/* <li> <NavLink to=''>Organizer Profile</NavLink> </li> */}

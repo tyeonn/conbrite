@@ -95,7 +95,7 @@
   background: #1f2fa3;
   color: white;
   height: 40px;
-  width: 15vw;
+  width: 20vw;
   align-self: center;
   border-radius: 7px;
   margin-right: 20px;
@@ -310,6 +310,7 @@
 
 .event-show-content-right {
   padding: 35px;
+  width: 15vw;
 }
 .event-show-content-right h1,
 .event-show-content-left h1 {
@@ -319,7 +320,7 @@
 .event-show-content-left p,
 .event-show-content-right p {
   white-space: pre-wrap;
-  font: 16px;
+  font-size: 14px;
   color: #6f7287;
 }
 .event-show-content-share-links,

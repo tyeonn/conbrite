@@ -39,7 +39,7 @@ class EventShow extends React.Component{
     }).then( () => {
         let {event, users} = this.props;
         console.log(users);
-        users[event.organizer_id].bookmarks.forEach( bookmark => {
+        users[this.props.currentUser.id].bookmarks.forEach( bookmark => {
           if(bookmark.id === event.id) {
             return this.setState({red: true});
           }
@@ -60,7 +60,6 @@ class EventShow extends React.Component{
 
     }
     if(event){
-      debugger
       sDateArray = event.start_date.split(' ');
       eDateArray = event.end_date.split(' ');
       [sDayOfWeek, sYear, sMonth, sDay] = sDateArray;
@@ -72,6 +71,7 @@ class EventShow extends React.Component{
       if (eMonth < 10) eMonth = eMonth % 10;
       sTime = sDateArray[4];
       eTime = eDateArray[4];
+      debugger
     }
     // let tickets = [];
     // Object.values(this.props.tickets).forEach( ticket => {
@@ -166,7 +166,7 @@ class EventShow extends React.Component{
               <div className='event-show-content-right'>
                 <div className='event-show-content-right-date'>
                   <h3>Date And Time</h3>
-                  <p>{sDayOfWeek}, {sMonth} {sDay}, {sYear}, {sTime} -</p>
+                  <p>{sDayOfWeek}, {sMonth} {sDay}, {sYear}, {sTime} </p>
                   <p>{eDayOfWeek}, {eMonth} {eDay}, {eYear}, {eTime}</p>
                 </div>
                 <div className='event-show-content-right-location'>

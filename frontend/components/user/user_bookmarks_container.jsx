@@ -5,7 +5,8 @@ import UserBookmarks from './user_bookmarks';
 
 const mapStateToProps = ({ session, entities: { users }}, ownProps) => ({
   user: users[session.id],
-  bookmarks: users[session.id].bookmarks
+  bookmarks: users[session.id].bookmarks,
+  tickets: users[session.id].registered_tickets,
 });
 
 const mapDispatchToProps = dispatch => ({

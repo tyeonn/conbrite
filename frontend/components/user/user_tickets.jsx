@@ -102,7 +102,7 @@ class UserTickets extends React.Component {
   }
 
   render() {
-    let { user, tickets } = this.props;
+    let { user, tickets, bookmarks } = this.props;
     let ticketIndex = [];
     if(tickets) {
       tickets = this.sortByDate(tickets);
@@ -119,7 +119,12 @@ class UserTickets extends React.Component {
           <div className='user-tickets-header-profile-pic'><i className="far fa-user"></i></div>
           <div className='user-tickets-header-info'>
             <h2>{user.first_name} {user.last_name}</h2>
-            <p>{tickets.length} tickets</p>
+            <div className='user-tickets-header-links'>
+              <Link to={`/${user.id}/tickets`}>Tickets ({tickets.length}) </Link>
+              <Link to={`/${user.id}/favorites`}>Likes ({bookmarks.length})</Link>
+
+            </div>
+            {/* <p>{tickets.length} tickets</p> */}
 
           </div>
         </header>
