@@ -10,7 +10,7 @@ const mapStateToProps = ({ session, entities: { users }}, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   retrieveUser: id => dispatch(retrieveUser(id)),
-  removeBookmark: event => dispatch(removeBookmark(event))
+  removeBookmark: (event, id) => dispatch(removeBookmark(event, id))
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserBookmarks);

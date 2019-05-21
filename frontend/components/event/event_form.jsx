@@ -265,9 +265,7 @@ class EventForm extends React.Component {
     let formattedDate = this.formatDate(date);
     this.setState({
       startDate: date,
-      start_date: `${formattedDate[0]} ${formattedDate[1]} ${
-        formattedDate[2]
-      } ${formattedDate[3]} ${formattedDate[4]}`
+      start_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`
     });
   }
 
@@ -275,9 +273,7 @@ class EventForm extends React.Component {
     let formattedDate = this.formatDate(date);
     this.setState({
       endDate: date,
-      end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${
-        formattedDate[3]
-      } ${formattedDate[4]}`
+      end_date: `${formattedDate[0]} ${formattedDate[1]} ${formattedDate[2]} ${formattedDate[3]} ${formattedDate[4]}`
     });
   }
 

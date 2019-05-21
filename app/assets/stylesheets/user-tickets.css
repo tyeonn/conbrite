@@ -1,3 +1,4 @@
+.user-bookmarks-container,
 .user-tickets-container {
   display: flex;
   flex-direction: column;
@@ -6,12 +7,15 @@
   overflow:hidden;
 }
 
+.user-bookmarks-header,
 .user-tickets-header {
   display: flex;
   align-items: center;
   height: 25vh;
   padding: 30px;
 }
+
+.user-bookmarks-header-profile-pic,
 .user-tickets-header-profile-pic {
   padding: 40px;
   border-radius: 90px;
@@ -24,6 +28,7 @@
   color: grey;
 }
 
+.user-bookmarks-header-info,
 .user-tickets-header-info {
   display: flex;
   flex-direction: column;
@@ -31,84 +36,117 @@
 
 }
 
+.user-bookmarks-header-info > h2,
 .user-tickets-header-info > h2 {
   margin: 0;
     font-size: 35px;
     font-weight: 400;
 }
+.user-bookmarks-header-info > h2,
 .user-tickets-header-info > p {
   margin: 5px 0;
 
 }
 
+.user-bookmarks-index,
 .user-tickets-index {
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: 55vw;
+  width: 50vw;
+  overflow-x: scroll;
 }
+
+.user-bookmarks-index > h2,
 .user-tickets-index > h2 {
   margin: 0 0px 35px 25px;
   font-weight: 400;
   font-size: 30px;
 }
 
+.user-bookmarks-info-container,
 .user-tickets-info-container {
   display: flex;
   /* margin-bottom: 30px; */
   margin: 10px;
   height: 180px;
 }
+
+.user-bookmarks-info-container:hover,
 .user-tickets-info-container:hover {
   box-shadow: 0 0 10px #c9c9c9;
 }
+
+.user-bookmarks-info-date,
 .user-tickets-info-date {
   padding: 0 15px;
 }
+
+.user-bookmarks-info-date p,
 .user-tickets-info-date p {
   margin: 0;
 }
+
+.user-bookmarks-info-like-btn {
+  margin-top: 10px;
+}
+
+.user-bookmarks-info-date::first-line,
 .user-tickets-info-date::first-line {
   color: #f15e43;
 }
+
+.user-bookmarks-info-img,
 .user-tickets-info-img {
   flex: 0 0.5 320px;
   cursor: pointer;
+  min-width: 250px;
 }
+
+.user-bookmarks-info-img img,
 .user-tickets-info-img img{
   height: 100%;
 }
 
+.user-bookmarks-info,
 .user-tickets-info {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 0 20px;
   background: #f1f1f1;
-
+  min-width: 160px;
 }
 
+.user-bookmarks-info-title,
 .user-tickets-info-title {
   padding: 10px 0;
   font-size: 20px;
   cursor: pointer;
 }
 
+.user-bookmarks-info-ticket,
 .user-tickets-info-ticket {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   flex: 1;
 }
+
+.user-bookmarks-info-ticket p,
 .user-tickets-info-ticket p{
   margin: 0;
 }
+
+.user-bookmarks-info a,
 .user-tickets-info a {
   font-size: 20px;
   color: black;
   appearance: none;
   -webkit-appearance: none;
 }
+
+.user-bookmarks-info-ticket > span,
 .user-tickets-info-ticket > span {
   display: flex;
   justify-content: space-between;
@@ -116,6 +154,8 @@
 
 
 }
+
+/* .user-bookmarks-info-ticket > span > button, */
 .user-tickets-info-ticket > span > button {
   -webkit-appearance: none;
     height: 30px;
