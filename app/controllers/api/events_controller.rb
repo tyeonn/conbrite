@@ -11,7 +11,7 @@ class Api::EventsController < ApplicationController
       end
     else
       search = "%#{params[:searchValue]}%"
-      @events = Event.joins(:category).where('title ILIKE ? OR categories.name ILIKE ?', search, search)
+      @events = Event.joins(:category).where('title ILIKE ? OR categories.name ILIKE ? OR address ILIKE ?', search, search, search)
 
 
     end

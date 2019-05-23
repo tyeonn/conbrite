@@ -54,7 +54,7 @@ class NavBar extends React.Component{
           </div>
           <div className='navbar-right'>
             <ul className='navbar-right-list'>
-              <li> <NavLink to=''>Browse Events</NavLink> </li>
+              <li> <NavLink to='/browse'>Browse Events</NavLink> </li>
               {this.signedInNavLinks()}
               <li> <Profile /> </li>
             </ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
 
 class Profile extends React.Component {
@@ -55,7 +55,7 @@ class Profile extends React.Component {
           <i className="far fa-user-circle"></i>
           <i className="fas fa-chevron-down"></i>
           <ul className={`navbar-right-list-profile-dropdown ${dropdownClass}`}>
-            <li> <NavLink to='/browse'>Browse Events</NavLink> </li>
+            <li> <Link to='/browse'>Browse Events</Link> </li>
             <li> <NavLink to={`/${currentUser.id}/tickets`}>Tickets ({tickets})</NavLink> </li>
             <li> <NavLink to={`/${currentUser.id}/favorites`}>Likes ({bookmarks})</NavLink> </li>
             {/* <li> <NavLink to=''>Following (0)</NavLink> </li> */}
