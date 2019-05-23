@@ -10,6 +10,7 @@ import CreateEventFormContainer from './event/create_event_form_container';
 import EditEventFormContainer from './event/edit_event_form_container';
 import UserTicketsContainer from './user/user_tickets_container';
 import UserBookmarksContainer from './user/user_bookmarks_container';
+import BrowseContainer from './browse/browse_container';
 import NavBar from './navbar';
 import Footer from './footer';
 
@@ -25,6 +26,8 @@ const App = () => (
         <ProtectedRoute exact path='/:userId/favorites' component={UserBookmarksContainer}/>
         <ProtectedRoute exact path='/create' component={CreateEventFormContainer} />
         <OrganizerRoute exact path='/event/:eventId/edit' component={EditEventFormContainer} />
+        <Route path='/browse/:search' component={BrowseContainer}  />
+        <Route path='/browse' component={BrowseContainer} />
         <Route exact path='/event/:eventId' component={EventShowContainer}/>
         <Route exact path='/' component={EventIndexContainer}/>
       </Switch>

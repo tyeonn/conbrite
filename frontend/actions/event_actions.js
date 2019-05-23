@@ -76,4 +76,13 @@ export const deleteEvent = id => {
   };
 };
 
+export const searchEvents = searchValue => {
+  return dispatch => {
+    return EventApiUtil.searchEvents(searchValue).then(
+      events => dispatch(receiveEvents(events)),
+      errors => dispatch(receiveEventErrors(errors.responseJSON))
+    );
+  };
+};
+
 

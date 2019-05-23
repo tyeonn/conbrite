@@ -2,11 +2,18 @@ class Api::EventsController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy]
 
   def index
-    @events = Event.all
-    if @events
-      render :index
+    if(!params[:searchValue])
+      @events = Event.all
+      if @events
+        render :index
+      else
+        render json: ['There are no events'], status: 404
+      end
     else
-      render json: ['There are no events'], status: 404
+      search = "%#{params[:searchValue]}%"
+      @events = Event.joins(:category).where('title ILIKE ? OR categories.name ILIKE ?', search, search)
+
+
     end
   end
 

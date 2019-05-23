@@ -32,3 +32,9 @@ export const updateEvent = event => {
   });
 };
 
+export const searchEvents = searchValue => {
+  return $.ajax({
+    url: `api/events/`,
+    data: { searchValue }
+  });
+};

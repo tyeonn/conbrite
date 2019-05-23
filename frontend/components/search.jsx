@@ -1,15 +1,33 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
-const Search = () => (
+// class Search extends React.Component {
+//   constructor(props) {
+
+//   }
+// }
+const Search = (props) => (
   <div className="search-bar">
     <i className="fas fa-search" />
     <input
+      id='search-field'
       className="search-input"
       type="text"
       placeholder="Search for events"
+      onKeyUp={handleEnter(props)}
     />
   </div>
 );
 
-export default Search;
+function handleEnter(props) {
+  return e => {
+    if(e.keyCode === 13) {
+      debugger
+      props.history.push(`/browse/${e.currentTarget.value}`);
+      document.getElementById('search-field').value = '';
+    }
+
+  }
+}
+
+export default withRouter(Search);
