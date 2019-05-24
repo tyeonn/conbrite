@@ -375,7 +375,6 @@ class EventForm extends React.Component {
                     minDate={this.state.startDate}
                     showDisabledMonthNavigation
                   />
-                  {/* {this.renderErrors('Start date')} */}
                 </div>
               </div>
               <div>
@@ -390,17 +389,12 @@ class EventForm extends React.Component {
                     minDate={this.state.startDate}
                     showDisabledMonthNavigation
                   />
-                  {/* {this.renderErrors('End date')} */}
                 </div>
               </div>
             </div>
             <div className="event-form-detail">
-              <label htmlFor="">Event Image</label>
-              {/* <input type="file" id='input-image-file' ref={inputImage} style={{display:none}} /> */}
-              {/* <button onClick={ () => inputImage.current.click }>
-                Upload Image
-              </button> */}
-              <button> Upload Image </button>
+              {/* <label htmlFor="">Event Image</label>
+              <button> Upload Image </button> */}
             </div>
             <div className="event-form-detail">
               <label htmlFor="event-form-textarea">Event Description</label>

@@ -35,6 +35,7 @@
   color: #2416a1;
   background-image: linear-gradient(#2416a121, white);
   padding: 7px;
+  padding-left: 12px;
   border-radius: 8px;
   font-family: "Raleway", sans-serif;
 }
