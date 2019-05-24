@@ -22,7 +22,6 @@ const Search = (props) => (
 function handleEnter(props) {
   return e => {
     if(e.keyCode === 13) {
-      debugger
       props.history.push(`/browse/${e.currentTarget.value}`);
       document.getElementById('search-field').value = '';
     }
