@@ -183,7 +183,7 @@ class EventShow extends React.Component{
                 <p>Category</p> 
               </div>
               <div>
-                <Link to=''>{event.category}</Link>
+                <Link to={`/browse/${event.category}`}>{event.category}</Link>
                 {/* <Link to=''>Convention</Link>
                 <Link to=''>Entertainment</Link> */}
               </div>
@@ -204,8 +204,8 @@ class EventShow extends React.Component{
               <p>{organizer.first_name} {organizer.last_name}</p>
               <p>Organizer of {event.title}</p>
               <div>
-                <button className='organizer-follow-button'> Follow </button>
-                <button className='organizer-contact-button'> Contact </button>
+                {/* <button className='organizer-follow-button'> Follow </button>
+                <button className='organizer-contact-button'> Contact </button> */}
 
               </div>
             </div>

@@ -96,6 +96,7 @@
   color: white;
   height: 40px;
   width: 20vw;
+  max-width: 300px;
   align-self: center;
   border-radius: 7px;
   margin-right: 20px;
