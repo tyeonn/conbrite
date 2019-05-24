@@ -38,3 +38,25 @@
   border-radius: 8px;
   font-family: "Raleway", sans-serif;
 }
+
+.no-results {
+  max-width: 1300px;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 428px);
+}
+
+.no-results > h2 {
+  font-weight: 300;
+  font-family: "Raleway", sans-serif;
+}
+
+#search-img {
+  display: flex;
+  align-self: center;
+}
