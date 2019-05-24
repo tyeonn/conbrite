@@ -83,8 +83,8 @@ event2 = Event.create!(
   description: 'Gaming culture festival involving tabletop gaming, arcade gaming, and video gaming.',
   address: '415 Summer St, Boston, MA, 02210',
   image_url: 'http://hw1.pa-cdn.com/pax/shared-assets/img/meta/meta_pax_east.png',
-  start_date: 'Thur 2019 Mar 28 10:00',
-  end_date: 'Sun 2019 Mar 31 15:00',
+  start_date: 'Wed 2019 Dec 25 10:00',
+  end_date: 'Sat 2019 Dec 28 15:00',
   location_id: 1,
   category_id: cat.id,
   organizer_id: user.id
@@ -169,8 +169,8 @@ event5 = Event.create!(
   A resource for its community and the world, the Philharmonic complements its annual free citywide Concerts in the Parks, Presented by Didi and Oscar Schafer, with Philharmonic Free Fridays, its famed Young People’s Concerts, and the Shanghai Orchestra Academy and Residency Partnership. The oldest American symphony orchestra and one of the oldest in the world, the New York Philharmonic has made more than 2,000 recordings since 1917 and produced its first-ever Facebook Live concert broadcast in 2016.",
   address: 'David Geffen Hall, 10 Lincoln Center Plaza, New York, NY 10023',
   image_url: 'http://a3.images.lincolncenter.org/image/upload/c_fill,g_faces:center,h_1080,w_1920/b11ujeb0a7p4n28lt7mo',
-  start_date: 'Thur 2019 Apr 25 19:00',
-  end_date: 'Thur 2019 Apr 25 21:00',
+  start_date: 'Thur 2019 Aug 15 19:00',
+  end_date: 'Thur 2019 Aug 15 21:00',
   location_id: 1,
   category_id: cat3.id,
   organizer_id: user_two.id
