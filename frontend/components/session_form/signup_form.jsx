@@ -68,19 +68,6 @@ class SignupForm extends React.Component {
     return e.currentTarget.setCustomValidity("");
   }
 
-  // renderErrors(field){
-  //   return(
-  //     // {this.props.errors}
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-
-  //   )
-  // }
 
   componentDidMount() {
     this.props.resetSessionErrors();

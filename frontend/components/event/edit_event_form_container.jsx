@@ -32,12 +32,6 @@ class EditEventForm extends React.Component {
     retrieveEvent(this.props.match.params.eventId);
   }
 
-  // componentDidUpdate(prevProps){
-  //   if(prevProps.event.id != this.props.match.params.eventId){
-  //     retrieveEvent(this.props.match.params.eventId);
-  //   }
-  // }
-
   render() {
     return (
       <EventForm

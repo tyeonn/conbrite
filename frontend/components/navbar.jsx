@@ -10,16 +10,11 @@ class NavBar extends React.Component{
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.signedInNavLinks = this.signedInNavLinks.bind(this);
-    // this.handleCreateEventClick = this.handleCreateEventClick.bind(this);
   }
 
   handleClick(e) {
     this.props.history.push('/');
   }
-  // handleCreateEventClick(e) {
-  //   this.props.history.push('/create');
-  //   window.location.reload();
-  // }
 
   signedInNavLinks(){
     const { currentUser } = this.props;
@@ -30,7 +25,6 @@ class NavBar extends React.Component{
             <NavLink 
               to='/create' 
               id='createEvent'
-              // onClick={this.handleCreateEventClick}
             >
               Create Event
             </NavLink> 

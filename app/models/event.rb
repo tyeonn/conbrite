@@ -36,7 +36,5 @@ class Event < ApplicationRecord
     through: :bookmarks,
     source: :user
 
-  # belongs_to :location
-  # belongs_to :category
 
 end

@@ -1,11 +1,6 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
-// class Search extends React.Component {
-//   constructor(props) {
-
-//   }
-// }
 const Search = (props) => (
   <div className="search-bar">
     <i className="fas fa-search" />

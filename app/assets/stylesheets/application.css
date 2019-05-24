@@ -36,28 +36,13 @@ body {
   display: none;
 }
 
-/* html, body, header, footer, h1, 
-h2, h3, h4, h5, a, ul, li, ol,
-main, strong, input, textarea, form, 
-p, span, article, label, small, aside{
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-  text-decoration: inherit;
-  vertical-align: inherit;
-  box-sizing: inherit;
-  background: transparent;
-}  */
 a,
 a:any-link,
 a:-webkit-any-link {
   text-decoration: none;
   /* color: #39364F; */
 }
+
 ul {
   list-style: none;
   padding: 0;
@@ -69,20 +54,12 @@ img {
   height: auto;
 }
 
-/* input[type="password"],
-input[type="email"],
-input[type="text"],
-input[type="submit"],
-textarea,*/
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-/* input[type="password"],
-input[type="email"],
-input[type="text"], */
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
   -webkit-appearance: none;

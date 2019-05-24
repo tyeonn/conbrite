@@ -14,10 +14,6 @@ class EventIndexItem extends React.Component{
     this.props.history.push(`/event/${eventId}`);
   }
 
-  componentDidMount(){
-    
-  }
-
   render(){
     const { event } = this.props;
     let sDateArray, sDayOfWeek, sYear, sDay, sMonth, sTime;

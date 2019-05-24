@@ -1,5 +1,4 @@
 json.partial! 'api/users/user', user: @user
-# json.registered_tickets @user.registered_tickets
 json.bookmarks @user.bookmarked_events
 json.registered_tickets do
   json.array! @user.registered_tickets.each do |ticket|

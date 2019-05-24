@@ -13,7 +13,6 @@ class EventShow extends React.Component{
     };
     this.heartClick = this.heartClick.bind(this);
     this.ticketModalClick = this.ticketModalClick.bind(this);
-    // if (this.props.match.params.eventId === current_user.id)
   }
 
   heartClick(e) {
@@ -25,9 +24,7 @@ class EventShow extends React.Component{
           this.props.addBookmark(this.props.event, this.props.currentUser.id);
         }
         this.setState({red: !this.state.red});
-
       }
-
   }
 
   ticketModalClick(e) {
@@ -76,18 +73,7 @@ class EventShow extends React.Component{
       sTime = sDateArray[4];
       eTime = eDateArray[4];
     }
-    // let tickets = [];
-    // Object.values(this.props.tickets).forEach( ticket => {
-    //   let price = ticket.price == 0 ? ticket.ticket_type : ticket.price;
-    //   tickets.push(
-    //     <Ticket ticket={ticket} />
-    //     // <div className={`ticket-info ${ticket.id}`}>
-    //     //   <h2>{ticket.name}</h2>
-    //     //   <p>{price}</p>
-
-    //     // </div>
-    //   )
-    // })
+    
     const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
     let heartClass = this.state.red ? 'red' : '';
@@ -209,7 +195,6 @@ class EventShow extends React.Component{
 
               </div>
             </div>
-            {/* <div> MAP GOES HERE </div> */}
           </div>
         </div>
       </div>

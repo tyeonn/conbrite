@@ -51,7 +51,6 @@ class Api::TicketsController < ApplicationController
     end
   end
 
-  # Errors might be from update!, subtraction, check quant t/f, << curr,
   def sell_ticket
     @ticket = Ticket.find_by(id: params[:id])
     if @ticket
@@ -67,9 +66,7 @@ class Api::TicketsController < ApplicationController
     @ticket = Ticket.find_by(id: params[:id])
     if @ticket
       @ticket.update!(quantity: @ticket.quantity + params['ticket'][:quantity].to_i)
-      # params['ticket'][:quantity].to_i.times { @ticket.registered_users.delete(current_user) }
         @ticket.registrations.first.delete
-      # @ticket.registered_users.delete(current_user)
       render :show
     else
       render json: @ticket.errors.full_messages, status: 422
@@ -84,11 +81,8 @@ class Api::TicketsController < ApplicationController
     )
   end
 
-  # might have error
   def check_quantity
     ticket = Ticket.find(params[:id])
-
-    # ticket.quantity > params['ticket'][:quantity].to_i
     if ticket.quantity - params['ticket'][:quantity].to_i >= 0
       return true
     else

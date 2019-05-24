@@ -59,11 +59,6 @@ class SessionForm extends React.Component {
     }, 1200);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if(!this.state.flushed && nextProps.location.state === 'flush'){
-  //     this.setState({flushed: true});
-  //   }
-  // }
   componentDidMount() {
     if (this.state.email != "") {
       this.setState({ active: true });

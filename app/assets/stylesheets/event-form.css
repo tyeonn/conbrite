@@ -14,7 +14,6 @@
   top: 60px;
 }
 
-
 .event-form-header button {
   appearance: none;
   -webkit-appearance: none;
@@ -59,10 +58,12 @@
   background: #EEEDF2;
   color: #a9a8b3;
 }
+
 .event-form textarea:focus,
 .event-form input:focus {
   outline: 2px solid #3759e4;
 }
+
 .event-form-detail-header {
   display: flex;
   align-items: center;
