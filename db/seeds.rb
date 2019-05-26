@@ -200,7 +200,7 @@ event6 = Event.create!(
   
   The 2020 convention will begin with preconferences on February 27. The two-day convention that follows will be held on February 28-29, 2020.",
   address: 'Hyatt Regency in New Orleans, 601 Loyola Ave, New Orleans, LA 70113',
-  image_url: 'http://meeting.spsp.org/sites/default/files/NOLALogoWebsite.jpg',
+  image_url: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/SPSP_Logo.jpg',
   start_date: 'Thur 2020 Feb 27 10:00',
   end_date: 'Sat 2020 Aug 29 17:00',
   location_id: 1,
