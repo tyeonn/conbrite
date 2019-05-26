@@ -191,3 +191,31 @@ Ticket.create!(
   quantity: 100,
   event_id: event5.id
 )
+
+event6 = Event.create!(
+  title: 'SPSP 2020 Annual Convention',
+  description: "The Society for Personality and Social Psychology’s Annual Convention is the premier international event for more than 3,800 social and personality psychologists. Attendees from academia, non-profit, government, and private sectors present and discuss research, network and collaborate on projects, and pursue professional development while advancing science and pedagogy in the field. The 2020 convention will begin with preconferences on February 27. The two-day convention that follows will be held on February 28-29, 2020.",
+  address: 'Hyatt Regency in New Orleans, 601 Loyola Ave, New Orleans, LA 70113',
+  image_url: 'http://meeting.spsp.org/sites/default/files/NOLALogoWebsite.jpg',
+  start_date: 'Thur 2020 Feb 27 10:00',
+  end_date: 'Sat 2020 Aug 29 17:00',
+  location_id: 1,
+  category_id: cat2.id,
+  organizer_id: user.id
+)
+
+Ticket.create!(
+  name: 'Early Bird',
+  price: 230,
+  ticket_type: 'Paid',
+  quantity: 350,
+  event_id: event6.id
+)
+
+Ticket.create!(
+  name: 'Onsite',
+  price: 350,
+  ticket_type: 'Paid',
+  quantity: 1000,
+  event_id: event6.id
+)
