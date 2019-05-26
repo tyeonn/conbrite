@@ -194,7 +194,11 @@ Ticket.create!(
 
 event6 = Event.create!(
   title: 'SPSP 2020 Annual Convention',
-  description: "The Society for Personality and Social Psychology’s Annual Convention is the premier international event for more than 3,800 social and personality psychologists. Attendees from academia, non-profit, government, and private sectors present and discuss research, network and collaborate on projects, and pursue professional development while advancing science and pedagogy in the field. The 2020 convention will begin with preconferences on February 27. The two-day convention that follows will be held on February 28-29, 2020.",
+  description: "The Society for Personality and Social Psychology’s Annual Convention is the premier international event for more than 3,800 social and personality psychologists. 
+
+  Attendees from academia, non-profit, government, and private sectors present and discuss research, network and collaborate on projects, and pursue professional development while advancing science and pedagogy in the field. 
+  
+  The 2020 convention will begin with preconferences on February 27. The two-day convention that follows will be held on February 28-29, 2020.",
   address: 'Hyatt Regency in New Orleans, 601 Loyola Ave, New Orleans, LA 70113',
   image_url: 'http://meeting.spsp.org/sites/default/files/NOLALogoWebsite.jpg',
   start_date: 'Thur 2020 Feb 27 10:00',
@@ -218,4 +222,43 @@ Ticket.create!(
   ticket_type: 'Paid',
   quantity: 1000,
   event_id: event6.id
+)
+
+event7 = Event.create!(
+  title: 'Music Expo San Francisco',
+  description: "Started in 2014, Music Expo is a music institution committed to facilitating dialog between music makers. In association with Sound On Sound Magazine, we bring 6,000 music makers together through a well established series of annual events nationwide including in Boston, Miami, Nashville and San Francisco.
+
+  In 2018, we programmed 100 hours of intimate and hyper-focused sessions with artists, producers, engineers, influencers, and tastemakers. We have pledged a minimum of 1% of our revenues to fund non-profit organizations supporting local music communities. We have committed to a minimum of 30% diversity across the lineup including minorities and women.
+  
+  Gain direct access and build brand recognition with over 5,000 music makers
+  
+  Unveil your latest gear and innovations in an environment where you can meet face-to-face with your end-users
+  
+  Feature your products in education workshops & studio sessions led by pros
+  
+  Select the package that suite your objectives; from exhibition to exclusive sponsorship",
+  address: 'SAE Expression College
+  6601 Shellmound St, Emeryville, CA 94608',
+  image_url: 'http://static1.squarespace.com/static/55526eb3e4b07975f179bf2b/t/5c270f744d7a9c2ebbe177c0/1546063770468/Website+-+Social+Image+Sharing.001.png?format=1500w',
+  start_date: 'Sat 2019 Nov 09 9:00',
+  end_date: 'Sun 2019 Nov 10 16:00',
+  location_id: 1,
+  category_id: cat3.id,
+  organizer_id: user.id
+)
+
+Ticket.create!(
+  name: 'Early Bird',
+  price: 30,
+  ticket_type: 'Paid',
+  quantity: 5000,
+  event_id: event7.id
+)
+
+Ticket.create!(
+  name: 'VIP',
+  price: 80,
+  ticket_type: 'Paid',
+  quantity: 300,
+  event_id: event7.id
 )
