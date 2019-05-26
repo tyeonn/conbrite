@@ -77,7 +77,7 @@ export const sellTicket = ticket => {
 };
 
 export const refundTicket = ticket => {
-  return dispatch => {
+  return (dispatch, getState) => {
     TicketApiUtil.refundTicket(ticket).then(
       () => dispatch(UserActions.retrieveUserTickets(getState().session.id)),
       errors => dispatch(receiveTicketErrors(errors.responseJSON))
