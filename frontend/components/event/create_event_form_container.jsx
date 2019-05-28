@@ -10,7 +10,7 @@ const mapStateToProps = ({ errors, entities: { tickets } }, ownProps) => ({
     title: "",
     description: "",
     address: "",
-    image_url: "https://cnet1.cbsistatic.com/img/xBshnVs6E1cL8i_shQt9OoAPVus=/1600x900/2018/06/13/792de549-6718-438c-8359-4e4989606bc5/fortnite-booth-e3-2018-7646.jpg",
+    image_url: "https://images.pexels.com/photos/1509428/pexels-photo-1509428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     start_date: "",
     end_date: "",
     category_id: 1,
