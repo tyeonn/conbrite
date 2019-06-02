@@ -43,7 +43,6 @@ class UserBookmarks extends React.Component {
   heartClick(event) {
     return e => {
       e.preventDefault();
-      console.log(this.props.user);
       this.props.removeBookmark(event, this.props.user.id);
 
     };

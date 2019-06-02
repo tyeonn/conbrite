@@ -25,7 +25,6 @@ class Browse extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (prevProps.match.params.search != this.props.match.params.search) {
       this.props.searchEvents(this.props.match.params.search);
       this.setState({ searchVal: this.props.match.params.search });

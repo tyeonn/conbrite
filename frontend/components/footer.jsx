@@ -11,16 +11,15 @@ const Footer = () => {
           <a href="https://angel.co/timothyjwu1"> <i className="fab fa-angellist"></i> </a>
           
         </div>
-        <div className="footer-countries">
+        {/* <div className="footer-countries">
           <i className="fas fa-globe-americas" />
-          {/* Create dropdown later */}
           <select className="footer-dropdown">
             <option value="Gaming"> United States </option>
             <option value="Canada"> Canada </option>
             <option value="United Kingdom"> United Kingdom </option>
           </select>
           <i className="fas fa-arrows-alt-v" />
-        </div>
+        </div> */}
       </div>
       <p>
         <i className="far fa-copyright" /> 2019 Conbrite

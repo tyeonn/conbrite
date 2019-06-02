@@ -24,11 +24,19 @@ class EventShow extends React.Component{
           this.props.addBookmark(this.props.event, this.props.currentUser.id);
         }
         this.setState({red: !this.state.red});
+      } else {
+        this.props.history.push('/signin');
+        window.location.reload();
       }
   }
 
   ticketModalClick(e) {
-    this.setState({modalOpen: !this.state.modalOpen});
+    if(this.props.currentUser) {
+      this.setState({modalOpen: !this.state.modalOpen});
+    } else {
+      this.props.history.push('/signin');
+      window.location.reload();
+    }
   }
 
   componentDidMount(){
@@ -76,9 +84,8 @@ class EventShow extends React.Component{
     
     const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
-    let heartShow = this.props.currentUser ? '' : 'hidden';
+    // let heartShow = this.props.currentUser ? '' : 'hidden';
     let heartClass = this.state.red ? 'red' : '';
-    console.log(heartShow);
     return (event && organizer) ? (
       <div className='event-show-container'>
         <div className='event-show-background-image'>
@@ -115,7 +122,7 @@ class EventShow extends React.Component{
                   <i id={'show-edit'} className={`fas fa-pencil-alt `}></i> 
                 </Link>
               </div>
-                <i className={`far fa-heart ${heartClass} ${heartShow}`} onClick={this.heartClick}></i>
+                <i className={`far fa-heart ${heartClass}`} onClick={this.heartClick}></i>
 
             </div>
             <button className='event-show-ticket-button' onClick={this.ticketModalClick}>Register</button>
