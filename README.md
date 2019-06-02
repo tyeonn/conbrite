@@ -35,21 +35,21 @@ This project is implemented with the following technologies:
 ### Implementation
 
 #### Create Ticket 
-![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/create_ticket.png)
+![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/create_ticket.png)  
 Users can create many tickets using this ticket form. The type of ticket is chosen first, then the details for each ticket.
 Tickets that are not live yet can also be deleted.
 
 #### Register for Events
-![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/register_event.png)
+![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/register_event.png)  
 Once the user clicks register on the event show page, this modal will pop up. Users can buy up to 5 tickets at a time.
 
 #### Edit and Bookmark Events
-![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/bookmark_events.png)
+![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/bookmark_events.png)  
 Users can edit their own events by clicking the pencil icon under the picture. 
 Users can bookmark an event that they like by clicking on the heart icon. 
 
 #### Search for Events
-![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/search.png)
+![Screenshot](https://github.com/tyeonn/conbrite/blob/master/app/assets/images/search.png)  
 ```ruby
 def index
   if(!params[:searchValue])
