@@ -76,7 +76,9 @@ class EventShow extends React.Component{
     
     const hidden = (this.props.event && this.props.currentUser && this.props.event.organizer_id === this.props.currentUser.id);
     const activeClass = hidden ? '' : 'hidden';
+    let heartShow = this.props.currentUser ? '' : 'hidden';
     let heartClass = this.state.red ? 'red' : '';
+    console.log(heartShow);
     return (event && organizer) ? (
       <div className='event-show-container'>
         <div className='event-show-background-image'>
@@ -113,7 +115,7 @@ class EventShow extends React.Component{
                   <i id={'show-edit'} className={`fas fa-pencil-alt `}></i> 
                 </Link>
               </div>
-                <i className={`far fa-heart ${heartClass}`} onClick={this.heartClick}></i>
+                <i className={`far fa-heart ${heartClass} ${heartShow}`} onClick={this.heartClick}></i>
 
             </div>
             <button className='event-show-ticket-button' onClick={this.ticketModalClick}>Register</button>
