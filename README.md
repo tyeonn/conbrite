@@ -26,7 +26,7 @@ This project is implemented with the following technologies:
 
 - `Ruby on Rails` for the backend framework
 - `PostgreSQL` for the database
-- `React` for the frontend using `React` as the state manager
+- `React` for the frontend using `Redux` as the state manager
 - `jQuery` to send AJAX requests to the backend
 - `CSS` for styling
 - `Heroku` to deploy the live application
